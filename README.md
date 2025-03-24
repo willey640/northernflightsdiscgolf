@@ -7,3 +7,4 @@ SOME color schemes
 #5EBF88         green
 #9CF299         lime green
 #F28B66         orange
+#0073e6
