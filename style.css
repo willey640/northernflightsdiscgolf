@@ -168,6 +168,36 @@ img {
     margin-right: auto;
 }
 
+.collection-disc-stats {
+    display: flex; /* Ensures items are in a row */
+    
+    gap: 5px; /* Adds spacing between numbers */
+    list-style: none; /* Removes bullet points from <li> */
+    padding: 0;
+}
+
+.collection-disc-stats li {
+    background: #008000; /* Blue background */
+    color: #fff; /* White text */
+    min-width: 25px;
+    height: 25px;
+    display: flex;
+    justify-content: center; /* Centers text horizontally */
+    align-items: center; /* Centers text vertically */
+    /* padding: 0 5px; */
+    border: 2px solid #008000; /* Ensures a solid border */
+    border-radius: 4px; /* Optional: makes the squares slightly rounded */
+    font-weight: bold;
+    margin: 15px auto;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.collection-disc-stats li:hover {
+    background: #295a9b; /* Darker blue when hovered */
+}
+
+
 .image-container {
     display: flex;
     justify-content: center; /* Centers the images */
