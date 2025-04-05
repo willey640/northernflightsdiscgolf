@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donate - Northern Flights Disc Golf Inc.</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Donate to Northern Flights Disc Golf Inc.</h1>
+        <h2>Help Us Build Disc Golf Courses and Empower Communities</h2>
+    </header>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="logo.html">Choose our Logo</a>
+        <a href="store.html">Disc Exchange</a>
+        <a href="about.html">About Us</a>
+        <a href="contact.html">Contact Us</a>
+    </nav>
+
+    <div class="content-container">
+        <h2 class="banner">Your Contribution Makes a Difference</h2>
+
+        <section>
+            <p>At <strong>Northern Flights Disc Golf Inc.</strong>, we are committed to promoting outdoor activities, healthy living, and community engagement by building disc golf courses across Northern Canada. With your support, we can expand our reach and empower communities through disc golf.</p>
+            <p>Your generous donation helps us to:</p>
+            <ul>
+                <li>Build and maintain accessible disc golf courses in small towns and Indigenous communities</li>
+                <li>Host tournaments and clinics to promote healthy living</li>
+                <li>Sponsor local athletes and emerging talent</li>
+                <li>Enhance outdoor recreational opportunities for all Canadians</li>
+            </ul>
+        </section>
+
+        <section>
+            <h3>How You Can Donate</h3>
+            <p>We offer several ways for you to contribute to our mission:</p>
+            <ul>
+                <li><strong>One-Time Donation:</strong> Make a one-time contribution to support our ongoing efforts.</li>
+                <li><strong>Monthly Donation:</strong> Set up a recurring donation to provide continuous support for our programs and growth.</li>
+                <li><strong>Corporate Sponsorship:</strong> Partner with us to sponsor events, courses, or athletes. Reach out to us for more details.</li>
+            </ul>
+        </section>
+
+        <section class="contact-form">
+            <h3>Make a Donation</h3>
+            <p>Your donation is greatly appreciated and will go directly towards building and supporting our initiatives. Please fill out the form below to make your donation:</p>
+            
+            <form action="donation_success.html" method="POST">
+                <label for="donation-amount">Donation Amount ($):</label>
+                <input type="number" id="donation-amount" name="donation-amount" placeholder="Enter amount" required>
+
+                <label for="donor-name">Your Name:</label>
+                <input type="text" id="donor-name" name="donor-name" placeholder="Your full name" required>
+
+                <label for="donor-email">Your Email:</label>
+                <input type="email" id="donor-email" name="donor-email" placeholder="Your email" required>
+
+                <label for="donation-type">Donation Type:</label>
+                <select id="donation-type" name="donation-type" required>
+                    <option value="one-time">One-Time Donation</option>
+                    <option value="monthly">Monthly Donation</option>
+                </select>
+
+                <button type="submit" class="button">Donate Now</button>
+            </form>
+        </section>
+
+        <section>
+            <h3>Other Ways to Support</h3>
+            <p>If you prefer, you can send a donation by mail or contribute through our bank details. Please contact us for more information.</p>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 All rights reserved. Northern Flights Disc Golf Inc.</p>
+    </footer>
+</body>
+</html>
