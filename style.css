@@ -205,7 +205,7 @@ img {
     margin-top: 20px;
 }
 
-..products {
+.products {
     display: flex;
     flex-wrap: wrap; /* Allow items to wrap onto new lines */
     justify-content: space-between; /* Space out the items evenly */
