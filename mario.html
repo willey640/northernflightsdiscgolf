@@ -8,7 +8,7 @@
     body {
       margin: 0;
       overflow: hidden;
-      background: #7ec850;
+      background: #ff4500;
       font-family: sans-serif;
     }
     canvas {
@@ -32,16 +32,19 @@
   <canvas id="gameCanvas"></canvas>
   <audio id="midiMusic" autoplay loop>
     <source src="https://archive.org/download/N64-MIDI/mario64.mid" type="audio/midi">
-    Your browser does not support MIDI. (Because it's 2025 and this is insane.)
   </audio>
   <audio id="missSound">
     <source src="https://freesound.org/data/previews/341/341695_6266115-lq.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="ghostMoan">
+    <source src="https://freesound.org/data/previews/446/446207_9034500-lq.mp3" type="audio/mpeg">
   </audio>
   <script>
     const canvas = document.getElementById("gameCanvas");
     const ctx = canvas.getContext("2d");
     const scoreDisplay = document.getElementById("scoreDisplay");
     const missSound = document.getElementById("missSound");
+    const ghostMoan = document.getElementById("ghostMoan");
 
     let width = window.innerWidth;
     let height = window.innerHeight;
@@ -62,10 +65,25 @@
       discVY: 0,
     };
 
+    let wario = {
+      x: 100,
+      y: height - 100,
+      discX: 100,
+      discY: height - 130,
+      discVX: 3,
+      discVY: -3
+    };
+
     const basket = {
       x: width - 100,
       y: height - 120,
       radius: 20,
+    };
+
+    const ghostPipe = {
+      x: width / 2,
+      y: height - 60,
+      radius: 25,
     };
 
     let hatUnlocked = false;
@@ -79,8 +97,26 @@
       ctx.fillRect(plumber.x - 7, plumber.y - 45, 14, 15);
       if (hatUnlocked) {
         ctx.fillStyle = "#ffff00";
-        ctx.fillRect(plumber.x - 8, plumber.y - 55, 16, 10); // dumb gold hat
+        ctx.fillRect(plumber.x - 8, plumber.y - 55, 16, 10);
       }
+    }
+
+    function drawWario() {
+      ctx.fillStyle = "#ffff00";
+      ctx.fillRect(wario.x - 10, wario.y - 30, 20, 30);
+      ctx.fillStyle = "#800080";
+      ctx.fillRect(wario.x - 10, wario.y, 20, 20);
+      ctx.fillStyle = "#ffcc99";
+      ctx.fillRect(wario.x - 7, wario.y - 45, 14, 15);
+      ctx.fillStyle = "black";
+      ctx.fillText("W", wario.x - 4, wario.y - 35);
+    }
+
+    function drawWarioDisc() {
+      ctx.beginPath();
+      ctx.arc(wario.discX, wario.discY, 8, 0, 2 * Math.PI);
+      ctx.fillStyle = "#ff00ff";
+      ctx.fill();
     }
 
     function drawDisc() {
@@ -101,20 +137,18 @@
       ctx.fillText("Goal", basket.x - 15, basket.y - basket.radius - 10);
     }
 
-    function drawFake3DTrees() {
-      for (let i = 0; i < 5; i++) {
-        let x = 100 + i * 150;
-        let trunkHeight = 40;
-        ctx.fillStyle = "#8B4513";
-        ctx.fillRect(x, height - 60, 10, trunkHeight);
-        ctx.fillStyle = "#228B22";
-        ctx.beginPath();
-        ctx.moveTo(x - 20, height - 60);
-        ctx.lineTo(x + 30, height - 60);
-        ctx.lineTo(x + 5, height - 100);
-        ctx.closePath();
-        ctx.fill();
-      }
+    function drawGhostPipe() {
+      ctx.beginPath();
+      ctx.arc(ghostPipe.x, ghostPipe.y, ghostPipe.radius, 0, 2 * Math.PI);
+      ctx.fillStyle = "#999999";
+      ctx.fill();
+      ctx.fillStyle = "black";
+      ctx.fillText("👻", ghostPipe.x - 7, ghostPipe.y + 5);
+    }
+
+    function drawLava() {
+      ctx.fillStyle = "#ff6347";
+      ctx.fillRect(0, height - 40, width, 40);
     }
 
     function checkCollision() {
@@ -131,17 +165,41 @@
         } else {
           alert("🏆 You scored! Plumber Disc Golf Legend!");
         }
-      } else if (plumber.discY > height) {
+      } else if (plumber.discY > height - 40) {
         plumber.throwing = false;
         missSound.play();
+        alert("🔥 Your disc melted in lava. Smooth.");
+      }
+
+      const gdx = plumber.discX - ghostPipe.x;
+      const gdy = plumber.discY - ghostPipe.y;
+      const gdist = Math.sqrt(gdx * gdx + gdy * gdy);
+      if (gdist < ghostPipe.radius + 8) {
+        plumber.throwing = false;
+        ghostMoan.play();
+        alert("👻 Your disc vanished into the haunted pipe! Spooky.");
       }
     }
 
     function update() {
       ctx.clearRect(0, 0, width, height);
-      drawFake3DTrees();
+      drawLava();
       drawBasket();
+      drawGhostPipe();
       drawPlumber();
+      drawWario();
+
+      wario.discX += wario.discVX;
+      wario.discY += wario.discVY;
+      wario.discVY += 0.1;
+      drawWarioDisc();
+      if (wario.discY > height - 40 || wario.discX > width || wario.discX < 0) {
+        wario.discX = wario.x;
+        wario.discY = wario.y - 30;
+        wario.discVX = (Math.random() - 0.5) * 6;
+        wario.discVY = -3;
+      }
+
       if (plumber.throwing) {
         plumber.discX += plumber.discVX;
         plumber.discY += plumber.discVY;
@@ -149,6 +207,7 @@
         drawDisc();
         checkCollision();
       }
+
       requestAnimationFrame(update);
     }
 
