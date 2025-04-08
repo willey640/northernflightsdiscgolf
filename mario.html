@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Plumber Disc Golf 64</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background: #7ec850; /* N64 grass green */
+    }
+    canvas {
+      display: block;
+      image-rendering: pixelated;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="gameCanvas"></canvas>
+  <script>
+    const canvas = document.getElementById("gameCanvas");
+    const ctx = canvas.getContext("2d");
+
+    let width = window.innerWidth;
+    let height = window.innerHeight;
+    canvas.width = width;
+    canvas.height = height;
+
+    let plumber = {
+      x: width / 2,
+      y: height - 100,
+      vx: 0,
+      vy: 0,
+      throwing: false,
+      discX: 0,
+      discY: 0,
+      discVX: 0,
+      discVY: 0,
+    };
+
+    function drawPlumber() {
+      ctx.fillStyle = "#ff0000"; // red shirt
+      ctx.fillRect(plumber.x - 10, plumber.y - 30, 20, 30); // body
+      ctx.fillStyle = "#0000ff"; // blue pants
+      ctx.fillRect(plumber.x - 10, plumber.y, 20, 20); // legs
+      ctx.fillStyle = "#ffcc99"; // face
+      ctx.fillRect(plumber.x - 7, plumber.y - 45, 14, 15); // head
+    }
+
+    function drawDisc() {
+      if (!plumber.throwing) return;
+      ctx.beginPath();
+      ctx.arc(plumber.discX, plumber.discY, 8, 0, 2 * Math.PI);
+      ctx.fillStyle = "#ffffff";
+      ctx.fill();
+    }
+
+    function update() {
+      ctx.clearRect(0, 0, width, height);
+      drawPlumber();
+      if (plumber.throwing) {
+        plumber.discX += plumber.discVX;
+        plumber.discY += plumber.discVY;
+        plumber.discVY += 0.2; // gravity
+        drawDisc();
+      }
+      requestAnimationFrame(update);
+    }
+
+    canvas.addEventListener("click", (e) => {
+      if (!plumber.throwing) {
+        plumber.throwing = true;
+        plumber.discX = plumber.x;
+        plumber.discY = plumber.y - 30;
+        plumber.discVX = (e.clientX - plumber.x) / 20;
+        plumber.discVY = (e.clientY - plumber.y) / 20;
+      } else {
+        plumber.throwing = false;
+      }
+    });
+
+    update();
+  </script>
+</body>
+</html>
