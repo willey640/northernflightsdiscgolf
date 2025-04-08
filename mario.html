@@ -8,7 +8,7 @@
     body {
       margin: 0;
       overflow: hidden;
-      background: #ff4500;
+      background: #7ec850;
       font-family: sans-serif;
     }
     canvas {
@@ -39,12 +39,16 @@
   <audio id="ghostMoan">
     <source src="https://freesound.org/data/previews/446/446207_9034500-lq.mp3" type="audio/mpeg">
   </audio>
+  <audio id="gooseHonk">
+    <source src="https://freesound.org/data/previews/220/220173_4102624-lq.mp3" type="audio/mpeg">
+  </audio>
   <script>
     const canvas = document.getElementById("gameCanvas");
     const ctx = canvas.getContext("2d");
     const scoreDisplay = document.getElementById("scoreDisplay");
     const missSound = document.getElementById("missSound");
     const ghostMoan = document.getElementById("ghostMoan");
+    const gooseHonk = document.getElementById("gooseHonk");
 
     let width = window.innerWidth;
     let height = window.innerHeight;
@@ -65,165 +69,107 @@
       discVY: 0,
     };
 
-    let wario = {
-      x: 100,
-      y: height - 100,
-      discX: 100,
-      discY: height - 130,
-      discVX: 3,
-      discVY: -3
+    let goose = {
+      x: Math.random() * (width - 200) + 100,
+      y: height - 150,
+      radius: 20,
+      direction: 1
     };
 
+    let frogComments = [
+      "Nice arc, if you're aiming for a tree.",
+      "Bold choice of velocity. Let's see how that works out.",
+      "You call *that* a throw? Ribbit.",
+      "Did you mean to bounce it off the goose?",
+      "Frog-tastic effort... not."
+    ];
+
     const basket = {
-      x: width - 100,
+      x: Math.random() * (width - 200) + 100,
       y: height - 120,
       radius: 20,
     };
 
     const ghostPipe = {
-      x: width / 2,
+      x: Math.random() * (width - 200) + 100,
       y: height - 60,
       radius: 25,
     };
 
+    const treePositions = Array.from({ length: 5 }, () => ({
+      x: Math.random() * (width - 60) + 30,
+      trunkHeight: 40
+    }));
+
     let hatUnlocked = false;
+    let frogTimeout = null;
 
-    function drawPlumber() {
-      ctx.fillStyle = "#ff0000";
-      ctx.fillRect(plumber.x - 10, plumber.y - 30, 20, 30);
-      ctx.fillStyle = "#0000ff";
-      ctx.fillRect(plumber.x - 10, plumber.y, 20, 20);
-      ctx.fillStyle = "#ffcc99";
-      ctx.fillRect(plumber.x - 7, plumber.y - 45, 14, 15);
-      if (hatUnlocked) {
-        ctx.fillStyle = "#ffff00";
-        ctx.fillRect(plumber.x - 8, plumber.y - 55, 16, 10);
+    function drawTrees() {
+      for (const tree of treePositions) {
+        ctx.fillStyle = "#8B4513";
+        ctx.fillRect(tree.x, height - 60, 10, tree.trunkHeight);
+        ctx.fillStyle = "#228B22";
+        ctx.beginPath();
+        ctx.moveTo(tree.x - 20, height - 60);
+        ctx.lineTo(tree.x + 30, height - 60);
+        ctx.lineTo(tree.x + 5, height - 100);
+        ctx.closePath();
+        ctx.fill();
       }
     }
 
-    function drawWario() {
-      ctx.fillStyle = "#ffff00";
-      ctx.fillRect(wario.x - 10, wario.y - 30, 20, 30);
-      ctx.fillStyle = "#800080";
-      ctx.fillRect(wario.x - 10, wario.y, 20, 20);
-      ctx.fillStyle = "#ffcc99";
-      ctx.fillRect(wario.x - 7, wario.y - 45, 14, 15);
+    function drawGoose() {
+      ctx.fillStyle = "white";
+      ctx.beginPath();
+      ctx.arc(goose.x, goose.y, goose.radius, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.fillStyle = "orange";
+      ctx.fillRect(goose.x - 5, goose.y + 15, 10, 5);
       ctx.fillStyle = "black";
-      ctx.fillText("W", wario.x - 4, wario.y - 35);
+      ctx.fillText("HONK", goose.x - 15, goose.y - 25);
     }
 
-    function drawWarioDisc() {
-      ctx.beginPath();
-      ctx.arc(wario.discX, wario.discY, 8, 0, 2 * Math.PI);
-      ctx.fillStyle = "#ff00ff";
-      ctx.fill();
+    function drawFrogComment() {
+      if (frogTimeout) return;
+      const comment = frogComments[Math.floor(Math.random() * frogComments.length)];
+      ctx.fillStyle = "#556b2f";
+      ctx.font = "bold 16px sans-serif";
+      ctx.fillText("🐸 " + comment, 20, height - 40);
+      frogTimeout = setTimeout(() => { frogTimeout = null; }, 2000);
     }
 
-    function drawDisc() {
-      if (!plumber.throwing) return;
-      ctx.beginPath();
-      ctx.arc(plumber.discX, plumber.discY, 8, 0, 2 * Math.PI);
-      ctx.fillStyle = "#ffffff";
-      ctx.fill();
-    }
-
-    function drawBasket() {
-      ctx.beginPath();
-      ctx.arc(basket.x, basket.y, basket.radius, 0, 2 * Math.PI);
-      ctx.fillStyle = "#888888";
-      ctx.fill();
-      ctx.fillStyle = "black";
-      ctx.font = "12px sans-serif";
-      ctx.fillText("Goal", basket.x - 15, basket.y - basket.radius - 10);
-    }
-
-    function drawGhostPipe() {
-      ctx.beginPath();
-      ctx.arc(ghostPipe.x, ghostPipe.y, ghostPipe.radius, 0, 2 * Math.PI);
-      ctx.fillStyle = "#999999";
-      ctx.fill();
-      ctx.fillStyle = "black";
-      ctx.fillText("👻", ghostPipe.x - 7, ghostPipe.y + 5);
-    }
-
-    function drawLava() {
-      ctx.fillStyle = "#ff6347";
-      ctx.fillRect(0, height - 40, width, 40);
-    }
-
-    function checkCollision() {
-      const dx = plumber.discX - basket.x;
-      const dy = plumber.discY - basket.y;
-      const distance = Math.sqrt(dx * dx + dy * dy);
-      if (distance < basket.radius + 8) {
-        score++;
-        scoreDisplay.textContent = `Score: ${score}`;
-        plumber.throwing = false;
-        if (score >= 3 && !hatUnlocked) {
-          hatUnlocked = true;
-          alert("✨ You unlocked the Golden Hat! Wow, you're like royalty but for frisbee.");
-        } else {
-          alert("🏆 You scored! Plumber Disc Golf Legend!");
-        }
-      } else if (plumber.discY > height - 40) {
-        plumber.throwing = false;
-        missSound.play();
-        alert("🔥 Your disc melted in lava. Smooth.");
-      }
-
-      const gdx = plumber.discX - ghostPipe.x;
-      const gdy = plumber.discY - ghostPipe.y;
-      const gdist = Math.sqrt(gdx * gdx + gdy * gdy);
-      if (gdist < ghostPipe.radius + 8) {
-        plumber.throwing = false;
-        ghostMoan.play();
-        alert("👻 Your disc vanished into the haunted pipe! Spooky.");
-      }
-    }
-
-    function update() {
-      ctx.clearRect(0, 0, width, height);
-      drawLava();
-      drawBasket();
-      drawGhostPipe();
-      drawPlumber();
-      drawWario();
-
-      wario.discX += wario.discVX;
-      wario.discY += wario.discVY;
-      wario.discVY += 0.1;
-      drawWarioDisc();
-      if (wario.discY > height - 40 || wario.discX > width || wario.discX < 0) {
-        wario.discX = wario.x;
-        wario.discY = wario.y - 30;
-        wario.discVX = (Math.random() - 0.5) * 6;
-        wario.discVY = -3;
+    function updateGoose() {
+      goose.x += 1.5 * goose.direction;
+      if (goose.x > width - 100 || goose.x < 100) {
+        goose.direction *= -1;
       }
 
       if (plumber.throwing) {
-        plumber.discX += plumber.discVX;
-        plumber.discY += plumber.discVY;
-        plumber.discVY += 0.2;
-        drawDisc();
-        checkCollision();
+        const dx = plumber.discX - goose.x;
+        const dy = plumber.discY - goose.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < goose.radius + 10) {
+          plumber.throwing = false;
+          gooseHonk.play();
+          alert("🪿 The goose stole your disc. Get honked.");
+        }
       }
-
-      requestAnimationFrame(update);
     }
 
-    canvas.addEventListener("click", (e) => {
-      if (!plumber.throwing) {
-        plumber.throwing = true;
-        plumber.discX = plumber.x;
-        plumber.discY = plumber.y - 30;
-        plumber.discVX = (e.clientX - plumber.x) / 20;
-        plumber.discVY = (e.clientY - plumber.y) / 20;
-      } else {
-        plumber.throwing = false;
-      }
-    });
+    function gameLoop() {
+      ctx.clearRect(0, 0, width, height);
+      drawTrees();
+      drawGoose();
+      updateGoose();
 
-    update();
+      if (plumber.throwing) {
+        drawFrogComment();
+      }
+
+      requestAnimationFrame(gameLoop);
+    }
+
+    gameLoop();
   </script>
 </body>
 </html>
