@@ -8,7 +8,7 @@
     body {
       margin: 0;
       overflow: hidden;
-      background: #7ec850; /* N64 grass green */
+      background: #7ec850;
     }
     canvas {
       display: block;
@@ -18,6 +18,10 @@
 </head>
 <body>
   <canvas id="gameCanvas"></canvas>
+  <audio id="midiMusic" autoplay loop>
+    <source src="https://archive.org/download/N64-MIDI/mario64.mid" type="audio/midi">
+    Your browser does not support MIDI. (Because it's 2025 and this is insane.)
+  </audio>
   <script>
     const canvas = document.getElementById("gameCanvas");
     const ctx = canvas.getContext("2d");
@@ -40,12 +44,12 @@
     };
 
     function drawPlumber() {
-      ctx.fillStyle = "#ff0000"; // red shirt
-      ctx.fillRect(plumber.x - 10, plumber.y - 30, 20, 30); // body
-      ctx.fillStyle = "#0000ff"; // blue pants
-      ctx.fillRect(plumber.x - 10, plumber.y, 20, 20); // legs
-      ctx.fillStyle = "#ffcc99"; // face
-      ctx.fillRect(plumber.x - 7, plumber.y - 45, 14, 15); // head
+      ctx.fillStyle = "#ff0000";
+      ctx.fillRect(plumber.x - 10, plumber.y - 30, 20, 30);
+      ctx.fillStyle = "#0000ff";
+      ctx.fillRect(plumber.x - 10, plumber.y, 20, 20);
+      ctx.fillStyle = "#ffcc99";
+      ctx.fillRect(plumber.x - 7, plumber.y - 45, 14, 15);
     }
 
     function drawDisc() {
@@ -56,13 +60,30 @@
       ctx.fill();
     }
 
+    function drawFake3DTrees() {
+      for (let i = 0; i < 5; i++) {
+        let x = 100 + i * 150;
+        let trunkHeight = 40;
+        ctx.fillStyle = "#8B4513";
+        ctx.fillRect(x, height - 60, 10, trunkHeight);
+        ctx.fillStyle = "#228B22";
+        ctx.beginPath();
+        ctx.moveTo(x - 20, height - 60);
+        ctx.lineTo(x + 30, height - 60);
+        ctx.lineTo(x + 5, height - 100);
+        ctx.closePath();
+        ctx.fill();
+      }
+    }
+
     function update() {
       ctx.clearRect(0, 0, width, height);
+      drawFake3DTrees();
       drawPlumber();
       if (plumber.throwing) {
         plumber.discX += plumber.discVX;
         plumber.discY += plumber.discVY;
-        plumber.discVY += 0.2; // gravity
+        plumber.discVY += 0.2;
         drawDisc();
       }
       requestAnimationFrame(update);
