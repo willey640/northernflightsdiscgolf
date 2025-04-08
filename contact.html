@@ -1,50 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" type="text/css" href="style.css">
-
-    <title>Contact Us - Northern Flights DG inc.</title>
-
-    
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Us - Northern Flights Disc Golf Inc.</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
-<body class="contact">
+<body>
+
+  <header>
     <h1 class="banner">Contact Us</h1>
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="logo.html">Choose our Logo</a>
-        <a href="store.html">Disc Exchange</a>
-        <a href="about.html">About Us</a>
-        <a href="governance.html">Governance</a>
-        <a href="donation.html">Donate</a>
-        <a href="contact.html">Contact Us</a>
-    </nav>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="logo.html">Choose our Logo</a>
+    <a href="store.html">Disc Exchange</a>
+    <a href="about.html">About Us</a>
+    <a href="governance.html">Governance</a>
+    <a href="donation.html">Donate</a>
+    <a href="contact.html">Contact Us</a>
+  </nav>
+
+  <main class="content-container">
 
     <section class="contact-form">
-        <h2>We'd love to hear from you!</h2>
-        <p>If you have any questions, comments, or feedback, feel free to reach out to us using the form below. If you like to vote for our official logo send via contact form.</p>
-        <p>We are also looking for volunteers to help with our mission. If you are interested in volunteering, please let us know in the message section.</p>
-        <p>We are also looking for board members. If you are interested in being a board member, please let us know in the message section.</p>
+      <h2>We'd love to hear from you!</h2>
+      <p>Have questions, suggestions, or want to get involved? Reach out below. </p>
+      <p><strong>Want to vote for a logo?</strong> Submit your choice here!</p>
+      <p><strong>Interested in volunteering or joining the board?</strong> Let us know in your message!</p>
 
+      <form action="https://formspree.io/f/xwplkven" method="POST">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" placeholder="Your name" required />
 
-        <form action="https://formspree.io/f/xwplkven" method="POST">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" placeholder="Your name" required>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="you@your_email.com" required />
 
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" placeholder="you@your_email.com" required>
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="6" placeholder="Your message" required></textarea>
 
-            <label for="message">Message:</label>
-            <textarea id="message" name="message" rows="6" placeholder="Your message" required></textarea>
-
-            <button type="submit" class="button">Submit</button>
-        </form>
+        <button type="submit" class="button">Submit</button>
+      </form>
     </section>
 
-    <footer>
-        <p>&copy; 2025 All rights reserved. Northern Flights Disc Golf Inc.</p>
-    </footer>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 All rights reserved. Northern Flights Disc Golf Inc.</p>
+  </footer>
+
 </body>
 </html>

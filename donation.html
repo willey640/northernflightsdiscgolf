@@ -1,83 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Donate - Northern Flights Disc Golf Inc.</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Donate - Northern Flights Disc Golf Inc.</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <header>
-        <h1>Donate to Northern Flights Disc Golf Inc.</h1>
-        <h2>Help Us Build Disc Golf Courses and Empower Communities</h2>
-    </header>
 
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="logo.html">Choose our Logo</a>
-        <a href="store.html">Disc Exchange</a>
-        <a href="about.html">About Us</a>
-        <a href="governance.html">Governance</a>
-        <a href="donation.html">Donate</a>
-        <a href="contact.html">Contact Us</a>
-    </nav>
+  <header>
+    <h1>Donate to Northern Flights Disc Golf Inc.</h1>
+    <h2>Help Us Build Disc Golf Courses and Empower Communities</h2>
+  </header>
 
-    <div class="content-container">
-        <h2 class="banner">Your Contribution Makes a Difference</h2>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="logo.html">Choose our Logo</a>
+    <a href="store.html">Disc Exchange</a>
+    <a href="about.html">About Us</a>
+    <a href="governance.html">Governance</a>
+    <a href="donation.html">Donate</a>
+    <a href="contact.html">Contact Us</a>
+  </nav>
 
-        <section>
-            <p>At <strong>Northern Flights Disc Golf Inc.</strong>, we are committed to promoting outdoor activities, healthy living, and community engagement by building disc golf courses across Northern Canada. With your support, we can expand our reach and empower communities through disc golf.</p>
-            <p>Your generous donation helps us to:</p>
-            <ul>
-                <li>Build and maintain accessible disc golf courses in small towns and Indigenous communities</li>
-                <li>Host tournaments and clinics to promote healthy living</li>
-                <li>Sponsor local athletes and emerging talent</li>
-                <li>Enhance outdoor recreational opportunities for all Canadians</li>
-            </ul>
-        </section>
+  <main class="content-container">
 
-        <section>
-            <h3>How You Can Donate</h3>
-            <p>We offer several ways for you to contribute to our mission:</p>
-            <ul>
-                <li><strong>One-Time Donation:</strong> Make a one-time contribution to support our ongoing efforts.</li>
-                <li><strong>Monthly Donation:</strong> Set up a recurring donation to provide continuous support for our programs and growth.</li>
-                <li><strong>Corporate Sponsorship:</strong> Partner with us to sponsor events, courses, or athletes. Reach out to us for more details.</li>
-            </ul>
-        </section>
+    <h2 class="banner">Your Contribution Makes a Difference</h2>
 
-        <section class="contact-form">
-            <h3>Make a Donation</h3>
-            <p>Your donation is greatly appreciated and will go directly towards building and supporting our initiatives. Please fill out the form below to make your donation:</p>
-            
-            <form action="donation_success.html" method="POST">
-                <label for="donation-amount">Donation Amount ($):</label>
-                <input type="number" id="donation-amount" name="donation-amount" placeholder="Enter amount" required>
+    <section>
+      <p>At <strong>Northern Flights Disc Golf Inc.</strong>, we’re committed to promoting outdoor activities, healthy living, and community engagement across Northern Canada. Your support empowers us to:</p>
+      <ul>
+        <li>Build and maintain accessible disc golf courses in small towns and Indigenous communities</li>
+        <li>Host tournaments and clinics to promote healthy living</li>
+        <li>Sponsor local athletes and emerging talent</li>
+        <li>Enhance outdoor recreational opportunities for all Canadians</li>
+      </ul>
+    </section>
 
-                <label for="donor-name">Your Name:</label>
-                <input type="text" id="donor-name" name="donor-name" placeholder="Your full name" required>
+    <section>
+      <h3>How You Can Donate</h3>
+      <ul>
+        <li><strong>One-Time Donation:</strong> Support our efforts with a single contribution</li>
+        <li><strong>Monthly Donation:</strong> Offer steady support to fuel long-term growth</li>
+        <li><strong>Corporate Sponsorship:</strong> Partner with us to make a lasting impact</li>
+      </ul>
+    </section>
 
-                <label for="donor-email">Your Email:</label>
-                <input type="email" id="donor-email" name="donor-email" placeholder="Your email" required>
+    <section class="contact-form">
+      <h3>Make a Donation</h3>
+      <p>Your donation is appreciated and will directly support our projects. Fill out the form below to contribute:</p>
 
-                <label for="donation-type">Donation Type:</label>
-                <select id="donation-type" name="donation-type" required>
-                    <option value="one-time">One-Time Donation</option>
-                    <option value="monthly">Monthly Donation</option>
-                </select>
+      <form action="donation_success.html" method="POST">
+        <label for="donation-amount">Donation Amount ($):</label>
+        <input type="number" id="donation-amount" name="donation-amount" placeholder="Enter amount" required />
 
-                <button type="submit" class="button">Donate Now</button>
-            </form>
-        </section>
+        <label for="donor-name">Your Name:</label>
+        <input type="text" id="donor-name" name="donor-name" placeholder="Your full name" required />
 
-        <section>
-            <h3>Other Ways to Support</h3>
-            <p>If you prefer, you can send a donation by mail or contribute through our bank details. Please contact us for more information.</p>
-        </section>
-    </div>
+        <label for="donor-email">Your Email:</label>
+        <input type="email" id="donor-email" name="donor-email" placeholder="Your email" required />
 
-    <footer>
-        <p>&copy; 2025 All rights reserved. Northern Flights Disc Golf Inc.</p>
-    </footer>
+        <label for="donation-type">Donation Type:</label>
+        <select id="donation-type" name="donation-type" required>
+          <option value="one-time">One-Time Donation</option>
+          <option value="monthly">Monthly Donation</option>
+        </select>
+
+        <button type="submit" class="button">Donate Now</button>
+      </form>
+    </section>
+
+    <section>
+      <h3>Other Ways to Support</h3>
+      <p>Prefer to donate another way? We accept mail-in donations and direct deposits. <a href="contact.html">Contact us</a> for details.</p>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2025 All rights reserved. Northern Flights Disc Golf Inc.</p>
+  </footer>
+
 </body>
 </html>
