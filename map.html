@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Course Finder Map - Northern Flights Disc Golf</title>
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #155e2e;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    #map {
+      height: 80vh;
+      width: 100%;
+    }
+
+    .info-box {
+      text-align: center;
+      padding: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Course Finder Map</h1>
+    <h3>View current and upcoming disc golf courses across Northern Canada</h3>
+  </header>
+
+  <div class="info-box">
+    <p>Zoom, pan, and click markers to see course info. More locations coming soon!</p>
+  </div>
+
+  <div id="map"></div>
+
+  <script>
+    // Initialize map centered around Northern Canada
+    var map = L.map('map').setView([54.7777, -101.8650], 6);
+
+    // Add OpenStreetMap tiles
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    // Add markers for courses
+    const courses = [
+      {
+        name: "Denare Beach Disc Golf",
+        coords: [54.7664, -101.8826],
+        status: "Planned",
+        notes: "Temporary 9-hole course in development. Community clinic scheduled."
+      },
+      {
+        name: "Flin Flon Practice Course",
+        coords: [54.7682, -101.8613],
+        status: "In Progress",
+        notes: "Private land, testing layout."
+      }
+    ];
+
+    courses.forEach(course => {
+      L.marker(course.coords).addTo(map)
+        .bindPopup(`<strong>${course.name}</strong><br>Status: ${course.status}<br>${course.notes}`);
+    });
+  </script>
+
+</body>
+</html>
