@@ -13,6 +13,7 @@
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
+      background-color: #f4f4f4;
     }
 
     header {
@@ -20,6 +21,26 @@
       color: white;
       padding: 1rem;
       text-align: center;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      background-color: #004d00;
+      padding: 10px;
+    }
+
+    nav a {
+      color: white;
+      padding: 14px 20px;
+      text-decoration: none;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      background-color: #003300;
+      text-decoration: underline;
     }
 
     #map {
@@ -31,19 +52,41 @@
       text-align: center;
       padding: 1rem;
     }
+
+    footer {
+      background-color: #155e2e;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
   </style>
 </head>
 <body>
 
+  <!-- Header Section -->
   <header>
     <h1>Course Finder Map</h1>
     <h3>View current and upcoming disc golf courses across Northern Canada</h3>
   </header>
 
+  <!-- Navigation Bar -->
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="store.html">Store</a>
+    <a href="aboutme.html">About Me</a>
+    <a href="contact.html">Contact Us</a>
+    <a href="choose-logo.html">Choose Our Logo</a>
+  </nav>
+
+  <!-- Information Box -->
   <div class="info-box">
     <p>Zoom, pan, and click markers to see course info. More locations coming soon!</p>
   </div>
 
+  <!-- Map -->
   <div id="map"></div>
 
   <script>
@@ -59,7 +102,7 @@
     const courses = [
       {
         name: "Denare Beach Disc Golf",
-        coords: [54.7664, -101.8826],
+        coords: [54.6646193, -102.0685747],
         status: "Planned",
         notes: "Temporary 9-hole course in development. Community clinic scheduled."
       },
@@ -69,6 +112,13 @@
         status: "In Progress",
         notes: "Private land, testing layout."
       }
+      {
+        name: "McClean Lake Disc Golf",
+        coords: [58.33354639213604, -103.8451308099921],
+        status: "In Progress",
+        notes: "Seasonal, Registered Guest."
+      }
+
     ];
 
     courses.forEach(course => {
@@ -76,6 +126,11 @@
         .bindPopup(`<strong>${course.name}</strong><br>Status: ${course.status}<br>${course.notes}`);
     });
   </script>
+
+  <!-- Footer Section -->
+  <footer>
+    <p>&copy; 2025 All rights reserved. Northern Flights Disc Golf Inc.</p>
+  </footer>
 
 </body>
 </html>
