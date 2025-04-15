@@ -116,16 +116,22 @@
       {
         name: "McClean Lake Disc Golf",
         coords: [58.33354639213604, -103.8451308099921],
-        status: "In Progress",
-        notes: "Seasonal, Registered Guest."
+        status: "Seasonal, Registered Guest.",
+        notes: "9-hole course for registered guests only.",
+        link: "https://udisc.com/courses/mc-clean-lake-disc-golf-Dt2R"
       }
 
     ];
 
     courses.forEach(course => {
-      L.marker(course.coords).addTo(map)
-        .bindPopup(`<strong>${course.name}</strong><br>Status: ${course.status}<br>${course.notes}`);
-    });
+    L.marker(course.coords).addTo(map)
+      .bindPopup(`
+        <strong>${course.name}</strong><br>
+        Status: ${course.status}<br>
+        ${course.notes}<br>
+        <a href="${course.link}" target="_blank">Learn more</a>  <!-- Link to external page -->
+      `);
+  });
   </script>
 
   <!-- Footer Section -->
