@@ -170,4 +170,41 @@ body {
       width: 100%;
     }
   }
-  
+  /* Event Info Section Styling */
+section h2 {
+  color: #155e2e;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+section p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+/* Table Styling for Standings */
+.standings-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.standings-table th, .standings-table td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: center;
+}
+
+.standings-table th {
+  background-color: #155e2e;
+  color: white;
+}
+
+.standings-table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.standings-table tr:hover {
+  background-color: #dcdcdc;
+}
