@@ -7,6 +7,27 @@
   <link rel="canonical" href="https://northernflightsdiscgolf.ca/about.html" />
   <link rel="icon" href="favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Style for the image container */
+    .image-container {
+      width: 300px;  /* Set your preferred width */
+      height: 300px; /* Set your preferred height */
+      overflow: hidden; /* Ensures no image overflow */
+      position: relative;
+    }
+
+    /* Initial image style */
+    .default-image {
+      width: 100%;  /* Makes the image fill the container */
+      height: 100%; /* Makes the image fill the container */
+      transition: opacity 0.3s ease-in-out; /* Smooth transition when switching images */
+    }
+
+    /* Hover state with the second image */
+    .image-container:hover .default-image {
+      content: url('static/Phtotos/chrisr.jpg'); /* Image changes when hovered */
+    }
+  </style>
 </head>
 <body>
 
@@ -36,6 +57,10 @@
 
       <div class="board-member">
         <h3>Christopher Willey</h3>
+        <div class="image-container">
+          <img src="static/Phtotos/chris.png" alt="Image" class="default-image">
+        </div>
+      
         <p>Founder and visionary behind Northern Flights Disc Golf Inc. With a deep love for the outdoors and a passion for community building, Christopher is committed to making disc golf accessible to all across Northern Canada.</p>
       </div>
 
