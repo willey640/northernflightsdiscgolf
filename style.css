@@ -213,12 +213,12 @@ section p {
 .board-container {
   display: flex;
   justify-content: center;  /* center the two items horizontally */
-  gap: 2rem;                /* space between them */
+  /* gap: 2rem;                space between them */
 }
 
 /* optional: constrain their width and center text inside */
 .board-member {
-  max-width: 200px;
+  max-width: 300px;
   text-align: center;
 }
 .board-member img {
