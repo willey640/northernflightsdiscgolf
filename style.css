@@ -208,3 +208,17 @@ section p {
 .standings-table tr:hover {
   background-color: #dcdcdc;
 }
+
+.board-member {
+  display: inline-block;
+  vertical-align: top;
+  margin: 0 1.5rem;   /* horizontal spacing */
+  text-align: center; /* center the image + text inside */
+  max-width: 200px;    /* optional, to keep them a uniform size */
+}
+
+.board-member img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
