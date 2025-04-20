@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Photo Gallery | Northern Flights Disc Golf</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .gallery-grid img {
+      width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Photo Gallery</h1>
+    <h3>Moments from across the North</h3>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="players.html">Player Hub</a>
+    <a href="events.html">Events</a>
+    <a href="standings.html">Standings</a>
+    <a href="resources.html">Resources</a>
+    <a href="gallery.html">Gallery</a>
+  </nav>
+
+  <main class="content-container">
+    <section>
+      <h2>Captured Moments</h2>
+      <p>Take a look at some amazing shots from our tournaments, clinics, and community events.</p>
+      <a href="submit-photo.html" class="button">Submit Your Own Photo</a>
+
+      <div class="gallery-grid">
+        <img src="https://images.unsplash.com/photo-1594169481103-e9e1dcb61bc6?auto=format&fit=crop&w=1200&q=80" alt="Disc Golf Throw">
+        <img src="https://images.unsplash.com/photo-1596495577886-d920f24c9b0e?auto=format&fit=crop&w=1200&q=80" alt="Group of Disc Golfers">
+        <img src="https://images.unsplash.com/photo-1629567902854-80e8a4df60d7?auto=format&fit=crop&w=1200&q=80" alt="Disc Flying Through Trees">
+        <img src="https://images.unsplash.com/photo-1587049352886-0eac0f7b6b1d?auto=format&fit=crop&w=1200&q=80" alt="Player Aiming at Basket">
+        <img src="https://images.unsplash.com/photo-1625052921966-d8e87235b8c0?auto=format&fit=crop&w=1200&q=80" alt="Disc Golf Community Event">
+        <img src="https://images.unsplash.com/photo-1587049352873-ece1597f2be5?auto=format&fit=crop&w=1200&q=80" alt="Disc Golf Forest Course">
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Northern Flights Disc Golf Inc.</p>
+  </footer>
+
+</body>
+</html>

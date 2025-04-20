@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Submit a Photo | Northern Flights Disc Golf</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header>
+    <h1>Submit Your Photo</h1>
+    <h3>Share your favorite disc golf moments with us!</h3>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="players.html">Player Hub</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="events.html">Events</a>
+    <a href="resources.html">Resources</a>
+  </nav>
+
+  <main class="content-container">
+    <section>
+      <h2>We’d love to feature your photo</h2>
+      <p>Fill out the form below and share your disc golf story or snapshot. Selected photos may appear in our gallery or social media!</p>
+
+      <form action="#" method="post" enctype="multipart/form-data">
+        <label for="name">Your Name</label>
+        <input type="text" id="name" name="name" required />
+
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" required />
+
+        <label for="caption">Photo Caption or Message</label>
+        <textarea id="caption" name="caption" rows="4" placeholder="Tell us more about your photo..."></textarea>
+
+        <label for="photo">Upload Photo</label>
+        <input type="file" id="photo" name="photo" accept="image/*" required />
+
+        <button class="button" type="submit">Submit Photo</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Northern Flights Disc Golf Inc.</p>
+  </footer>
+
+</body>
+</html>
