@@ -5,6 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Disc Golf League - Northern Flights Disc Golf</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+      .logo-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+        align-items: center;
+      }
+      
+      .logo {
+        max-height: 80px;     /* Uniform height */
+        max-width: 150px;     /* Optional: limit width */
+        object-fit: contain;  /* Maintain aspect ratio inside box */
+        padding: 10px;
+      }
+      </style>
 </head>
 <body>
 
@@ -27,16 +43,17 @@
 
     <!-- Event Info Section -->
     <div class="content-container">
-        <section>
-            <h2>Upcoming League Event</h2>
-            <p><strong>Date:</strong> Thursday May 1, 2025</p>
-            <p><strong>Location:</strong> Creekside Disc Golf Course</p>
-            <p><strong>Event Type:</strong> Spring League</p>
-            <p><strong>Entry Fee:</strong> FREE</p>
-            <p><strong>Description:</strong> Spring League with monthly prizes. Ready to swap screen time for fresh air? Join us for a laid‑back 
-                day on the course. Whether you’ve never thrown a disc or you just want to stretch your legs 
-                outdoors, our friendly community welcomes everyone. Discover why disc golf is a fun way to get moving, 
-                socialize, and soak up nature.  <br>Date will be May 1, 2025 See you on Thursdays.</p>
+        <section>         
+          <img src="static/Phtotos/winter_golf.jpg" style="height: 85vh; width: auto; display: block; margin: 0 auto;" alt="">
+          <h2>Upcoming League Event</h2>
+          <p><strong>Date:</strong> Thursday May 1, 2025</p>
+          <p><strong>Location:</strong> Creekside Disc Golf Course</p>
+          <p><strong>Event Type:</strong> Spring League</p>
+          <p><strong>Entry Fee:</strong> FREE</p>
+          <p><strong>Description:</strong> Spring League with monthly prizes. Ready to swap screen time for fresh air? Join us for a laid‑back 
+              day on the course. Whether you’ve never thrown a disc or you just want to stretch your legs 
+              outdoors, our friendly community welcomes everyone. Discover why disc golf is a fun way to get moving, 
+              socialize, and soak up nature.  <br>Date will be May 1, 2025 See you on Thursdays.</p>
         </section>
         <section>
             <h2>A Spring League is coming!</h2>
@@ -100,18 +117,14 @@
                 </div>
               </div>
            -->
-              <!-- Bronze Level -->
-              <div class="sponsor-level">
-                <h3>Gold Sponsors<br><small>Up to $999</small></h3>
-                <div class="sponsor-logos">
-                  <img src="static/Phtotos/dominos.png" alt="Bronze Sponsor 1">
-                  <img src="static/Phtotos/rackrack.png" alt="Bronze Sponsor 1">
-                  
-                  <img src="static/Phtotos/chicken_chef.png" alt="Bronze Sponsor 1">
-                  <img src="static/Phtotos/Callinex-Mines.png" style="padding-top: 20px;" alt="Bronze Sponsor 2">
 
-                </div>
+              <div class="logo-grid">
+                <img src="static/Phtotos/dominos.png" alt="Logo 1" class="logo">
+                <img src="static/Phtotos/rackrack.png" alt="Logo 2" class="logo">
+                <img src="static/Phtotos/Callinex-Mines.png" alt="Logo 3" class="logo">
+                <!-- Add more logos as needed -->
               </div>
+              
           
               <!-- Special Thanks -->
               <div class="special-thanks">
@@ -123,7 +136,7 @@
         
 
         <!-- Standings Section -->
-        <section>
+        <!-- <section>
             <h2>League Standings</h2>
             <table class="standings-table">
                 <thead>
@@ -158,11 +171,11 @@
                         <td>Jane Smith</td>
                         <td>85</td>
                         <td>5</td>
-                    </tr>
+                    </tr> -->
                     <!-- Add more rows as necessary -->
-                </tbody>
+                <!-- </tbody>
             </table>
-        </section>
+        </section> -->
         
         <section>
           <h2>Player FAQs</h2>
