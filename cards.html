@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Players | Northern Flights Disc Golf Inc.</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .flip-card {
+      background-color: transparent;
+      width: 300px;
+      height: 450px;
+      perspective: 1000px;
+      margin: 100px auto 40px; /* Added more top space */
+    }
+
+    .flip-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+    }
+
+    .flip-card:hover .flip-card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .flip-card-front,
+    .flip-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .flip-card-front img,
+    .flip-card-back img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain; /* FIXED: shows whole image */
+      border-radius: 10px;
+    }
+
+    .flip-card-back {
+      transform: rotateY(180deg);
+    }
+
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      background-color: #f0f0f0;
+    }
+
+    header, footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #222;
+      color: white;
+    }
+
+    nav {
+      background-color: #444;
+      padding: 10px;
+      text-align: center;
+    }
+
+    nav a {
+      color: white;
+      margin: 0 10px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    main.content-container {
+      padding: 20px;
+    }
+
+    section {
+      margin-top: 60px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Northern Flights Disc Golf Inc.</h1>
+    <h3>Building Disc Golf Across Northern Canada</h3>
+  </header>
+
+  <nav>
+    <a href="players.html">Player Hub</a>
+    <a href="store.html">Disc Exchange</a>
+    <a href="league.html">Spring League</a>
+    <a href="events.html">Events</a>
+    <a href="map.html">Course Finder</a>
+    <a href="resources.html">Resources</a>
+    <a href="index.html">Corporate Hub</a>
+  </nav>
+
+  <main class="content-container">
+
+    <!-- Flip Card -->
+    <section>
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="static/cards/20250501_1020_Bigfoot Trading Card_remix_01jt66wn6eenwref5zbpw7bkyq.png" alt="Huckfoot - Front">
+          </div>
+          <div class="flip-card-back">
+            <img src="static/cards/20250501_1027_Disc Golf Trading Card_remix_01jt678wn6ew3aaf3yma0a1zf6.png" alt="Huckfoot - Back">
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2025 All rights reserved. Northern Flights Disc Golf Inc.</p>
+  </footer>
+
+</body>
+</html>
