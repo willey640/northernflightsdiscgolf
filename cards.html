@@ -121,6 +121,33 @@
       </div>
     </section>
 
+
+    <!DOCTYPE html>
+<html>
+<head>
+  <title>BTC Value</title>
+</head>
+<body>
+  <h2>Live BTC Value for 0.00186 BTC:</h2>
+  <p id="btcValue">Loading...</p>
+
+  <script>
+    async function fetchBTCValue() {
+      const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=cad');
+      const data = await response.json();
+      const btcPrice = data.bitcoin.cad;
+      const amountBTC = 0.00186;
+      const valueCAD = btcPrice * amountBTC;
+
+      document.getElementById('btcValue').innerText = `~ $${valueCAD.toFixed(2)} CAD`;
+    }
+
+    fetchBTCValue();
+  </script>
+</body>
+</html>
+
+
   </main>
 
   <footer>
