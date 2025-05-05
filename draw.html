@@ -118,17 +118,17 @@
   <div style="clear: both;"></div>
 
   <div style="margin-top: 20px">
-    <input id="pinInput" type="password" placeholder="Enter PIN to unlock draw">
+    <input id="pinInput" type="password" placeholder="Enter PIN to unlock print/copy">
   </div>
 
   <button id="drawBtn" onclick="draw()">DRAW</button>
-  <button onclick="copyResult()">Copy to Clipboard</button>
-  <button onclick="window.print()">Print</button>
+  <button id="copyBtn" onclick="copyResult()" disabled>Copy to Clipboard</button>
+  <button id="printBtn" onclick="window.print()" disabled>Print</button>
 
   <div id="result"></div>
 
   <script>
-    const names = ["Chris W","Matt W","Mike K", "Mike S", "Mike W"];
+    const names = ["Chris W", "Matt W", "Mike K", "Mike S", "Mike W"];
     const games = ["Tic", "Tac", "Tow", "Push", "Pull", "Dice", "Cards"];
     const tags = [1, 2, 3, 4, 5, 6, 69, 81];
 
@@ -201,24 +201,16 @@
       const pinInput = document.getElementById('pinInput').value;
       const isPinValid = pinInput === REQUIRED_PIN;
 
-      // Disable buttons for 1 minute after draw
+      // Lock draw button for 60s
       document.getElementById('drawBtn').disabled = true;
       setTimeout(() => document.getElementById('drawBtn').disabled = false, 60000);
 
-      // Enable/disable copy/print buttons only if PIN is correct
-      document.querySelectorAll('button').forEach(btn => {
-        if (btn.textContent.includes('Copy') || btn.textContent.includes('Print')) {
-          btn.disabled = !isPinValid;
-        }
-      });
+      // Toggle print/copy access
+      document.getElementById('copyBtn').disabled = !isPinValid;
+      document.getElementById('printBtn').disabled = !isPinValid;
 
       const now = Date.now();
       if (isPinValid && now - lastDrawTime < 60000) return showMessage("Please wait 1 minute between draws.");
-      lastDrawTime = now;
-      const pinInput = document.getElementById('pinInput').value;
-      const now = Date.now();
-      if (pinInput !== REQUIRED_PIN) return showMessage("Incorrect PIN.");
-      if (now - lastDrawTime < 60000) return showMessage("Please wait 1 minute between draws.");
       lastDrawTime = now;
 
       const useNames = document.getElementById('includeNames').checked;
@@ -236,9 +228,6 @@
         let groups = [];
 
         if (useTeams) {
-          groups = chunkEvenly(shuffled, 2);
-
-          if (shuffled.length % 2 !== 0) return showMessage('Team draw requires even number of players.');
           groups = chunkEvenly(shuffled, 2);
         } else if (useCards) {
           const total = shuffled.length;
