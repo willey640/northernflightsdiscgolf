@@ -133,7 +133,6 @@
     const tags = [1, 2, 3, 4, 5, 6, 69, 81];
 
     const REQUIRED_PIN = "411";
-    let lastDrawTime = 0;
 
     function addItem(inputId, array, listId) {
       const input = document.getElementById(inputId);
@@ -201,19 +200,13 @@
       const pinInput = document.getElementById('pinInput').value;
       const isPinValid = pinInput === REQUIRED_PIN;
 
-      // Lock draw button for 60s
       if (isPinValid) {
         document.getElementById('drawBtn').disabled = true;
         setTimeout(() => document.getElementById('drawBtn').disabled = false, 60000);
       }
 
-      // Toggle print/copy access
       document.getElementById('copyBtn').disabled = !isPinValid;
       document.getElementById('printBtn').disabled = !isPinValid;
-
-      const now = Date.now();
-      if (isPinValid && now - lastDrawTime < 60000) return showMessage("Please wait 1 minute between draws.");
-      lastDrawTime = now;
 
       const useNames = document.getElementById('includeNames').checked;
       const useTeams = document.getElementById('includeTeams').checked;
@@ -225,7 +218,6 @@
 
       if (useTeams || useCards) {
         if (names.length === 0) return showMessage('No players added.');
-
         const shuffled = [...names].sort(() => 0.5 - Math.random());
         let groups = [];
 
@@ -274,13 +266,11 @@
       }
 
       if (useGames) {
-        if (games.length === 0) return showMessage('No games added.');
         const game = games[Math.floor(Math.random() * games.length)];
         output.push(`\nGame: ${game}`);
       }
 
       if (useTags) {
-        if (tags.length === 0) return showMessage('No bag tags added.');
         const tag = tags[Math.floor(Math.random() * tags.length)];
         output.push(`\nBag Tag: ${tag}`);
       }
@@ -288,14 +278,15 @@
       if (output.length === 0) {
         showMessage('Please check at least one box to include in draw.');
       } else {
-        const outputText = output.join('');
-        document.getElementById('result').textContent = outputText;
+        document.getElementById('result').innerHTML = `
+          <img src='static/Phtotos/offical NFDG logo.png' class='logo' style='width: 100px; display: block; margin: 10px auto;'>
+          <div>${output.join('\n').replace(/\n/g, '<br>')}</div>
+        `;
         if (isPinValid) {
           setTimeout(() => window.print(), 10000);
         }
-        }
       }
-        // Removed duplicate result output line
+    }
 
     function copyResult() {
       const resultText = document.getElementById('result').textContent;
@@ -307,7 +298,6 @@
     }
 
     window.onload = function () {
-      // Ensure prefilled lists show up correctly on load
       updateList('tagsList', tags);
       updateList('gamesList', games);
       updateList('namesList', names);
