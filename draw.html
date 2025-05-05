@@ -132,7 +132,7 @@
     const games = ["Tic", "Tac", "Tow", "Push", "Pull", "Dice", "Cards"];
     const tags = [1, 2, 3, 4, 5, 6, 69, 81];
 
-    const REQUIRED_PIN = "1234";
+    const REQUIRED_PIN = "411";
     let lastDrawTime = 0;
 
     function addItem(inputId, array, listId) {
@@ -199,6 +199,23 @@
 
     function draw() {
       const pinInput = document.getElementById('pinInput').value;
+      const isPinValid = pinInput === REQUIRED_PIN;
+
+      // Disable buttons for 1 minute after draw
+      document.getElementById('drawBtn').disabled = true;
+      setTimeout(() => document.getElementById('drawBtn').disabled = false, 60000);
+
+      // Enable/disable copy/print buttons only if PIN is correct
+      document.querySelectorAll('button').forEach(btn => {
+        if (btn.textContent.includes('Copy') || btn.textContent.includes('Print')) {
+          btn.disabled = !isPinValid;
+        }
+      });
+
+      const now = Date.now();
+      if (isPinValid && now - lastDrawTime < 60000) return showMessage("Please wait 1 minute between draws.");
+      lastDrawTime = now;
+      const pinInput = document.getElementById('pinInput').value;
       const now = Date.now();
       if (pinInput !== REQUIRED_PIN) return showMessage("Incorrect PIN.");
       if (now - lastDrawTime < 60000) return showMessage("Please wait 1 minute between draws.");
@@ -219,6 +236,8 @@
         let groups = [];
 
         if (useTeams) {
+          groups = chunkEvenly(shuffled, 2);
+
           if (shuffled.length % 2 !== 0) return showMessage('Team draw requires even number of players.');
           groups = chunkEvenly(shuffled, 2);
         } else if (useCards) {
