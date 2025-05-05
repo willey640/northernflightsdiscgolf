@@ -42,6 +42,17 @@
       padding: 5px;
       background: #fff;
       margin: 2px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .remove-btn {
+      background: red;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      padding: 2px 5px;
+      cursor: pointer;
     }
 
     input[type="text"] {
@@ -70,6 +81,7 @@
       margin-top: 30px;
       font-size: 20px;
       color: #222;
+      white-space: pre-wrap;
     }
   </style>
 </head>
@@ -80,7 +92,7 @@
   <div class="section">
     <h3>Name</h3>
     <input id="nameInput" type="text" placeholder="Enter name">
-    <button onclick="addName()">ADD</button>
+    <button onclick="addItem('nameInput', names, 'namesList')">ADD</button>
     <ul id="namesList"></ul>
     <label><input type="checkbox" id="includeNames"> Include Names</label>
   </div>
@@ -88,7 +100,7 @@
   <div class="section">
     <h3>Games</h3>
     <input id="gameInput" type="text" placeholder="Enter game">
-    <button onclick="addGame()">ADD</button>
+    <button onclick="addItem('gameInput', games, 'gamesList')">ADD</button>
     <ul id="gamesList"></ul>
     <label><input type="checkbox" id="includeGames"> Include Games</label>
   </div>
@@ -96,7 +108,7 @@
   <div class="section">
     <h3>Bag Tags</h3>
     <input id="tagInput" type="text" placeholder="Enter bag tag">
-    <button onclick="addTag()">ADD</button>
+    <button onclick="addItem('tagInput', tags, 'tagsList')">ADD</button>
     <ul id="tagsList"></ul>
     <label><input type="checkbox" id="includeTags"> Include Bag Tags</label>
   </div>
@@ -112,41 +124,36 @@
     const games = [];
     const tags = [1, 2, 3, 4, 5, 6, 69, 81];
 
-    function addName() {
-      const input = document.getElementById('nameInput');
+    function addItem(inputId, array, listId) {
+      const input = document.getElementById(inputId);
       if (input.value.trim() !== '') {
-        names.push(input.value.trim());
-        updateList('namesList', names);
+        array.push(input.value.trim());
+        updateList(listId, array);
         input.value = '';
       }
     }
 
-    function addGame() {
-      const input = document.getElementById('gameInput');
-      if (input.value.trim() !== '') {
-        games.push(input.value.trim());
-        updateList('gamesList', games);
-        input.value = '';
-      }
-    }
-
-    function addTag() {
-      const input = document.getElementById('tagInput');
-      if (input.value.trim() !== '') {
-        tags.push(input.value.trim());
-        updateList('tagsList', tags);
-        input.value = '';
-      }
+    function removeItem(index, array, listId) {
+      array.splice(index, 1);
+      updateList(listId, array);
     }
 
     function updateList(id, arr) {
       const ul = document.getElementById(id);
       ul.innerHTML = '';
-      arr.forEach(item => {
+      arr.forEach((item, index) => {
         const li = document.createElement('li');
-        li.textContent = item;
+        li.innerHTML = `${item} <button class='remove-btn' onclick="removeItem(${index}, ${idToArray(id)}, '${id}')">X</button>`;
         ul.appendChild(li);
       });
+    }
+
+    function idToArray(id) {
+      switch(id) {
+        case 'namesList': return 'names';
+        case 'gamesList': return 'games';
+        case 'tagsList': return 'tags';
+      }
     }
 
     function draw() {
@@ -158,26 +165,38 @@
 
       if (useNames) {
         if (names.length === 0) return showMessage('No names added.');
-        const name = names[Math.floor(Math.random() * names.length)];
-        output.push(`Name: ${name}`);
+
+        const shuffled = [...names].sort(() => 0.5 - Math.random());
+        const groups = [];
+
+        for (let i = 0; i < shuffled.length; ) {
+          const remaining = shuffled.length - i;
+          let groupSize = Math.min(4, remaining);
+          if (remaining === 5) groupSize = 3; // split 3-2 instead of 4-1
+
+          groups.push(shuffled.slice(i, i + groupSize));
+          i += groupSize;
+        }
+
+        output.push('Cards:\n' + groups.map((g, i) => `Card ${i + 1}: ${g.join(', ')}`).join('\n'));
       }
 
       if (useGames) {
         if (games.length === 0) return showMessage('No games added.');
         const game = games[Math.floor(Math.random() * games.length)];
-        output.push(`Game: ${game}`);
+        output.push(`\nGame: ${game}`);
       }
 
       if (useTags) {
         if (tags.length === 0) return showMessage('No bag tags added.');
         const tag = tags[Math.floor(Math.random() * tags.length)];
-        output.push(`Bag Tag: ${tag}`);
+        output.push(`\nBag Tag: ${tag}`);
       }
 
       if (output.length === 0) {
         showMessage('Please check at least one box to include in draw.');
       } else {
-        document.getElementById('result').textContent = output.join(' | ');
+        document.getElementById('result').textContent = output.join('\n');
       }
     }
 
