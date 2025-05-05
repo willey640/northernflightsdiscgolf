@@ -309,6 +309,10 @@
     }
 
     window.onload = function () {
+      // Ensure prefilled lists show up correctly on load
+      updateList('tagsList', tags);
+      updateList('gamesList', games);
+      updateList('namesList', names);
       updateList('tagsList', tags);
       updateList('gamesList', games);
       updateList('namesList', names);
