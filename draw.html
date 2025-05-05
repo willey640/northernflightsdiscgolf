@@ -202,8 +202,10 @@
       const isPinValid = pinInput === REQUIRED_PIN;
 
       // Lock draw button for 60s
-      document.getElementById('drawBtn').disabled = true;
-      setTimeout(() => document.getElementById('drawBtn').disabled = false, 60000);
+      if (isPinValid) {
+        document.getElementById('drawBtn').disabled = true;
+        setTimeout(() => document.getElementById('drawBtn').disabled = false, 60000);
+      }
 
       // Toggle print/copy access
       document.getElementById('copyBtn').disabled = !isPinValid;
