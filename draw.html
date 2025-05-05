@@ -90,11 +90,13 @@
   <img src="static/Phtotos/offical NFDG logo.png" alt="Northern Flights Disc Golf Logo" class="logo">
 
   <div class="section">
-    <h3>Name</h3>
-    <input id="nameInput" type="text" placeholder="Enter name">
+    <h3>Players</h3>
+    <input id="nameInput" type="text" placeholder="Enter player name">
     <button onclick="addItem('nameInput', names, 'namesList')">ADD</button>
     <ul id="namesList"></ul>
-    <label><input type="checkbox" id="includeNames"> Include Names</label>
+    <label><input type="checkbox" id="includeNames" onchange="updateMode()"> Draw Lucky Winner</label>
+    <label><input type="checkbox" id="includeTeams" onchange="updateMode()"> Make Teams</label>
+    <label><input type="checkbox" id="includeCards" onchange="updateMode()"> Make Cards</label>
   </div>
 
   <div class="section">
@@ -116,6 +118,8 @@
   <div style="clear: both;"></div>
 
   <button onclick="draw()">DRAW</button>
+  <button onclick="copyResult()">Copy to Clipboard</button>
+  <button onclick="window.print()">Print</button>
 
   <div id="result"></div>
 
@@ -156,29 +160,60 @@
       }
     }
 
+    function updateMode() {
+      const includeNames = document.getElementById('includeNames');
+      const includeTeams = document.getElementById('includeTeams');
+      const includeCards = document.getElementById('includeCards');
+      const includeGames = document.getElementById('includeGames');
+      const includeTags = document.getElementById('includeTags');
+
+      if (includeTeams.checked || includeCards.checked) {
+        includeNames.disabled = true;
+        includeGames.disabled = true;
+        includeTags.disabled = true;
+      } else {
+        includeNames.disabled = false;
+        includeGames.disabled = false;
+        includeTags.disabled = false;
+      }
+
+      if (includeTeams.checked && includeCards.checked) {
+        includeCards.checked = false;
+      }
+    }
+
     function draw() {
       const useNames = document.getElementById('includeNames').checked;
+      const useTeams = document.getElementById('includeTeams').checked;
+      const useCards = document.getElementById('includeCards').checked;
       const useGames = document.getElementById('includeGames').checked;
       const useTags = document.getElementById('includeTags').checked;
 
       let output = [];
 
-      if (useNames) {
-        if (names.length === 0) return showMessage('No names added.');
+      if (useTeams || useCards) {
+        if (names.length === 0) return showMessage('No players added.');
 
         const shuffled = [...names].sort(() => 0.5 - Math.random());
         const groups = [];
+        let maxPerGroup = useCards ? 4 : Math.ceil(shuffled.length / 2);
 
         for (let i = 0; i < shuffled.length; ) {
           const remaining = shuffled.length - i;
-          let groupSize = Math.min(4, remaining);
-          if (remaining === 5) groupSize = 3; // split 3-2 instead of 4-1
+          let groupSize = Math.min(maxPerGroup, remaining);
+          if (useCards && remaining === 5) groupSize = 3;
 
           groups.push(shuffled.slice(i, i + groupSize));
           i += groupSize;
         }
 
-        output.push('Cards:\n' + groups.map((g, i) => `Card ${i + 1}: ${g.join(', ')}`).join('\n'));
+        output.push((useCards ? 'Cards:' : 'Teams:') + '\n' + groups.map((g, i) => `${useCards ? 'Card' : 'Team'} ${i + 1}: ${g.join(', ')}`).join('\n'));
+      }
+
+      else if (useNames) {
+        if (names.length === 0) return showMessage('No players added.');
+        const name = names[Math.floor(Math.random() * names.length)];
+        output.push(`Lucky Winner: ${name}`);
       }
 
       if (useGames) {
@@ -200,11 +235,15 @@
       }
     }
 
+    function copyResult() {
+      const resultText = document.getElementById('result').textContent;
+      navigator.clipboard.writeText(resultText).then(() => alert('Copied to clipboard!'));
+    }
+
     function showMessage(msg) {
       document.getElementById('result').textContent = msg;
     }
 
-    // Initialize tags on load
     window.onload = function () {
       updateList('tagsList', tags);
     };
