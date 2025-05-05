@@ -1,272 +1,203 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Disc Golf League - Northern Flights Disc Golf</title>
-    <link rel="stylesheet" href="style.css">
-    <style>
-      .logo-grid {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 20px;
-        justify-content: center;
-        align-items: center;
-      }
-      
-      .logo {
-        max-height: 80px;     /* Uniform height */
-        max-width: 150px;     /* Optional: limit width */
-        object-fit: contain;  /* Maintain aspect ratio inside box */
-        padding: 10px;
-      }
-      </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Disc Golf League - Northern Flights Disc Golf</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .logo-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      align-items: center;
+    }
+    .logo {
+      max-height: 80px;
+      max-width: 150px;
+      object-fit: contain;
+      padding: 10px;
+    }
+  </style>
 </head>
 <body>
+  <!-- Header Section -->
+  <header>
+    <h1>Disc Golf League Standings</h1>
+    <h3>View the latest standings for the Northern Flights Disc Golf League</h3>
+  </header>
 
-    <!-- Header Section -->
-    <header>
-        <h1>Disc Golf League Standings</h1>
-        <h3>View the latest standings for the Northern Flights Disc Golf League</h3>
-    </header>
+  <!-- Navigation Bar -->
+  <nav>
+    <a href="players.html">Player Hub</a>
+    <a href="store.html">Disc Exchange</a>
+    <a href="league.html">Spring League</a>
+    <a href="events.html">Events</a>
+    <a href="map.html">Course Finder</a>
+    <a href="resources.html">Resources</a>
+    <a href="index.html">Corporate Hub</a>
+  </nav>
 
-    <!-- Navigation Bar -->
-    <nav>
-      <a href="players.html">Player Hub</a>
-      <a href="store.html">Disc Exchange</a>
-      <a href="league.html">Spring League</a>
-      <a href="events.html">Events</a>
-      <a href="map.html">Course Finder</a>
-      <a href="resources.html">Resources</a>
-      <a href="index.html">Corporate Hub</a>
-    </nav>
+  <!-- Content Container -->
+  <div class="content-container">
 
     <!-- Event Info Section -->
-    <div class="content-container">
-        <section>
-          <h2>Spring League</h2>         
-          <img src="static/Phtotos/creekside_sign.jpg" style="height: 85vh; width: auto; display: block; margin: 0 auto;" alt="">
-          <br>
-          <strong>Location:</strong>Kingsway Park in Flin Flon, MB<br>
-          <strong>Date:</strong> May 1 to June 13, 2025<br>
-          <strong>Time:</strong> 5:30pm for warmups <br>  6:00pm aprox round start.<br>
-          <strong>Details:</strong> Open to all players. Loaner discs available.<br><br>
-          <strong>Thursday: Singles</strong>
-          <ul>
-          <li>Red Tees 18-Hole</li>
-          <li>White Tees 18-Hole</li>
-          </ul>
-          <br>
-          <strong>Tuesdays: Random Doubles</strong>
-          <ul>
-          <li>White Tees 18-Hole</li>
-          </ul>
-          <br>
+    <section>
+      <h2>Spring League</h2>
+      <img src="static/Phtotos/creekside_sign.jpg" alt="Creekside Sign" style="display: block; margin: 0 auto; max-width: 100%; height: auto;">
+      <p>
+        <strong>Location:</strong> Kingsway Park in Flin Flon, MB<br>
+        <strong>Date:</strong> May 1 to June 13, 2025<br>
+        <strong>Time:</strong> 5:30 pm warm-ups; 6:00 pm approximate round start.<br>
+        <strong>Details:</strong> Open to all players. Loaner discs available.
+      </p>
+      <h3>Thursdays: Singles</h3>
+      <ul>
+        <li>Red Tees 18‑Hole</li>
+        <li>White Tees 18‑Hole</li>
+      </ul>
+      <h3>Tuesdays: Random Doubles</h3>
+      <ul>
+        <li>White Tees 18‑Hole</li>
+      </ul>
+      <p>
+        Swap screen time for fresh air—join us for a relaxed day on the course! Whether you’re new to disc golf or just looking to stretch your legs outdoors, our inclusive community welcomes everyone. Discover why disc golf is a fun, social way to stay active and enjoy nature.
+      </p>
+    </section>
 
-          <p>
-            Ready to swap screen time for fresh air? Join us for a laid-back day on the course! Whether you’ve never thrown a disc or just want to stretch your legs outdoors, our friendly community welcomes everyone. Discover why disc golf is a fun and inclusive way to get moving, socialize, and enjoy nature.
-            
-            The league runs from May 1 to June 13, 2025.
-            Thursdays: Singles play from the Red or White tees
-            Tuesdays: Random Doubles from the White tees
-            We kick things off May 1, 2025. See you on the course!</p>
-        </section>
-        <section>
-            
-            <a href="https://udisc.com/events/flin-flons-spring-league-flin-flons-spring-league-red-tees-wIJXcF">
-            <img
-                src="static/Phtotos/UDiscw.png"
-                alt="Disc Golf Event Crowd"
-                style="padding-top: 20px; max-height: 85vh; width: 60%; display: block; margin: 0 auto;">
-            </a>
-            <div class="container">
-                <h2>Free UDisc for League Rounds</h2>
-                <p>
-                  Great news—UDisc is completely free to use for all league rounds! With UDisc’s intuitive scorekeeping you can:
-                </p>
-                <ul>
-                  <li><strong>Track Your Scores Instantly:</strong> Log each throw on your phone and watch your round unfold in real time.</li>
-                  <li><strong>View Live Standings:</strong> See league leaderboards update automatically so you always know where you sit.</li>
-                  <li><strong>Analyze Performance:</strong> Access round stats, shot-by-shot data, and trends to pinpoint areas for improvement.</li>
-                  <li><strong>Find Courses &amp; Tee Times:</strong> Pull up course maps, hole layouts, and upcoming tee times with just a tap.</li>
-                </ul>
+    <!-- UDisc Promo Section -->
+    <section>
+      <a href="https://udisc.com/events/flin-flons-spring-league-flin-flons-spring-league-red-tees-wIJXcF" target="_blank" rel="noopener">
+        <img src="static/Phtotos/UDiscw.png" alt="UDisc Promo" style="display: block; margin: 20px auto; max-width: 60%; height: auto;">
+      </a>
+      <div class="container">
+        <h2>Free UDisc for League Rounds</h2>
+        <p>
+          UDisc is completely free for all league rounds! With UDisc’s intuitive scorekeeping you can:
+        </p>
+        <ul>
+          <li><strong>Track Scores Instantly:</strong> Log each throw on your phone and watch your round unfold in real time.</li>
+          <li><strong>View Live Standings:</strong> See league leaderboards update automatically.</li>
+          <li><strong>Analyze Performance:</strong> Access round stats and shot-by-shot data to identify improvement areas.</li>
+          <li><strong>Find Courses & Tee Times:</strong> Pull up course maps, hole layouts, and upcoming tee times with just a tap.</li>
+        </ul>
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="https://udisc.com/leagues/northern-flights-disc-golf-inc-G8N8oW" target="_blank" rel="noopener">View the League</a></li>
+          <li><a href="https://udisc.com/courses/creekside-park-TNVe" target="_blank" rel="noopener">View the Course</a></li>
+          <li><a href="https://udisc.com/events/northern-flights-disc-golf-inc-random-double-teams-jTRIfH" target="_blank" rel="noopener">Random Doubles</a></li>
+          <li><a href="https://udisc.com/events/northern-flights-disc-golf-inc-flin-flons-spring-league-red-tees-wIZXcF" target="_blank" rel="noopener">Strokes Red Tees</a></li>
+          <li><a href="https://udisc.com/events/northern-flights-disc-golf-inc-flin-flons-spring-league-white-tees-wizo7O" target="_blank" rel="noopener">Strokes White Tees</a></li>
+        </ul>
+        <p>
+          <a href="https://udisc.com/" class="button" target="_blank" rel="noopener">Download UDisc &mdash; It’s Free!</a>
+        </p>
+      </div>
+    </section>
 
-                <P>Shortcuts to Udisc below</P>
-                <ul>
-                
-                  <li><a href="https://udisc.com/leagues/northern-flights-disc-golf-inc-G8N8oW">View the League</a></li>
-                  <li><a href="https://udisc.com/courses/creekside-park-TNVe">View The Course</a></li>
-                  <li><a href="https://udisc.com/events/northern-flights-disc-golf-inc-random-double-teams-jTRIfH">Random Doubles</a></li>
-                  <li><a href="https://udisc.com/events/northern-flights-disc-golf-inc-flin-flons-spring-league-red-tees-wIZXcF">Strokes Red Tees</a></li>
-                  
-                  <li><a href="https://udisc.com/events/northern-flights-disc-golf-inc-flin-flons-spring-league-white-tees-wizo7O">Strokes White Tees</a></li>
-                  
-                </ul>
-                <p>
-                  <a href="https://udisc.com/" class="button" target="_blank" rel="noopener">
-                    Download UDisc &mdash; It’s Free!
-                  </a>
-                </p>
-              </div>
+    <!-- Sponsors Section -->
+    <section id="sponsors" class="site-section">
+      <div class="container">
+        <h2>Our Sponsors</h2>
+        <div class="logo-grid">
+          <a href="https://arcticbev.com/" target="_blank">
+            <img src="static/Phtotos/Arctic+Beverages.png" alt="Arctic Beverages" class="logo">
+          </a>
+          <a href="https://www.hudbayminerals.com/" target="_blank">
+            <img src="static/Phtotos/hudbay-logo.png" alt="Hudbay Minerals" class="logo">
+          </a>
+          <a href="https://www.dominos.ca" target="_blank">
+            <img src="static/Phtotos/dominos.png" alt="Domino's Pizza" class="logo">
+          </a>
+          <a href="https://www.wwmsid.ca" target="_blank">
+            <img src="static/Phtotos/rackrack.png" alt="Rack Rack" class="logo">
+          </a>
+          <a href="https://www.lasersit.com" target="_blank">
+            <img src="static/Phtotos/New Laser Logo.png" alt="LaserSit" class="logo">
+          </a>
+          <a href="https://www.callinex.ca" target="_blank">
+            <img src="static/Phtotos/Callinex-Mines.png" alt="Callinex Mines" class="logo">
+          </a>
+          <a href="https://amzn.to/3Z1i9BQ" target="_blank">
+            <img src="static/Phtotos/amazon.jpg" alt="Amazon" class="logo">
+          </a>
+        </div>
+        <div class="special-thanks">
+          <h3>Special Thanks</h3>
+          <p>To all our volunteers and community partners who make this possible!</p>
+        </div>
+      </div>
+    </section>
 
-        </section>
-        <section id="sponsors" class="site-section">
-            <div class="container">
-              <h2>Our Sponsors</h2>
-          
-              <!-- Platinum Level
-              <div class="sponsor-level">
-                <h3>Platinum Sponsors<br><small>$10,000+</small></h3> -->
-                <!-- <div class="sponsor-logos">
-                  <img src="logos/platinum1.png" alt="Platinum Sponsor 1">
-                  <img src="logos/platinum2.png" alt="Platinum Sponsor 2"> -->
-                  <!-- add more here -->
-                <!-- </div>
-              </div> -->
-          
-              <!-- Gold Level -->
-              <!-- <div class="sponsor-level">
-                <h3>Gold Sponsors<br><small>$5,000–$9,999</small></h3>
-                <div class="sponsor-logos">
-                  <img src="logos/gold1.png" alt="Gold Sponsor 1">
-                  <img src="logos/gold2.png" alt="Gold Sponsor 2">
-                </div>
-              </div> -->
-          
-              <!-- Silver Level -->
-              <!-- <div class="sponsor-level">
-                <h3>Silver Sponsors<br><small>$1,000–$4,999</small></h3>
-                <div class="sponsor-logos">
-                  <img src="logos/silver1.png" alt="Silver Sponsor 1">
-                  <img src="logos/silver2.png" alt="Silver Sponsor 2">
-                </div>
-              </div>
-           -->
+    <!-- Standings Section -->
+    <section>
+      <h2>League Standings</h2>
+      <table class="standings-table">
+        <thead>
+          <tr>
+            <th>Rank</th>
+            <th>Player</th>
+            <th>Points</th>
+            <th>Events Played</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Paul McBeth</td>
+            <td>120</td>
+            <td>5</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Kristen Tattar</td>
+            <td>110</td>
+            <td>5</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>John Doe</td>
+            <td>95</td>
+            <td>4</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>Jane Smith</td>
+            <td>85</td>
+            <td>5</td>
+          </tr>
+        </tbody>
+      </table>
+      <a href="players.html" class="button">Back to Top</a>
+    </section>
 
-              <div class="logo-grid">
-                <div class="logo-grid">
-                  <a href="https://arcticbev.com/" target="_blank">
-                    <img src="static/Phtotos/Arctic+Beverages.png" alt="Arctic Beverages" class="logo">
-                  </a>
-                  <a href="https://www.hudbayminerals.com/" target="_blank">
-                    <img src="static/Phtotos/hudbay-logo.png" alt="Hudbay" class="logo">
-                  </a>
-                  <a href="https://www.dominos.ca" target="_blank">
-                    <img src="static/Phtotos/dominos.png" alt="Domino's Pizza Logo" class="logo">
-                  </a>
-                  <a href="https://www.wwmsid.ca" target="_blank">
-                    <img src="static/Phtotos/rackrack.png" alt="Rack Rack Logo" class="logo">
-                  </a>
-                  <a href="https://www.lasersit.com" target="_blank">
-                    <img src="static/Phtotos/New Laser Logo.png" alt="New Laser Logo" class="logo">
-                  </a>
-                  <a href="https://www.callinex.ca" target="_blank">
-                    <img src="static/Phtotos/Callinex-Mines.png" alt="Callinex Mines Logo" class="logo">
-                  </a>
-                  <a href="https://amzn.to/3Z1i9BQ" target="_blank">
-                    <img src="static/Phtotos/amazon.jpg" alt="Amazon" class="logo">
-                  </a>
-                </div>
-                <!-- Add more logos as needed -->
-              </div>
-              
+    <!-- Questions Section -->
+    <section>
+      <h2>Questions</h2>
+      <form action="https://formspree.io/f/xwplkven" method="POST">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" placeholder="Your Name" required>
 
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="Your Email" required>
 
-              
-          
-              <!-- Special Thanks -->
-              <div class="special-thanks">
-                <h3>Special Thanks</h3>
-                <p>To all our volunteers and community partners who make this possible!</p>
-              </div>
-            </div>
-          </section>
-        
+        <label for="phone">Phone Number (Optional):</label>
+        <input type="tel" id="phone" name="phone" placeholder="Your Phone Number">
 
-        <!-- Standings Section -->
-        <!-- <section>
-            <h2>League Standings</h2>
-            <table class="standings-table">
-                <thead>
-                    <tr>
-                        <th>Rank</th>
-                        <th>Player</th>
-                        <th>Points</th>
-                        <th>Events Played</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Paul Mcbeth</td>
-                        <td>120</td>
-                        <td>5</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Kristen Tattar</td>
-                        <td>110</td>
-                        <td>5</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>John Doe</td>
-                        <td>95</td>
-                        <td>4</td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>Jane Smith</td>
-                        <td>85</td>
-                        <td>5</td>
-                    </tr> -->
-                    <!-- Add more rows as necessary -->
-                <!-- </tbody>
-            </table>
-        </section> -->
-        
-        <section>
-          
-          <a href="players.html" class="button">Back to Top</a>
-        </section>
-    
-    
-    
-    
+        <label for="question">Question:</label>
+        <textarea id="question" name="question" placeholder="Your Question" rows="4" required></textarea>
 
+        <button type="submit" class="button">Send</button>
+      </form>
+    </section>
 
+  </div> <!-- End content-container -->
 
-        <section>
-            <h2>Questions</h2>
-            <form action="https://formspree.io/f/xwplkven" method="POST">
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" placeholder="Your Name" required>
-              
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" placeholder="Your Email" required>
-              
-                <label for="phone">Phone Number (Optional):</label>
-                <input type="tel" id="phone" name="phone" placeholder="Your Phone Number">
-              
-                <label for="question">Question:</label>
-                <textarea id="question" name="question" placeholder="Your Question" rows="4" required></textarea>
-              
-                <button type="submit" class="button">Send</button>
-              </form>
-              
-
-
-
-        </section>
-        
-
-    </div>    
-
-    <!-- Footer Section -->
-    <footer>
-        <p>&copy; 2025 All rights reserved. Northern Flights Disc Golf Inc.</p>
-    </footer>
+  <!-- Footer Section -->
+  <footer>
+    <p>&copy; 2025 Northern Flights Disc Golf Inc. All rights reserved.</p>
+  </footer>
 
 </body>
 </html>
-<!-- https://www.youtube.com/watch?v=-IaRPGbjusQ&t=182s    youtube flin flon. -->
