@@ -288,16 +288,14 @@
       if (output.length === 0) {
         showMessage('Please check at least one box to include in draw.');
       } else {
-        const outputText = output.join('
-');
+        const outputText = output.join('');
         document.getElementById('result').textContent = outputText;
         if (isPinValid) {
           setTimeout(() => window.print(), 10000);
         }
+        }
       }
-        document.getElementById('result').textContent = output.join('\n');
-      }
-    }
+        // Removed duplicate result output line
 
     function copyResult() {
       const resultText = document.getElementById('result').textContent;
@@ -310,9 +308,6 @@
 
     window.onload = function () {
       // Ensure prefilled lists show up correctly on load
-      updateList('tagsList', tags);
-      updateList('gamesList', games);
-      updateList('namesList', names);
       updateList('tagsList', tags);
       updateList('gamesList', games);
       updateList('namesList', names);
