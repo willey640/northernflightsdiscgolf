@@ -288,6 +288,13 @@
       if (output.length === 0) {
         showMessage('Please check at least one box to include in draw.');
       } else {
+        const outputText = output.join('
+');
+        document.getElementById('result').textContent = outputText;
+        if (isPinValid) {
+          setTimeout(() => window.print(), 10000);
+        }
+      }
         document.getElementById('result').textContent = output.join('\n');
       }
     }
