@@ -55,7 +55,7 @@
       cursor: pointer;
     }
 
-    input[type="text"] {
+    input[type="text"], input[type="password"] {
       padding: 5px;
       width: 150px;
     }
@@ -117,7 +117,11 @@
 
   <div style="clear: both;"></div>
 
-  <button onclick="draw()">DRAW</button>
+  <div style="margin-top: 20px">
+    <input id="pinInput" type="password" placeholder="Enter PIN to unlock draw">
+  </div>
+
+  <button id="drawBtn" onclick="draw()">DRAW</button>
   <button onclick="copyResult()">Copy to Clipboard</button>
   <button onclick="window.print()">Print</button>
 
@@ -127,6 +131,9 @@
     const names = ["Chris W","Matt W","Mike K", "Mike S", "Mike W"];
     const games = ["Tic", "Tac", "Tow", "Push", "Pull", "Dice", "Cards"];
     const tags = [1, 2, 3, 4, 5, 6, 69, 81];
+
+    const REQUIRED_PIN = "1234";
+    let lastDrawTime = 0;
 
     function addItem(inputId, array, listId) {
       const input = document.getElementById(inputId);
@@ -191,6 +198,12 @@
     }
 
     function draw() {
+      const pinInput = document.getElementById('pinInput').value;
+      const now = Date.now();
+      if (pinInput !== REQUIRED_PIN) return showMessage("Incorrect PIN.");
+      if (now - lastDrawTime < 60000) return showMessage("Please wait 1 minute between draws.");
+      lastDrawTime = now;
+
       const useNames = document.getElementById('includeNames').checked;
       const useTeams = document.getElementById('includeTeams').checked;
       const useCards = document.getElementById('includeCards').checked;
@@ -206,7 +219,6 @@
         let groups = [];
 
         if (useTeams) {
-          // Teams of 2 only
           if (shuffled.length % 2 !== 0) return showMessage('Team draw requires even number of players.');
           groups = chunkEvenly(shuffled, 2);
         } else if (useCards) {
@@ -247,7 +259,8 @@
       else if (useNames) {
         if (names.length === 0) return showMessage('No players added.');
         const name = names[Math.floor(Math.random() * names.length)];
-        output.push(`Lucky Winner: ${name}`);
+        const timestamp = new Date().toLocaleString();
+        output.push(`Lucky Winner: ${name}\nDrawn at: ${timestamp}`);
       }
 
       if (useGames) {
