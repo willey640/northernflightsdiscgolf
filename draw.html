@@ -44,7 +44,7 @@
       margin: 2px;
     }
 
-    input {
+    input[type="text"] {
       padding: 5px;
       width: 150px;
     }
@@ -60,6 +60,12 @@
       cursor: pointer;
     }
 
+    label {
+      display: block;
+      margin-top: 10px;
+      font-size: 14px;
+    }
+
     #result {
       margin-top: 30px;
       font-size: 20px;
@@ -69,13 +75,14 @@
 </head>
 <body>
 
-  <img src="static/Phtotos/offical NFDG logo.png" alt="Northern Flights Disc Golf Logo" class="logo">
+  <img src="https://i.imgur.com/HvN57G9.png" alt="Northern Flights Disc Golf Logo" class="logo">
 
   <div class="section">
     <h3>Name</h3>
     <input id="nameInput" type="text" placeholder="Enter name">
     <button onclick="addName()">ADD</button>
     <ul id="namesList"></ul>
+    <label><input type="checkbox" id="includeNames"> Include Names</label>
   </div>
 
   <div class="section">
@@ -83,6 +90,15 @@
     <input id="gameInput" type="text" placeholder="Enter game">
     <button onclick="addGame()">ADD</button>
     <ul id="gamesList"></ul>
+    <label><input type="checkbox" id="includeGames"> Include Games</label>
+  </div>
+
+  <div class="section">
+    <h3>Bag Tags</h3>
+    <input id="tagInput" type="text" placeholder="Enter bag tag">
+    <button onclick="addTag()">ADD</button>
+    <ul id="tagsList"></ul>
+    <label><input type="checkbox" id="includeTags"> Include Bag Tags</label>
   </div>
 
   <div style="clear: both;"></div>
@@ -94,6 +110,7 @@
   <script>
     const names = [];
     const games = [];
+    const tags = [1, 2, 3, 4, 5, 6, 69, 81];
 
     function addName() {
       const input = document.getElementById('nameInput');
@@ -113,6 +130,15 @@
       }
     }
 
+    function addTag() {
+      const input = document.getElementById('tagInput');
+      if (input.value.trim() !== '') {
+        tags.push(input.value.trim());
+        updateList('tagsList', tags);
+        input.value = '';
+      }
+    }
+
     function updateList(id, arr) {
       const ul = document.getElementById(id);
       ul.innerHTML = '';
@@ -124,14 +150,45 @@
     }
 
     function draw() {
-      if (names.length === 0 || games.length === 0) {
-        document.getElementById('result').textContent = 'Please add at least one name and one game.';
-        return;
+      const useNames = document.getElementById('includeNames').checked;
+      const useGames = document.getElementById('includeGames').checked;
+      const useTags = document.getElementById('includeTags').checked;
+
+      let output = [];
+
+      if (useNames) {
+        if (names.length === 0) return showMessage('No names added.');
+        const name = names[Math.floor(Math.random() * names.length)];
+        output.push(`Name: ${name}`);
       }
-      const name = names[Math.floor(Math.random() * names.length)];
-      const game = games[Math.floor(Math.random() * games.length)];
-      document.getElementById('result').textContent = `${name} → ${game}`;
+
+      if (useGames) {
+        if (games.length === 0) return showMessage('No games added.');
+        const game = games[Math.floor(Math.random() * games.length)];
+        output.push(`Game: ${game}`);
+      }
+
+      if (useTags) {
+        if (tags.length === 0) return showMessage('No bag tags added.');
+        const tag = tags[Math.floor(Math.random() * tags.length)];
+        output.push(`Bag Tag: ${tag}`);
+      }
+
+      if (output.length === 0) {
+        showMessage('Please check at least one box to include in draw.');
+      } else {
+        document.getElementById('result').textContent = output.join(' | ');
+      }
     }
+
+    function showMessage(msg) {
+      document.getElementById('result').textContent = msg;
+    }
+
+    // Initialize tags on load
+    window.onload = function () {
+      updateList('tagsList', tags);
+    };
   </script>
 
 </body>
