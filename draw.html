@@ -1,3 +1,4 @@
+<!-- Finalized HTML - Northern Flights Disc Golf Draw Tool - Last updated: 2025-05-06 -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -83,6 +84,36 @@
       color: #222;
       white-space: pre-wrap;
     }
+
+    /* Print-Only Styling */
+    @media print {
+      body * {
+        visibility: hidden;
+      }
+
+      #printArea, #printArea * {
+        visibility: visible;
+      }
+
+      #printArea {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        page-break-after: always;
+      }
+
+      #printArea .logo {
+        width: 150px !important;
+        margin: 20px auto !important;
+      }
+
+      #result {
+        font-size: 24px;
+        margin-top: 30px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -125,10 +156,14 @@
   <button id="copyBtn" onclick="copyResult()" disabled>Copy to Clipboard</button>
   <button id="printBtn" onclick="window.print()" disabled>Print</button>
 
-  <div id="result"></div>
+  <!-- Print Area -->
+  <div id="printArea">
+    <img src="static/Phtotos/offical NFDG logo.png" class="logo">
+    <div id="result"></div>
+  </div>
 
   <script>
-    const names = ["Brian", "Chris W", "Derek","Keith", "Matt W", "Mike K", "Mike S", "Mike W"];
+    const names = ["Brian", "Chris W", "Derek", "Keith", "Matt W", "Mike K", "Mike S", "Mike W"];
     const games = ["Stroke Play", "Match Play", "Skins", "Birdie or die", "Scramble (Team)", "Best Disc (Team)", "Worst Disc (Team)", "Cards"];
     const tags = [1, 2, 3, 4, 5, 6, 69, 81];
 
@@ -278,12 +313,12 @@
       if (output.length === 0) {
         showMessage('Please check at least one box to include in draw.');
       } else {
-        document.getElementById('result').innerHTML = `
-          <img src='static/Phtotos/offical NFDG logo.png' class='logo' style='width: 100px; display: block; margin: 10px auto;'>
-          <div>${output.join('\n').replace(/\n/g, '<br>')}</div>
-        `;
+        document.getElementById('result').innerHTML = output.join('\n').replace(/\n/g, '<br>');
         if (isPinValid) {
-          setTimeout(() => window.print(), 10000);
+          setTimeout(() => {
+            alert("Saving result as PDF...");
+            window.print();
+          }, 10000);
         }
       }
     }
