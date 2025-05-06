@@ -239,10 +239,9 @@
       const prize = document.getElementById('prizeInput').value.trim();
       const isPinValid = pinInput === REQUIRED_PIN;
 
-      if (isPinValid) {
         document.getElementById('drawBtn').disabled = true;
         setTimeout(() => document.getElementById('drawBtn').disabled = false, 60000);
-      }
+
 
       document.getElementById('copyBtn').disabled = !isPinValid;
       document.getElementById('printBtn').disabled = !isPinValid;
