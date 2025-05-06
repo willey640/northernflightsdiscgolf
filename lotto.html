@@ -260,7 +260,7 @@
         let groups = [];
 
         const timestamp = new Date().toLocaleString();
-        const prizeText = prize ? `The winner(s) of "${prize}" are:\n` : '';
+        const prizeText = prize ? `The winner(s) of ${prize} are:\n` : '';
 
         if (useTeams) {
           groups = chunkEvenly(shuffled, 2);

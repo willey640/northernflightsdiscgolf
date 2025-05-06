@@ -1,8 +1,7 @@
-<!-- Finalized HTML - Northern Flights Disc Golf Draw Tool - Last updated: 2025-05-06 -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Northern Flights Disc Golf Draw</title>
   <style>
     body {
@@ -85,7 +84,7 @@
       white-space: pre-wrap;
     }
 
-    /* Print-Only Styling */
+    /* Print formatting */
     @media print {
       body * {
         visibility: hidden;
@@ -152,11 +151,15 @@
     <input id="pinInput" type="password" placeholder="Enter PIN to unlock print/copy">
   </div>
 
+  <div style="margin: 10px 0;">
+    <input id="prizeInput" type="text" placeholder="Prize Description (e.g. Free Medium Pizza)">
+  </div>
+
   <button id="drawBtn" onclick="draw()">DRAW</button>
   <button id="copyBtn" onclick="copyResult()" disabled>Copy to Clipboard</button>
   <button id="printBtn" onclick="window.print()" disabled>Print</button>
 
-  <!-- Print Area -->
+  <!-- Printable Area -->
   <div id="printArea">
     <img src="static/Phtotos/offical NFDG logo.png" class="logo">
     <div id="result"></div>
@@ -233,12 +236,12 @@
 
     function draw() {
       const pinInput = document.getElementById('pinInput').value;
+      const prize = document.getElementById('prizeInput').value.trim();
       const isPinValid = pinInput === REQUIRED_PIN;
 
-      if (isPinValid) {
         document.getElementById('drawBtn').disabled = true;
         setTimeout(() => document.getElementById('drawBtn').disabled = false, 60000);
-      }
+
 
       document.getElementById('copyBtn').disabled = !isPinValid;
       document.getElementById('printBtn').disabled = !isPinValid;
@@ -256,58 +259,49 @@
         const shuffled = [...names].sort(() => 0.5 - Math.random());
         let groups = [];
 
+        const timestamp = new Date().toLocaleString();
+        const prizeText = prize ? `The winner(s) of ${prize} are:\n` : '';
+
         if (useTeams) {
           groups = chunkEvenly(shuffled, 2);
         } else if (useCards) {
           const total = shuffled.length;
-          let cardSizes = [];
+          const numCards = Math.ceil(total / 4);
+          const baseSize = Math.floor(total / numCards);
+          let extras = total % numCards;
+          let index = 0;
 
-          if (total === 5) cardSizes = [3, 2];
-          else if (total === 6) cardSizes = [3, 3];
-          else if (total === 7) cardSizes = [4, 3];
-          else if (total === 8) cardSizes = [4, 4];
-          else if (total === 9) cardSizes = [3, 3, 3];
-          else {
-            const numCards = Math.ceil(total / 4);
-            const baseSize = Math.floor(total / numCards);
-            let extras = total % numCards;
-            let index = 0;
-
-            for (let i = 0; i < numCards; i++) {
-              const groupSize = baseSize + (extras > 0 ? 1 : 0);
-              if (extras > 0) extras--;
-              groups.push(shuffled.slice(index, index + groupSize));
-              index += groupSize;
-            }
-          }
-
-          if (cardSizes.length > 0) {
-            let index = 0;
-            cardSizes.forEach(size => {
-              groups.push(shuffled.slice(index, index + size));
-              index += size;
-            });
+          for (let i = 0; i < numCards; i++) {
+            const groupSize = baseSize + (extras > 0 ? 1 : 0);
+            if (extras > 0) extras--;
+            groups.push(shuffled.slice(index, index + groupSize));
+            index += groupSize;
           }
         }
 
-        output.push((useCards ? 'Cards:' : 'Teams:') + '\n' + groups.map((g, i) => `${useCards ? 'Card' : 'Team'} ${i + 1}: ${g.join(', ')}`).join('\n'));
+        output.push(
+          `${prizeText}` +
+          groups.map((g, i) => `${useCards ? 'Card' : 'Team'} ${i + 1}: ${g.join(', ')}`).join('\n') +
+          `\nDrawn at: ${timestamp}`
+        );
       }
 
-      else if (useNames) {
-        if (names.length === 0) return showMessage('No players added.');
-        const name = names[Math.floor(Math.random() * names.length)];
+      else if (useNames || useTags) {
+        let winner = '';
+        if (useNames && names.length > 0) {
+          winner = names[Math.floor(Math.random() * names.length)];
+        } else if (useTags && tags.length > 0) {
+          winner = `Bag Tag #${tags[Math.floor(Math.random() * tags.length)]}`;
+        }
+
         const timestamp = new Date().toLocaleString();
-        output.push(`Lucky Winner: ${name}\nDrawn at: ${timestamp}`);
+        const prizeText = prize ? `The winner of "${prize}" is: ${winner}` : `Winner: ${winner}`;
+        output.push(`${prizeText}\nDrawn at: ${timestamp}`);
       }
 
       if (useGames) {
         const game = games[Math.floor(Math.random() * games.length)];
         output.push(`\nGame: ${game}`);
-      }
-
-      if (useTags) {
-        const tag = tags[Math.floor(Math.random() * tags.length)];
-        output.push(`\nBag Tag: ${tag}`);
       }
 
       if (output.length === 0) {
