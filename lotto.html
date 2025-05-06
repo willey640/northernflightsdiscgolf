@@ -1,4 +1,4 @@
-<!-- Finalized HTML - Northern Flights Disc Golf Draw Tool - Last updated: 2025-05-06 -->
+<!-- Finalized HTML with Prize Description - Last updated: 2025-05-06 -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -85,7 +85,7 @@
       white-space: pre-wrap;
     }
 
-    /* Print-Only Styling */
+    /* Print Styling */
     @media print {
       body * {
         visibility: hidden;
@@ -150,6 +150,10 @@
 
   <div style="margin-top: 20px">
     <input id="pinInput" type="password" placeholder="Enter PIN to unlock print/copy">
+  </div>
+
+  <div style="margin: 10px 0;">
+    <input id="prizeInput" type="text" placeholder="Prize Description (e.g. Free Medium Pizza)">
   </div>
 
   <button id="drawBtn" onclick="draw()">DRAW</button>
@@ -233,6 +237,7 @@
 
     function draw() {
       const pinInput = document.getElementById('pinInput').value;
+      const prize = document.getElementById('prizeInput').value.trim();
       const isPinValid = pinInput === REQUIRED_PIN;
 
       if (isPinValid) {
@@ -293,21 +298,22 @@
         output.push((useCards ? 'Cards:' : 'Teams:') + '\n' + groups.map((g, i) => `${useCards ? 'Card' : 'Team'} ${i + 1}: ${g.join(', ')}`).join('\n'));
       }
 
-      else if (useNames) {
-        if (names.length === 0) return showMessage('No players added.');
-        const name = names[Math.floor(Math.random() * names.length)];
+      else if (useNames || useTags) {
+        let winner = '';
+        if (useNames && names.length > 0) {
+          winner = names[Math.floor(Math.random() * names.length)];
+        } else if (useTags && tags.length > 0) {
+          winner = `Bag Tag #${tags[Math.floor(Math.random() * tags.length)]}`;
+        }
+
         const timestamp = new Date().toLocaleString();
-        output.push(`Lucky Winner: ${name}\nDrawn at: ${timestamp}`);
+        const prizeText = prize ? `The winner of "${prize}" is: ${winner}` : `Winner: ${winner}`;
+        output.push(`${prizeText}\nDrawn at: ${timestamp}`);
       }
 
       if (useGames) {
         const game = games[Math.floor(Math.random() * games.length)];
         output.push(`\nGame: ${game}`);
-      }
-
-      if (useTags) {
-        const tag = tags[Math.floor(Math.random() * tags.length)];
-        output.push(`\nBag Tag: ${tag}`);
       }
 
       if (output.length === 0) {
