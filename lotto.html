@@ -240,11 +240,8 @@
         const shuffled = [...names].sort(() => 0.5 - Math.random());
         const groups = chunkEvenly(shuffled, 2);
         const timestamp = new Date().toLocaleString();
-        const prizeText = prize ? `The winner(s) of ${prize} are:
-` : '';
-        output.push(`${prizeText}${groups.map((g, i) => `${useCards ? 'Card' : 'Team'} ${i + 1}: ${g.join(', ')}`).join('
-')}
-Drawn at: ${timestamp}`);
+        const prizeText = prize ? `The winner(s) of ${prize} are:\n` : '';
+        output.push(`${prizeText}${groups.map((g, i) => `${useCards ? 'Card' : 'Team'} ${i + 1}: ${g.join(', ')}`).join('\n')}\nDrawn at: ${timestamp}`);
       } else {
         let winner = '';
         if (useNames && names.length > 0) {
@@ -255,18 +252,15 @@ Drawn at: ${timestamp}`);
 
         const timestamp = new Date().toLocaleString();
         const prizeText = prize ? `The winner of ${prize} is: ${winner}` : `Winner: ${winner}`;
-        output.push(`${prizeText}
-Drawn at: ${timestamp}`);
+        output.push(`${prizeText}\nDrawn at: ${timestamp}`);
       }
 
       if (useGames) {
         const game = games[Math.floor(Math.random() * games.length)];
-        output.push(`
-Game: ${game}`);
+        output.push(`\nGame: ${game}`);
       }
 
-      document.getElementById('result').innerHTML = output.join('
-').replace(/\n/g, '<br>');
+      document.getElementById('result').innerHTML = output.join('\n').replace(/\n/g, '<br>');
       if (isPinValid) {
         setTimeout(() => {
           alert("Saving result as PDF...");
