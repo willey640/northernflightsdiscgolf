@@ -49,7 +49,7 @@
           const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=cad');
           const data = await response.json();
           const btcPrice = data.bitcoin.cad;
-          const amountBTC = 0.000186;
+          const amountBTC = 0.000298;
           const valueCAD = btcPrice * amountBTC;
     
           document.getElementById('btcValue').innerText = `~ $${valueCAD.toFixed(2)} CAD`;
