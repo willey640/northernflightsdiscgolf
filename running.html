@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Offline Dino Game</title>
+  <style>
+    body, html { margin: 0; padding: 0; overflow: hidden; background: #f7f7f7; }
+    canvas { display: block; margin: 0 auto; background: #f7f7f7; }
+  </style>
+</head>
+<body>
+  <canvas id="gameCanvas" width="800" height="200"></canvas>
+  <script>
+    const canvas = document.getElementById('gameCanvas');
+    const ctx = canvas.getContext('2d');
+    const CANVAS_WIDTH = canvas.width;
+    const CANVAS_HEIGHT = canvas.height;
+
+    let gameSpeed = 6;
+    let gravity = 0.5;
+
+    class Dino {
+      constructor() {
+        this.width = 44;
+        this.height = 47;
+        this.x = 50;
+        this.y = CANVAS_HEIGHT - this.height - 10;
+        this.dy = 0;
+        this.jumpForce = 12;
+        this.grounded = false;
+        this.jumpTimer = 0;
+      }
+      animate() {
+        if (this.y + this.height < CANVAS_HEIGHT - 10) {
+          this.dy += gravity;
+          this.grounded = false;
+        } else {
+          this.dy = 0;
+          this.grounded = true;
+          this.y = CANVAS_HEIGHT - this.height - 10;
+        }
+        this.y += this.dy;
+        this.draw();
+      }
+      jump() {
+        if (this.grounded && this.jumpTimer === 0) {
+          this.jumpTimer = 1;
+          this.dy = -this.jumpForce;
+        } else if (this.jumpTimer > 0 && this.jumpTimer < 15) {
+          this.jumpTimer++;
+          this.dy = -this.jumpForce - (this.jumpTimer / 50);
+        }
+      }
+      draw() {
+        ctx.fillStyle = '#555';
+        ctx.fillRect(this.x, this.y, this.width, this.height);
+      }
+    }
+
+    class Obstacle {
+      constructor() {
+        this.width = 20 + Math.random() * 20;
+        this.height = 20 + Math.random() * 30;
+        this.x = CANVAS_WIDTH;
+        this.y = CANVAS_HEIGHT - this.height - 10;
+        this.dx = -gameSpeed;
+      }
+      update() {
+        this.x += this.dx;
+        this.dx = -gameSpeed;
+        this.draw();
+      }
+      draw() {
+        ctx.fillStyle = '#228B22';
+        ctx.fillRect(this.x, this.y, this.width, this.height);
+      }
+    }
+
+    let dino = new Dino();
+    let obstacles = [];
+    let initialSpawnTimer = 200;
+    let spawnTimer = initialSpawnTimer;
+    let score = 0;
+
+    function spawnObstacle() {
+      spawnTimer--;
+      if (spawnTimer <= 0) {
+        obstacles.push(new Obstacle());
+        spawnTimer = initialSpawnTimer - gameSpeed * 8;
+        if (spawnTimer < 60) spawnTimer = 60;
+      }
+    }
+
+    function animationLoop() {
+      requestAnimationFrame(animationLoop);
+      ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+
+      spawnObstacle();
+      dino.animate();
+
+      obstacles.forEach((obstacle, index) => {
+        obstacle.update();
+        // collision detection
+        if (
+          dino.x < obstacle.x + obstacle.width &&
+          dino.x + dino.width > obstacle.x &&
+          dino.y < obstacle.y + obstacle.height &&
+          dino.y + dino.height > obstacle.y
+        ) {
+          resetGame();
+        }
+        if (obstacle.x + obstacle.width < 0) {
+          obstacles.splice(index, 1);
+          score++;
+        }
+      });
+
+      ctx.fillStyle = '#000';
+      ctx.font = '20px Arial';
+      ctx.fillText('Score: ' + score, 10, 20);
+
+      gameSpeed += 0.001;
+    }
+
+    function resetGame() {
+      dino = new Dino();
+      obstacles = [];
+      score = 0;
+      gameSpeed = 6;
+      spawnTimer = initialSpawnTimer;
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.code === 'Space' || e.code === 'ArrowUp') {
+        dino.jump();
+      }
+    });
+
+    document.addEventListener('keyup', (e) => {
+      if (e.code === 'Space' || e.code === 'ArrowUp') {
+        dino.jumpTimer = 0;
+      }
+    });
+
+    animationLoop();
+  </script>
+</body>
+</html>
