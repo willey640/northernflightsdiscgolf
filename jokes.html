@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Video Page</title>
+  <style>
+    /* make your video responsive */
+    video {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Welcome to My Site</h1>
+
+  <!-- Video player -->
+  <video
+    id="hero-video"
+    controls         <!-- show play/pause bar -->
+    poster="thumb.jpg" <!-- optional: shows before playback -->
+    preload="metadata" <!-- load only metadata until play -->
+  >
+    <source src="static/Videos/bigfootvid.mp4" type="video/mp4">
+    <!-- You can add WebM/Fallbacks here:
+    <source src="videos/my-video.webm" type="video/webm">
+    -->
+    Sorry, your browser doesn’t support the video element.
+  </video>
+
+  <script>
+    // optional JS API: play when page loads (muted is required for autoplay)
+    window.addEventListener('load', () => {
+      const vid = document.getElementById('hero-video');
+      // vid.muted = true;
+      // vid.play();
+    });
+  </script>
+
+</body>
+</html>
