@@ -94,7 +94,7 @@
     <section>
       <img src="static/Photos/Bitcoin.svg.png" alt="Bitcoin Donation" style="width:60px; height: auto;" />
       <h2>Live BTC Value for our 0.000298 BTC:</h2>
-      <p>8 bag tags sold. The current pot started as $40. The cash was exchanged for 0.000298 btc</p>
+      <p>8 bag tags sold. The current pot started as $45. The cash was exchanged for 0.000331 btc</p>
       <p id="btcValue">Loading...</p>
     
       <script>
@@ -102,7 +102,7 @@
           const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=cad');
           const data = await response.json();
           const btcPrice = data.bitcoin.cad;
-          const amountBTC = 0.000298;
+          const amountBTC = 0.000331;
           const valueCAD = btcPrice * amountBTC;
     
           document.getElementById('btcValue').innerText = `~ $${valueCAD.toFixed(2)} CAD`;
