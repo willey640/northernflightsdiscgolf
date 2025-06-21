@@ -235,7 +235,7 @@ section p {
 
 /* new: drop down menu css */
 .navbar {
-  background-color: #12720f;
+  background-color: #40509D;
   padding: 0 20px;
   display: flex;
   align-items: center;
@@ -275,13 +275,13 @@ section p {
 }
 
 .nav-links li a:hover {
-  background-color: #004d00;
+  background-color: #142139;
 }
 
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: #008000;
+  background-color: #40509D;
   top: 48px;
   left: 0;
   min-width: 160px;
@@ -305,7 +305,7 @@ section p {
     display: none;
     flex-direction: column;
     width: 100%;
-    background-color: #008000;
+    background-color: #40509D;
     position: absolute;
     top: 60px;
     left: 0;
