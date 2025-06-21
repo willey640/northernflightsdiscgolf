@@ -239,7 +239,7 @@ section p {
   padding: 0 20px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   position: relative;
 }
 
@@ -261,6 +261,8 @@ section p {
   display: flex;
   margin: 0;
   padding: 0;
+  justify-content: center;
+
 }
 
 .nav-links li {
