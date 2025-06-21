@@ -24,7 +24,7 @@ body {
   
   /* ==== HEADER ==== */
   header {
-    background-color: #008000;
+    background-color: #5DB26B;
     color: #fff;
     padding: 20px 10px;
   }
@@ -33,7 +33,7 @@ body {
   }
   
   /* ==== NAVIGATION ==== */
-  nav {
+  /* nav {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -49,11 +49,11 @@ body {
   }
   nav a:hover {
     background-color: #005700;
-  }
+  } */
   
   /* ==== BANNERS ==== */
   .banner {
-    background-color: #008000;
+    background-color: #5DB26B;
     color: white;
     padding: 10px;
     font-size: 1.5em;
@@ -83,7 +83,7 @@ body {
   .button {
     display: inline-block;
     padding: 10px 20px;
-    background-color: #008000;
+    background-color: #5DB26B;
     color: #fff;
     border: none;
     border-radius: 6px;
@@ -92,7 +92,7 @@ body {
     margin-top: 10px;
   }
   .button:hover {
-    background-color: #005700;
+    background-color: #40509D;
   }
   
   /* ==== FORMS ==== */
@@ -148,7 +148,7 @@ body {
   
   /* ==== FOOTER ==== */
   footer {
-    background-color: #008000;
+    background-color: #5DB26B;
     color: #fff;
     text-align: center;
     padding: 15px 0;
@@ -177,7 +177,7 @@ body {
   }
   /* Event Info Section Styling */
 section h2 {
-  color: #155e2e;
+  color: #142139;
   font-size: 1.5rem;
   margin-bottom: 1rem;
 }
@@ -202,7 +202,7 @@ section p {
 }
 
 .standings-table th {
-  background-color: #155e2e;
+  background-color: #40509D;
   color: white;
 }
 
