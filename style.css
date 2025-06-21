@@ -4,7 +4,7 @@ body {
     margin: 0;
     padding: 0;
     text-align: center;
-    background-color: #f4f4f4;
+    background-color: #0f1325;
   }
   
   img {
@@ -15,7 +15,7 @@ body {
   }
   
   a {
-    color: #007f4e;
+    color: #299aa5;
     text-decoration: none;
   }
   a:hover {
@@ -24,7 +24,7 @@ body {
   
   /* ==== HEADER ==== */
   header {
-    background-color: #198c32;
+    background-color: #64b74d;
     color: #fff;
     padding: 20px 10px;
   }
@@ -53,7 +53,7 @@ body {
   
   /* ==== BANNERS ==== */
   .banner {
-    background-color: #5DB26B;
+    background-color: #299aa5;
     color: white;
     padding: 10px;
     font-size: 1.5em;
@@ -74,16 +74,16 @@ body {
   section {
     margin: 20px 0;
     padding: 15px;
-    border: 2px solid #008000;
+    border: 2px solid #214328;
     border-radius: 10px;
-    background: #e8f5e9;
+    background: #e0f4e5;
   }
   
   /* ==== BUTTONS ==== */
   .button {
     display: inline-block;
     padding: 10px 20px;
-    background-color: #5DB26B;
+    background-color: #299aa5;
     color: #fff;
     border: none;
     border-radius: 6px;
@@ -92,7 +92,7 @@ body {
     margin-top: 10px;
   }
   .button:hover {
-    background-color: #40509D;
+    background-color: #1a3421;
   }
   
   /* ==== FORMS ==== */
@@ -139,7 +139,7 @@ body {
     list-style: none;
   }
   .collection-disc-stats li {
-    background: #008000;
+    background: #214328;
     color: white;
     font-weight: bold;
     border-radius: 4px;
@@ -148,7 +148,7 @@ body {
   
   /* ==== FOOTER ==== */
   footer {
-    background-color: #5DB26B;
+    background-color: #64b74d;
     color: #fff;
     text-align: center;
     padding: 15px 0;
@@ -235,7 +235,7 @@ section p {
 
 /* new: drop down menu css */
 .navbar {
-  background-color: #40509D;
+  background-color: #214328;
   padding: 0 20px;
   display: flex;
   align-items: center;
@@ -277,13 +277,13 @@ section p {
 }
 
 .nav-links li a:hover {
-  background-color: #142139;
+  background-color: #006600;
 }
 
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: #40509D;
+  background-color: #214328;
   top: 48px;
   left: 0;
   min-width: 160px;
@@ -307,7 +307,7 @@ section p {
     display: none;
     flex-direction: column;
     width: 100%;
-    background-color: #40509D;
+    background-color: #214328;
     position: absolute;
     top: 60px;
     left: 0;
