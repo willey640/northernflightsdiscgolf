@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Product Detail</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background: #f4f4f4;
+    }
+    .product-detail {
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 500px;
+      margin: auto;
+      text-align: center;
+    }
+    .product-detail img {
+      width: 100%;
+      height: auto;
+      max-height: 300px;
+      object-fit: contain;
+    }
+    a.back-link {
+      display: inline-block;
+      margin-top: 20px;
+      text-decoration: none;
+      color: #007f4e;
+    }
+  </style>
+</head>
+<body>
+  <div class="product-detail" id="product-detail"></div>
+  <a class="back-link" href="index.html">← Back to Store</a>
+
+  <script>
+    const products = [
+      {
+        id: "001",
+        name: "Northern Flights Hat",
+        price: "$20",
+        image: "https://via.placeholder.com/400x300?text=Hat",
+        description: "A stylish disc golf hat made from breathable fabric with an embroidered logo."
+      },
+      {
+        id: "002",
+        name: "Custom Disc",
+        price: "$25",
+        image: "https://via.placeholder.com/400x300?text=Disc",
+        description: "Create your own disc with a personalized stamp. Lightweight and durable."
+      }
+    ];
+
+    function getProductId() {
+      const params = new URLSearchParams(window.location.search);
+      return params.get("id");
+    }
+
+    function loadProduct() {
+      const id = getProductId();
+      const product = products.find(p => p.id === id);
+      if (!product) {
+        document.getElementById("product-detail").innerHTML = "<p>Product not found.</p>";
+        return;
+      }
+
+      document.getElementById("product-detail").innerHTML = `
+        <h1>${product.name}</h1>
+        <img src="${product.image}" alt="${product.name}" />
+        <p><strong>Price:</strong> ${product.price}</p>
+        <p>${product.description}</p>
+      `;
+    }
+
+    loadProduct();
+  </script>
+</body>
+</html>
