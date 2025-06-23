@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Northern Flights Store</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; background: #f8f8f8; }
+    .product-card { border: 1px solid #ccc; border-radius: 8px; padding: 15px; margin: 10px; background: #fff; width: 200px; display: inline-block; vertical-align: top; text-align: center; }
+    .product-card img { width: 100%; height: auto; }
+    a.button { display: inline-block; margin-top: 10px; padding: 8px 12px; background: #007f4e; color: #fff; text-decoration: none; border-radius: 4px; }
+  </style>
+</head>
+<body>
+  <h1>Northern Flights Disc Golf Store</h1>
+  <div id="product-list"></div>
+
+  <script>
+    const products = [
+      { id: "001", name: "Northern Flights Hat", price: "$20", image: "https://via.placeholder.com/200x150?text=Hat", description: "A stylish disc golf hat." },
+      { id: "002", name: "Custom Disc", price: "$25", image: "https://via.placeholder.com/200x150?text=Disc", description: "Stamp your own design on a disc." }
+    ];
+
+    const list = document.getElementById("product-list");
+    products.forEach(p => {
+      list.innerHTML += `
+        <div class="product-card">
+          <img src="${p.image}" alt="${p.name}" />
+          <h3>${p.name}</h3>
+          <p>${p.price}</p>
+          <a class="button" href="product.html?id=${p.id}">View Details</a>
+        </div>
+      `;
+    });
+  </script>
+</body>
+</html>

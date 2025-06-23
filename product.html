@@ -5,31 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Product Detail</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 20px;
-      background: #f4f4f4;
-    }
-    .product-detail {
-      background: #fff;
-      padding: 20px;
-      border-radius: 10px;
-      max-width: 500px;
-      margin: auto;
-      text-align: center;
-    }
-    .product-detail img {
-      width: 100%;
-      height: auto;
-      max-height: 300px;
-      object-fit: contain;
-    }
-    a.back-link {
-      display: inline-block;
-      margin-top: 20px;
-      text-decoration: none;
-      color: #007f4e;
-    }
+    body { font-family: Arial, sans-serif; margin: 20px; background: #f4f4f4; }
+    .product-detail { background: #fff; padding: 20px; border-radius: 10px; max-width: 500px; margin: auto; text-align: center; }
+    .product-detail img { width: 100%; height: auto; max-height: 300px; object-fit: contain; }
+    a.back-link { display: inline-block; margin-top: 20px; text-decoration: none; color: #007f4e; }
   </style>
 </head>
 <body>
@@ -38,20 +17,8 @@
 
   <script>
     const products = [
-      {
-        id: "001",
-        name: "Northern Flights Hat",
-        price: "$20",
-        image: "https://via.placeholder.com/400x300?text=Hat",
-        description: "A stylish disc golf hat made from breathable fabric with an embroidered logo."
-      },
-      {
-        id: "002",
-        name: "Custom Disc",
-        price: "$25",
-        image: "https://via.placeholder.com/400x300?text=Disc",
-        description: "Create your own disc with a personalized stamp. Lightweight and durable."
-      }
+      { id: "001", name: "Northern Flights Hat", price: "$20", image: "https://freestockimages.net/wp-content/uploads/2016/07/Large-elephants-booty.jpg", description: "A stylish disc golf hat made from breathable fabric with an embroidered logo." },
+      { id: "002", name: "Custom Disc", price: "$25", image: "https://freestockimages.net/wp-content/uploads/2016/07/Large-elephants-booty.jpg", description: "Create your own disc with a personalized stamp. Lightweight and durable." }
     ];
 
     function getProductId() {
@@ -66,7 +33,6 @@
         document.getElementById("product-detail").innerHTML = "<p>Product not found.</p>";
         return;
       }
-
       document.getElementById("product-detail").innerHTML = `
         <h1>${product.name}</h1>
         <img src="${product.image}" alt="${product.name}" />
