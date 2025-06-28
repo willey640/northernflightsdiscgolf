@@ -61,11 +61,15 @@
       text-decoration: none;
       color: #007f4e;
     }
+
+    #add-to-cart-btn {
+      margin-top: 15px;
+    }
   </style>
 </head>
 <body>
   <div class="product-detail" id="product-detail"></div>
-  <a class="back-link" href="index.html">← Back to Store</a>
+  <a class="back-link" href="store_front.html">← Back to Store</a>
 
   <script>
     const products = [
@@ -96,14 +100,14 @@
         price: "$80",
         images: [
           "static/Merchandise/set_full.jpg",
-          "static/Merchandise/set_top_front.jpg", 
-          "static/Merchandise/set_top_back.jpg", 
-          "static/Merchandise/set_bottom_front.jpg", 
+          "static/Merchandise/set_top_front.jpg",
+          "static/Merchandise/set_top_back.jpg",
+          "static/Merchandise/set_bottom_front.jpg",
           "static/Merchandise/set_shorts.jpg"
         ],
         description: "Get Your Northern Flights Disc Golf jersey and shorts."
       }
-      // Add the rest of your products here
+      // Add more products as needed
     ];
 
     function getProductId() {
@@ -139,14 +143,32 @@
         ${renderCarousel()}
         <p><strong>Price:</strong> ${product.price}</p>
         <p>${product.description}</p>
+        <button class="button" id="add-to-cart-btn">➕ Add to Cart</button>
       `;
 
+      // Carousel navigation
       window.changeSlide = function (direction) {
         currentIndex += direction;
         if (currentIndex < 0) currentIndex = product.images.length - 1;
         if (currentIndex >= product.images.length) currentIndex = 0;
         document.getElementById("carousel-img").src = product.images[currentIndex];
       };
+
+      // Add to Cart handler
+      document.getElementById("add-to-cart-btn").addEventListener("click", () => {
+        let cart = JSON.parse(localStorage.getItem("cart") || "[]");
+        const existing = cart.find(item => item.name === product.name);
+        const priceNumber = parseFloat(product.price.replace("$", ""));
+
+        if (existing) {
+          existing.qty += 1;
+        } else {
+          cart.push({ name: product.name, price: priceNumber, qty: 1 });
+        }
+
+        localStorage.setItem("cart", JSON.stringify(cart));
+        alert(`${product.name} added to cart!`);
+      });
     }
 
     loadProduct();
