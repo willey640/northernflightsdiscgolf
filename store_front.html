@@ -35,7 +35,7 @@
       transition: opacity 0.3s ease;
     }
 
-    a.button {
+    a.button, button.button {
       display: inline-block;
       margin-top: 10px;
       padding: 8px 12px;
@@ -43,11 +43,25 @@
       color: #fff;
       text-decoration: none;
       border-radius: 4px;
+      border: none;
+      cursor: pointer;
+    }
+
+    button.button.secondary {
+      background: #555;
+    }
+
+    #cart-link {
+      float: right;
+      margin-top: -40px;
+      margin-bottom: 20px;
+      font-size: 16px;
     }
   </style>
 </head>
 <body>
   <h1>Northern Flights Disc Golf Store</h1>
+  <a href="cart.html" id="cart-link">🛒 View Cart</a>
   <div id="product-list"></div>
 
   <script>
@@ -79,9 +93,9 @@
         price: "$80",
         images: [
           "static/Merchandise/set_full.jpg",
-          "static/Merchandise/set_top_front.jpg", 
-          "static/Merchandise/set_top_back.jpg", 
-          "static/Merchandise/set_bottom_front.jpg", 
+          "static/Merchandise/set_top_front.jpg",
+          "static/Merchandise/set_top_back.jpg",
+          "static/Merchandise/set_bottom_front.jpg",
           "static/Merchandise/set_shorts.jpg"
         ],
         description: "Get Your Northern Flights Disc Golf jersey and shorts."
@@ -103,7 +117,7 @@
       {
         id: "006",
         name: "Custom Bag Tags",
-        price: "Starting @ $10",
+        price: "$10",
         images: ["static/Merchandise/bag_tags_multi.jpg"],
         description: "Order custom bag tags."
       },
@@ -116,6 +130,20 @@
       }
     ];
 
+    // Add to cart logic
+    function addToCart(name, price) {
+      let cart = JSON.parse(localStorage.getItem("cart") || "[]");
+      const existing = cart.find(item => item.name === name);
+      if (existing) {
+        existing.qty += 1;
+      } else {
+        cart.push({ name, price: parseFloat(price.replace("$", "")), qty: 1 });
+      }
+      localStorage.setItem("cart", JSON.stringify(cart));
+      alert(`${name} added to cart!`);
+    }
+
+    // Render products
     const list = document.getElementById("product-list");
 
     products.forEach(p => {
@@ -148,11 +176,17 @@
       price.textContent = p.price;
       card.appendChild(price);
 
-      const link = document.createElement("a");
-      link.className = "button";
-      link.href = `product.html?id=${p.id}`;
-      link.textContent = "View Details";
-      card.appendChild(link);
+      const detailsBtn = document.createElement("a");
+      detailsBtn.className = "button";
+      detailsBtn.href = `product.html?id=${p.id}`;
+      detailsBtn.textContent = "View Details";
+      card.appendChild(detailsBtn);
+
+      const cartBtn = document.createElement("button");
+      cartBtn.className = "button secondary";
+      cartBtn.textContent = "Add to Cart";
+      cartBtn.onclick = () => addToCart(p.name, p.price);
+      card.appendChild(cartBtn);
 
       list.appendChild(card);
     });

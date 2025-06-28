@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Your Cart</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background: #f9f9f9;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    table {
+      width: 100%;
+      max-width: 600px;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: center;
+    }
+
+    button {
+      padding: 6px 12px;
+      background: #007f4e;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button.remove {
+      background: #d9534f;
+    }
+
+    .total {
+      text-align: right;
+      margin-top: 10px;
+      font-size: 1.2em;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 20px;
+      color: #007f4e;
+      text-decoration: none;
+    }
+
+    form {
+      max-width: 600px;
+      margin-top: 20px;
+      padding: 15px;
+      background: #fff;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    form input, form textarea {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Your Cart</h1>
+  <div id="cart-container"></div>
+
+  <form id="order-form">
+    <h3>Send Your Order</h3>
+    <input type="text" name="user_name" placeholder="Your Name" required />
+    <input type="email" name="user_email" placeholder="Your Email" required />
+    <textarea name="cart_contents" id="cart-data" hidden></textarea>
+    <button type="submit">📧 Send My Order</button>
+  </form>
+
+  <a class="back-link" href="storefront.html">← Back to Store</a>
+
+  <!-- EmailJS -->
+  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <script>
+    emailjs.init("ev4aFq7RFTgnF6ziO"); // <-- Replace this
+  </script>
+
+  <script>
+    let cart = JSON.parse(localStorage.getItem("cart") || "[]");
+
+    function loadCart() {
+      const container = document.getElementById("cart-container");
+
+      if (!cart.length) {
+        container.innerHTML = "<p>Your cart is empty.</p>";
+        document.getElementById("order-form").style.display = "none";
+        return;
+      }
+
+      let tableHTML = `
+        <table>
+          <tr>
+            <th>Item</th>
+            <th>Qty</th>
+            <th>Price</th>
+            <th>Total</th>
+            <th>Remove</th>
+          </tr>
+      `;
+
+      let grandTotal = 0;
+      cart.forEach((item, index) => {
+        const total = item.qty * item.price;
+        grandTotal += total;
+        tableHTML += `
+          <tr>
+            <td>${item.name}</td>
+            <td>${item.qty}</td>
+            <td>$${item.price.toFixed(2)}</td>
+            <td>$${total.toFixed(2)}</td>
+            <td><button class="remove" onclick="removeItem(${index})">X</button></td>
+          </tr>
+        `;
+      });
+
+      tableHTML += `</table>
+        <div class="total"><strong>Grand Total: $${grandTotal.toFixed(2)}</strong></div>
+        <button onclick="clearCart()">🗑 Clear Cart</button>
+      `;
+
+      container.innerHTML = tableHTML;
+
+      // Fill hidden textarea with cart details
+      const cartText = cart.map(i =>
+        `${i.qty} × ${i.name} @ $${i.price.toFixed(2)}`
+      ).join('\n') + `\n\nTotal: $${grandTotal.toFixed(2)}`;
+
+      document.getElementById("cart-data").value = cartText;
+    }
+
+    function removeItem(index) {
+      cart.splice(index, 1);
+      localStorage.setItem("cart", JSON.stringify(cart));
+      loadCart();
+    }
+
+    function clearCart() {
+      localStorage.removeItem("cart");
+      cart = [];
+      loadCart();
+    }
+
+    // Handle form send
+    document.getElementById("order-form").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      emailjs.sendForm("service_agyej87", "template_ieec0nh", this)
+        .then(() => {
+          alert("✅ Order sent! We'll email you payment instructions soon.");
+          clearCart();
+          this.reset();
+        }, (err) => {
+          console.error("EmailJS error:", err);
+          alert("❌ Failed to send. Please try again.");
+        });
+    });
+
+    loadCart();
+  </script>
+
+</body>
+</html>
