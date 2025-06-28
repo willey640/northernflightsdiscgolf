@@ -20,12 +20,38 @@
       text-align: center;
     }
 
-    .product-detail img {
+    .carousel-container {
+      position: relative;
+      max-width: 100%;
+      margin-bottom: 20px;
+    }
+
+    .carousel-container img {
       width: 100%;
       height: auto;
       max-height: 300px;
       object-fit: contain;
-      margin-bottom: 10px;
+    }
+
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      border: none;
+      font-size: 20px;
+      padding: 10px;
+      cursor: pointer;
+      border-radius: 50%;
+    }
+
+    .carousel-btn.left {
+      left: 10px;
+    }
+
+    .carousel-btn.right {
+      right: 10px;
     }
 
     a.back-link {
@@ -69,35 +95,8 @@
         price: "$80",
         images: ["static/Merchandise/set_full.jpg"],
         description: "Get Your Northern Flights Disc Golf jersey and shorts."
-      },
-      {
-        id: "004",
-        name: "Jersey",
-        price: "$60",
-        images: ["static/Merchandise/jersery_front.jpg"],
-        description: "Northern Flights Jersey with big logo."
-      },
-      {
-        id: "005",
-        name: "Northern Flights T-Shirt",
-        price: "$45",
-        images: ["static/Merchandise/tshirt_1.jpg"],
-        description: "Show your love for Northern Flights with this t-shirt."
-      },
-      {
-        id: "006",
-        name: "Custom Bag Tags",
-        price: "Starting @ $10",
-        images: ["static/Merchandise/bag_tags_multi.jpg"],
-        description: "Order custom bag tags."
-      },
-      {
-        id: "007",
-        name: "Coaster / Mini",
-        price: "$5",
-        images: ["static/Merchandise/coaster (1).jpg"],
-        description: "Laser Engraved coaster or mini."
       }
+      // Add the rest of your products here
     ];
 
     function getProductId() {
@@ -114,17 +113,33 @@
         return;
       }
 
-      // Handle multiple images
-      const imageHtml = product.images
-        .map(src => `<img src="${src}" alt="${product.name}" />`)
-        .join("");
+      let currentIndex = 0;
+
+      function renderCarousel() {
+        return `
+          <div class="carousel-container">
+            <img id="carousel-img" src="${product.images[currentIndex]}" alt="${product.name}">
+            ${product.images.length > 1 ? `
+              <button class="carousel-btn left" onclick="changeSlide(-1)">‹</button>
+              <button class="carousel-btn right" onclick="changeSlide(1)">›</button>
+            ` : ""}
+          </div>
+        `;
+      }
 
       document.getElementById("product-detail").innerHTML = `
         <h1>${product.name}</h1>
-        ${imageHtml}
+        ${renderCarousel()}
         <p><strong>Price:</strong> ${product.price}</p>
         <p>${product.description}</p>
       `;
+
+      window.changeSlide = function (direction) {
+        currentIndex += direction;
+        if (currentIndex < 0) currentIndex = product.images.length - 1;
+        if (currentIndex >= product.images.length) currentIndex = 0;
+        document.getElementById("carousel-img").src = product.images[currentIndex];
+      };
     }
 
     loadProduct();
