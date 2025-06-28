@@ -95,6 +95,14 @@ body {
     background-color: #1a3421;
   }
   
+  .button.secondary {
+  background-color: #555;
+  color: #fff;
+}
+
+.button.secondary:hover {
+  background-color: #222;
+}
   /* ==== FORMS ==== */
   form {
     display: flex;
