@@ -95,6 +95,58 @@
 
   <!-- Main Content -->
   <main class="content-container">
+    <!-- Music Release -->
+    <section id="music-release" style="max-width:900px;margin:auto;padding:1.25rem 1rem;border:1px solid #e6e6e6;border-radius:12px;box-shadow:0 4px 10px rgba(0,0,0,0.06);">
+      <div style="display:flex;gap:1rem;align-items:flex-start;flex-wrap:wrap;">
+        <!-- Cover Art -->
+        <img src="static/Photos/Music/cover_art_walk_with_a_purpose.jpg"
+            alt="Single cover art"
+            style="width:160px;height:160px;object-fit:cover;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,0.1);" />
+
+        <div style="flex:1;min-width:260px;">
+          <h2 style="margin:0 0 .35rem;">Northern Flights — New Music Out Now</h2>
+          <p style="margin:.25rem 0 1rem;">
+            We’ve released our latest track <strong>“Walk With a Purpose”</strong> on
+            Spotify, Apple Music, and iTunes. Stream it below or listen on your favorite platform.
+          </p>
+
+          <!-- Platform Buttons (replace hrefs with your real links) -->
+          <div style="display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1rem;">
+            <a href="https://open.spotify.com/track/YOUR_SPOTIFY_ID" target="_blank" rel="noopener"
+              style="padding:.6rem .9rem;border-radius:999px;background:#1DB954;color:#fff;text-decoration:none;font-weight:600;">Listen on Spotify</a>
+            <a href="https://music.apple.com/album/YOUR_APPLE_MUSIC_ID" target="_blank" rel="noopener"
+              style="padding:.6rem .9rem;border-radius:999px;background:#000;color:#fff;text-decoration:none;font-weight:600;">Apple Music</a>
+            <a href="https://music.apple.com/ca/album/YOUR_ITUNES_ID" target="_blank" rel="noopener"
+              style="padding:.6rem .9rem;border-radius:999px;background:#555;color:#fff;text-decoration:none;font-weight:600;">iTunes</a>
+          </div>
+
+          <!-- HTML5 Audio Player -->
+          <audio controls preload="metadata" style="width:100%;outline:none;border-radius:8px;">
+            <!-- Replace with your file path -->
+            <source src="static/audio/walk_with_a_purpose.mp3" type="audio/mpeg" />
+            <!-- Optional second format for wider compatibility -->
+            <!-- <source src="static/audio/walk_with_a_purpose.ogg" type="audio/ogg" /> -->
+            Your browser doesn’t support the audio element.
+          </audio>
+
+          <!-- Optional: direct download link -->
+          <p style="margin-top:.5rem;">
+            <a href="static/audio/walk_with_a_purpose.mp3" download>Download the MP3</a>
+          </p>
+        </div>
+      </div>
+
+      <!-- (Optional) Spotify embed – swap the src with your track/album URL and keep this OR the buttons above -->
+      
+      <div style="margin-top:1rem;">
+        <iframe style="border-radius:12px" src="https://open.spotify.com/track/2AOCvU4vTyO1UfhvxBtqLL"
+                width="100%" height="152" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+      </div>
+     
+
+      <p style="text-align:right;font-style:italic;margin-top:.75rem;">Updated: Aug 12, 2025</p>
+    </section>
+
     <section>
       <img src="static/Photos/gallery/cheerleaders.png" alt="Cheer Team" style="max-width: 500px; width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
       <h2 style="margin-top: 1rem;">From our Cheer Team</h2>
