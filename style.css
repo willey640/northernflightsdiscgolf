@@ -322,29 +322,5 @@ section p {
   .dropdown.open .dropdown-content {
     display: block;
   }
- /* === HEADER LAYOUT FIX === */
-.site-header {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 20px; /* space between logos and text */
-  flex-wrap: wrap;
-  padding: 10px 0;
-}
-
-.site-header h1 {
-  margin: 0;
-  text-align: center;
-}
-
-.header-logo {
-  max-height: 120px; /* desktop size */
-  width: auto;
-}
-
-@media (max-width: 768px) {
-  .header-logo {
-    max-height: 80px; /* smaller on mobile */
-  }
-}
+ 
 }
