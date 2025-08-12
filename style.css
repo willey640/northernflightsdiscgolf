@@ -322,37 +322,29 @@ section p {
   .dropdown.open .dropdown-content {
     display: block;
   }
-  .site-header{
-  --header-h: clamp(44px, 7.2vw, 92px);   /* min / fluid / max header height */
-  display:grid;
-  grid-template-columns:auto 1fr auto;     /* logo | title | logo */
-  align-items:center;
-  justify-items:center;
-  gap: clamp(8px, 2vw, 24px);
-  padding: clamp(6px, 1.6vw, 14px);
-  background:#43a047;
+ /* === HEADER LAYOUT FIX === */
+.site-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px; /* space between logos and text */
+  flex-wrap: wrap;
+  padding: 10px 0;
 }
 
-.site-header h1{
-  margin:0;
-  color:#fff;
-  text-align:center;
-  font-size: clamp(1.05rem, 2.4vw, 2rem);
-  line-height:1.1;
+.site-header h1 {
+  margin: 0;
+  text-align: center;
 }
 
-/* Proportional logo, scoped to the header only */
-.header-logo{
-  height: var(--header-h);
+.header-logo {
+  max-height: 120px; /* desktop size */
   width: auto;
-  aspect-ratio: 1 / 1;   /* keeps it square */
-  object-fit: contain;
-  display:block;
 }
 
-/* Hide right logo on smaller screens */
-@media (max-width: 640px){
-  .right-logo{ display:none; }
-  .site-header{ grid-template-columns:auto 1fr; }
+@media (max-width: 768px) {
+  .header-logo {
+    max-height: 80px; /* smaller on mobile */
+  }
 }
 }
