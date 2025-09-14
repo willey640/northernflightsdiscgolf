@@ -7,25 +7,39 @@
   <link rel="icon" href="favicon.ico" type="image/x-icon">
   <link rel="canonical" href="https://northernflightsdiscgolf.ca/" />
   <link rel="stylesheet" href="style.css" />
+
   <!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-2YSRP05HJK"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-2YSRP05HJK"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-2YSRP05HJK');
+  </script>
+  <!-- End Google Analytics -->
 
-  gtag('config', 'G-2YSRP05HJK');
-</script>
-<!-- End Google Analytics -->
-
+  <!-- Inline responsive header style -->
+  <style>
+    @media (max-width: 560px) {
+      header { flex-wrap: wrap; }
+      header h1 { flex-basis: 100%; order: 2; text-align: center; }
+      header img { order: 1; margin: auto; }
+    }
+    @media (min-width: 1600px) {
+      header h1 { display: none; } /* hide text on huge screens */
+    }
+  </style>
 </head>
 <body>
 
   <!-- Header Section -->
-  <header>
-    <h1>Northern Flights Disc Golf Inc.</h1>
-    <img src="static/Photos/Logos/offical NFDG logo.png" style="max-height:120px; width:auto;" alt="Northern Flights Logo" class="header-logo">
-    
+  <header style="display:flex; align-items:center; justify-content:center; gap:12px; flex-wrap:nowrap; padding:10px; background:#64b74d;">
+    <img src="static/Photos/Logos/offical NFDG logo.png"
+         alt="Northern Flights Logo"
+         style="max-height:80px; width:auto; flex:0 0 auto; display:block;" />
+    <h1 style="margin:0; font-size:clamp(1.25rem, 2.5vw, 2rem); line-height:1.2; color:#fff; flex:1 1 auto; text-align:center;">
+      Northern Flights Disc Golf Inc.
+    </h1>
   </header>
 
   <!-- Navigation Bar -->
@@ -69,7 +83,6 @@
           <li><a href="submit_a_tip.html">Submit a Tip</a></li>
         </ul>
       </li>
-      
 
       <li class="dropdown">
         <a href="resources.html">Resources ▾</a>
@@ -84,7 +97,7 @@
           <li><a href="map.html">Map</a></li>
           <li><a href="gallery.html">Gallery</a></li>
           <li><a href="submit-photo.html">Send us Photos</a></li>
-          <li><a href="archived_players_site.html">Archived Website</a></li>
+          <li><a href="archived.html">Archived Website</a></li>
         </ul>
       </li>
       <li><a href="contact.html">Contact Us</a></li>
@@ -92,23 +105,17 @@
   </nav>
 
   <script src="script.js"></script>
-  
 
   <!-- Main Content -->
   <main class="content-container">
-    
-
     <section id="song-challenge" style="max-width:900px;margin:auto;padding:1.25rem 1rem;border:1px solid #e6e6e6;border-radius:12px;box-shadow:0 4px 10px rgba(0,0,0,0.06);background:#fff;">
       <h2 style="margin:0 0 .5rem;">🎵 Disc Golf Song Challenge. Enter Now!</h2>
-      <img src="static/Photos/gallery/disc_golfers.png" alt="Disc Golfers" style="max-width: 500px; width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
-      
+      <img src="static/Photos/gallery/disc_golfers.png" alt="Disc Golfers" style="max-width: 500px; width: 100%; height: auto; border-radius: 12px; box-shadow:0 4px 10px rgba(0,0,0,0.1);">
       <p style="margin:.25rem 0 1rem;">
         Make an original <strong>disc golf</strong> song with ElevenLabs Music AI and submit it to Northern Flights! 
         Bonus points if you mention <strong>Northern Flights</strong> in your lyrics. We’ll release selected tracks on Spotify/Apple Music, 
         and the best one wins a prize.
       </p>
-
-      <!-- Action buttons -->
       <div style="display:flex;gap:.5rem;flex-wrap:wrap;margin:.75rem 0 1rem;">
         <a href="https://www.youtube.com/watch?v=yH-wn97tFvA" target="_blank" rel="noopener"
            style="padding:.6rem .9rem;border-radius:999px;background:#FF0000;color:#fff;text-decoration:none;font-weight:600;">Watch the How-To Video</a>
@@ -119,8 +126,6 @@
         <a href="mailto:media@northernflightsdiscgolf.ca?subject=Disc%20Golf%20Song%20Challenge%20Submission"
            style="padding:.6rem .9rem;border-radius:999px;background:#1DB954;color:#fff;text-decoration:none;font-weight:600;">Submit Your Song</a>
       </div>
-
-      <!-- Quick Rules -->
       <ul style="margin:.5rem 0 1rem; padding-left:1.25rem;">
         <li>Song must relate to <strong>disc golf</strong>. Any genre.</li>
         <li><em>Bonus:</em> Mention <strong>Northern Flights</strong> in the lyrics.</li>
@@ -128,8 +133,6 @@
         <li>You grant Northern Flights permission to release it on Spotify, Apple Music, and other platforms. <strong>You keep all ownership</strong>.</li>
         <li>Export as <strong>MP3 or WAV</strong> and email it to <a href="mailto:media@northernflightsdiscgolf.ca">media@northernflightsdiscgolf.ca</a>.</li>
       </ul>
-
-      <!-- Submission Email Example -->
       <details style="margin:.5rem 0 0;">
         <summary style="cursor:pointer;font-weight:700;">📧 Submission Email Example</summary>
         <div style="margin-top:.5rem;border:1px solid #eee;border-radius:8px;padding:.75rem;background:#fafafa;">
@@ -149,140 +152,83 @@
           </p>
         </div>
       </details>
-
       <p style="text-align:right;font-style:italic;margin-top:.75rem;">Aug 15, 2025</p>
     </section>
-  
-
 
     <!-- Music Release -->
     <section id="music-release" style="max-width:900px;margin:auto;padding:1.25rem 1rem;border:1px solid #e6e6e6;border-radius:12px;box-shadow:0 4px 10px rgba(0,0,0,0.06);">
       <div style="display:flex;gap:1rem;align-items:flex-start;flex-wrap:wrap;">
-        <!-- Cover Art -->
         <img src="static/Photos/Music/cover_art_walk_with_a_purpose.png"
-            alt="Single cover art"
-            style="width:160px;height:160px;object-fit:cover;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,0.1);" />
-
+             alt="Single cover art"
+             style="width:160px;height:160px;object-fit:cover;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,0.1);" />
         <div style="flex:1;min-width:260px;">
           <h2 style="margin:0 0 .35rem;">Northern Flights — New Music Out Now</h2>
           <p style="margin:.25rem 0 1rem;">
             We’ve released our latest track <strong>“Walk With a Purpose”</strong> on
             Spotify, Apple Music, and iTunes. Stream it below or listen on your favorite platform.
           </p>
-
-          <!-- Platform Buttons (replace hrefs with your real links) -->
           <div style="display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1rem;">
             <a href="https://open.spotify.com/artist/3ImJYjCZEo8HE2xTktclZy" target="_blank" rel="noopener"
-              style="padding:.6rem .9rem;border-radius:999px;background:#1DB954;color:#fff;text-decoration:none;font-weight:600;">Listen on Spotify</a>
+               style="padding:.6rem .9rem;border-radius:999px;background:#1DB954;color:#fff;text-decoration:none;font-weight:600;">Listen on Spotify</a>
             <a href="https://music.apple.com/us/artist/northern-flights-disc-golf-inc/1831604398" target="_blank" rel="noopener"
-              style="padding:.6rem .9rem;border-radius:999px;background:#000;color:#fff;text-decoration:none;font-weight:600;">Apple Music</a>
+               style="padding:.6rem .9rem;border-radius:999px;background:#000;color:#fff;text-decoration:none;font-weight:600;">Apple Music</a>
             <a href="https://music.amazon.ca/artists/B0FLHPCWBL/northern-flights-disc-golf-inc" target="_blank" rel="noopener"
-              style="padding:.6rem .9rem;border-radius:999px;background:#555;color:#fff;text-decoration:none;font-weight:600;">Amazon Music</a>
+               style="padding:.6rem .9rem;border-radius:999px;background:#555;color:#fff;text-decoration:none;font-weight:600;">Amazon Music</a>
           </div>
-
-          <!-- HTML5 Audio Player -->
           <audio controls preload="metadata" style="width:100%;outline:none;border-radius:8px;">
-            <!-- Replace with your file path -->
             <source src="static/audio/walk_with_a_purpose.mp3" type="audio/mpeg" />
-            <!-- Optional second format for wider compatibility -->
-            <!-- <source src="static/audio/walk_with_a_purpose.ogg" type="audio/ogg" /> -->
             Your browser doesn’t support the audio element.
           </audio>
-
-        
         </div>
       </div>
-
-        
-
-
-
       <p style="text-align:right;font-style:italic;margin-top:.75rem;">Updated: Aug 12, 2025</p>
     </section>
 
     <section>
-      <img src="static/Photos/gallery/cheerleaders.png" alt="Cheer Team" style="max-width: 500px; width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+      <img src="static/Photos/gallery/cheerleaders.png" alt="Cheer Team" style="max-width: 500px; width: 100%; height: auto; border-radius: 12px; box-shadow:0 4px 10px rgba(0,0,0,0.1);">
       <h2 style="margin-top: 1rem;">From our Cheer Team</h2>
       <p style="font-size: 1.25rem;">Get outside and play! Have a great August Long Weekend!</p>
       <p style="text-align: right; font-style: italic; margin-right: 1rem;">Aug 2, 2025</p>
     </section>
+
     <section>
       <h2>July 18, 2025 – Sponsor Spotlight: VSDC Video Editor</h2>
       <a href="https://www.videosoftdev.com" target="_blank">
         <img src="static/Photos/Sponsors/VSDC_Thank_you.png" alt="VSDC Video Editor Logo" style="width: auto; max-height: 75vh;" />
       </a>
-
-
-      <p>
-        <strong>Northern Flights Disc Golf is proud to welcome VSDC Video Editor</strong> as an official sponsor! As a powerful, user-friendly editing tool, VSDC helps bring our disc golf highlights and promo content to life. Making every shot, every flight, and every moment look its best.
-      </p>
-
-      <p>
-        With VSDC’s support, we're able to produce high-quality videos that showcase the beauty of Northern disc golf — from the rolling hills to the chains crashing. Whether it's tournament recaps, player features, or course previews, VSDC makes it possible.
-      </p>
-
-      <p>
-        <strong>Thank you, VSDC, for believing in our mission</strong> to grow the sport and share the stories of the North. Your partnership helps us reach new players, new communities, and new heights!
-      </p>
-
-      <p>
-        Learn more about their amazing video editing software at <a href="https://www.videosoftdev.com" target="_blank">videosoftdev.com</a>.
-      </p>
+      <p><strong>Northern Flights Disc Golf is proud to welcome VSDC Video Editor</strong> as an official sponsor! As a powerful, user-friendly editing tool, VSDC helps bring our disc golf highlights and promo content to life.</p>
+      <p>With VSDC’s support, we're able to produce high-quality videos that showcase the beauty of Northern disc golf — from the rolling hills to the chains crashing.</p>
+      <p><strong>Thank you, VSDC, for believing in our mission</strong> to grow the sport and share the stories of the North.</p>
+      <p>Learn more at <a href="https://www.videosoftdev.com" target="_blank">videosoftdev.com</a>.</p>
       <p style="text-align: right; font-style: italic; margin-right: 1rem;">July 30, 2025</p>
     </section>
 
     <section>
       <h2>July 12, 2025 – Ski Hill Tournament</h2>
       <img src="static/Photos/Logos/WPU_logo.png" alt="Canada Day Logo" style="width: auto; max-height: 75vh;" />
-
-      <p>
-        <strong>Northern Flights Disc Golf presents:</strong> the first stop of our Wellness Tour, happening Saturday, July 12 at the Flin Flon Ski Hill! This unique pop-up disc golf course takes players on a scenic hike with elevation changes, uphill and downhill shots, and beautiful views.
-      </p>
-
-      <p>
-        This <strong>free, all-ages event</strong> is designed to get our community outdoors and active. New players are welcome — if you've never played before, you can choose a <strong>free disc</strong> to keep!
-      </p>
-
-      <p>
-        Enjoy a <strong>free hot dog and drink</strong> (non-alcoholic), and enter to win <strong>prizes from our generous local sponsors</strong>: Creighton's Pizza, Domino's, The Rack, Gardewine, and Hudbay.
-      </p>
-
-      <p>
-        Please wear appropriate footwear, as the course winds through hilly, natural terrain. Bring your discs, your friends, and your best throws — it’s going to be a great day on the hill!
-      </p>
+      <p><strong>Northern Flights Disc Golf presents:</strong> the first stop of our Wellness Tour at the Flin Flon Ski Hill!</p>
+      <p>This <strong>free, all-ages event</strong> is designed to get our community outdoors and active. New players welcome — choose a <strong>free disc</strong> to keep!</p>
+      <p>Enjoy a <strong>free hot dog and drink</strong> (non-alcoholic), and enter to win <strong>prizes from our sponsors</strong>: Creighton's Pizza, Domino's, The Rack, Gardewine, and Hudbay.</p>
     </section>
-  <section>
-    <h2>Have a Great Canada Day!</h2>
-    <img src="static/Photos/Logos/canada_logo.png" alt="Canada Day Logo" style="width: auto; max-height: 75vh;" />
 
-    <p>
-      <strong>From Northern Flights Disc Golf:</strong> Have a great Canada Day! We hope you all have a wonderful time 
-      celebrating. Whether you're on the course or enjoying time with family and friends, let's take a moment to 
-      appreciate the beauty of Canada and the joy of disc golf.
-    </p>
+    <section>
+      <h2>Have a Great Canada Day!</h2>
+      <img src="static/Photos/Logos/canada_logo.png" alt="Canada Day Logo" style="width: auto; max-height: 75vh;" />
+      <p><strong>From Northern Flights Disc Golf:</strong> Have a great Canada Day!</p>
+    </section>
 
-  </section>
-  <section>
+    <section>
       <h2>Financial Statement Released.</h2>
       <img src="static/Photos/Logos/stock_logo.png" alt="Northern Flights Logo" style="width: auto; max-height: 75vh;" />
-      <a href="static/files/Reports/2025 NFDG Q2 Report.pdf" target="_blank" rel="noopener noreferrer">
-  View Our Q2 Financial Report (PDF)
-</a>
-
-      <p>
-        Click on the link above to view our latest financial report for the second quarter of 2025. This report provides a detailed overview of our financial performance, including income, expenses, and key metrics. We are committed to transparency and accountability in our operations, and we encourage you to review the report to understand how we are managing our resources.
-      </p>
-  </section>
-     
+      <a href="static/files/Reports/2025 NFDG Q2 Report.pdf" target="_blank" rel="noopener noreferrer">View Our Q2 Financial Report (PDF)</a>
+      <p>We’re committed to transparency and accountability in our operations. Review the report to see how we’re managing resources.</p>
+    </section>
 
     <!-- Mission Statement Section -->
-  <section>
+    <section>
       <h2>Our Mission Statement</h2>
       <p>Our mission is to ignite a passion for disc golf across Northern Canada by building accessible and sustainable courses, sponsoring emerging talent, and hosting dynamic tournaments. We strive to create inclusive recreational opportunities that bring communities together, promote healthy lifestyles, and celebrate the beauty of the outdoors.</p>
-  </section>
-
-    <!-- Mission Statement Section -->
-    
+    </section>
 
   </main>
 
@@ -290,9 +236,9 @@
   <footer>
     <p>&copy; 2025 All rights reserved. Northern Flights Disc Golf Inc.</p>
   </footer>
+
   <elevenlabs-convai agent-id="agent_01jyhzm9jqfd9v1t1tdp76rhre"></elevenlabs-convai>
   <script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async></script>
-
 
 </body>
 </html>
