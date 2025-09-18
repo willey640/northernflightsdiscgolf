@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Northern Flights Store</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background: #f8f8f8;
+    }
+
+    .content-wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .store-header {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin: 10px 0 20px;
+    }
+
+    .store-header h1 {
+      margin: 0;
+    }
+
+    #cart-link {
+      margin-left: auto;
+      font-size: 16px;
+    }
+
+    .product-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .product-card {
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 15px;
+      background: #fff;
+      width: 200px;
+      text-align: center;
+      transition: box-shadow 0.2s;
+    }
+
+    .product-card:hover {
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    .product-card img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    a.button {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 8px 12px;
+      background: #007f4e;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 4px;
+    }
+
+    a.button.secondary {
+      background: #3f9e1f;
+      margin-left: 6px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Nav (kept consistent with your site, but no scripts) -->
+  <nav class="navbar">
+    <ul class="nav-links" id="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li class="dropdown">
+        <a href="governance.html">Corporate▾</a>
+        <ul class="dropdown-content">
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="governance.html">Governance</a></li>
+          <li><a href="donation.html">Donate</a></li>
+          <li><a href="volunteer.html">Volunteer</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </li>
+      <li class="dropdown">
+        <a href="events.html">Events ▾</a>
+        <ul class="dropdown-content">
+          <li><a href="bagtag.html">Bag Tags</a></li>
+          <li><a href="popup.html">Pop Up Course</a></li>
+          <li><a href="league.html">League</a></li>
+        </ul>
+      </li>
+      <li class="dropdown">
+        <a href="store_front.html">Store ▾</a>
+        <ul class="dropdown-content">
+          <li><a href="store_front.html">Merchandise</a></li>
+          <li><a href="custom_merch.html">Custom Items</a></li>
+          <li><a href="disc_exchange.html">Disc Exchange</a></li>
+        </ul>
+      </li>
+      <li class="dropdown">
+        <a href="flightschool.html">Flight School▾</a>
+        <ul class="dropdown-content">
+          <li><a href="training.html">Training</a></li>
+          <li><a href="nutrition.html">Nutrition</a></li>
+          <li><a href="disc_golf_basics.html">Learn how to play</a></li>
+          <li><a href="submit_a_tip.html">Submit a Tip</a></li>
+        </ul>
+      </li>
+      <li class="dropdown">
+        <a href="resources.html">Resources ▾</a>
+        <ul class="dropdown-content">
+          <li><a href="entertainment.html">Entertainment</a></li>
+          <li><a href="cards.html">Trading Card</a></li>
+          <li><a href="mario.html">Mario Golf 64</a></li>
+          <li><a href="lotto.html">Lotto</a></li>
+          <li><a href="running.html">Disc Game</a></li>
+          <li><a href="jokes.html">Jokes</a></li>
+          <li><a href="running.html">Games</a></li>
+          <li><a href="map.html">Map</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="submit-photo.html">Send us Photos</a></li>
+          <li><a href="archived_players_site.html">Archived Website</a></li>
+        </ul>
+      </li>
+      <li><a href="contact.html">Contact Us</a></li>
+    </ul>
+  </nav>
+
+  <div class="content-wrap">
+    <div class="store-header">
+      <h1>Northern Flights Disc Golf Store</h1>
+      <a href="cart.html" id="cart-link">🛒 View Cart</a>
+    </div>
+
+    <!-- Static product grid (one photo each, no JS) -->
+    <div class="product-grid">
+      <div class="product-card">
+        <img src="static/fake_merch/peter_funko.png" alt="Grip Sac">
+        <h3>01 Peter</h3>
+        <p>$5000</p>
+
+      </div>
+
+      <div class="product-card">
+        <img src="static/Merchandise/puck_3.jpg" alt="Northern Flights Disc Downer">
+        <h3>Northern Flights Disc Downer</h3>
+        <p>$10</p>
+
+      </div>
+
+      <div class="product-card">
+        <img src="static/fake_merch/barko_funk.png" alt="Barlo Funko Pop">
+        <h3>03 Barlo</h3>
+        <p>$5000</p>
+        <a class="button" href="product.html?id=001">View Details</a>
+      </div>
+
+      <div class="product-card">
+        <img src="static/fake_merch/goose_funko.png" alt="Goose Funko Pop">
+        <h3>04 Goose</h3>
+        <p>$5000</p>
+        <a class="button" href="product.html?id=002">View Details</a>
+      </div>
+
+      <div class="product-card">
+        <img src="static/fake_merch/Ned_funko_5.png" alt="Jersey and Short Set">
+        <h3>05 Ned</h3>
+        <p>$5000</p>
+        <a class="button" href="product.html?id=003">View Details</a>
+      </div>
+
+      <div class="product-card">
+        <img src="static/fake_merch/mrs_basket.png" alt="Ms Basket">
+        <h3>06 Ms Basket</h3>
+        <p>$5000</p>
+        <a class="button" href="product.html?id=004">View Details</a>
+      </div>
+
+      <div class="product-card">
+        <img src="static/Merchandise/tshirt_1.jpg" alt="Northern Flights T-Shirt">
+        <h3>Northern Flights T-Shirt</h3>
+        <p>$45</p>
+        <a class="button" href="product.html?id=005">View Details</a>
+      </div>
+
+      <div class="product-card">
+        <img src="static/Merchandise/bag_tags_multi.jpg" alt="Custom Bag Tags">
+        <h3>Custom Bag Tags</h3>
+        <p>$10</p>
+        <a class="button" href="product.html?id=006">View Details</a>
+      </div>
+
+      <div class="product-card">
+        <img src="static/Merchandise/coaster (1).jpg" alt="Coaster / Mini">
+        <h3>Coaster / Mini</h3>
+        <p>$5</p>
+        <a class="button" href="product.html?id=007">View Details</a>
+      </div>
+
+      <div class="product-card">
+        <img src="static/Merchandise/sticker.jpg" alt="Stickers">
+        <h3>Stickers</h3>
+        <p>$4</p>
+        <a class="button" href="product.html?id=010">View Details</a>
+      </div>
+
+      <div class="product-card">
+        <img src="static/Merchandise/magnet (1).jpg" alt="Assorted Magnets">
+        <h3>Assorted Magnets</h3>
+        <p>$4</p>
+        <a class="button" href="product.html?id=012">View Details</a>
+      </div>
+
+      <div class="product-card">
+        <img src="static/Merchandise/pin (1).jpg" alt="Northern Flights Pin">
+        <h3>Northern Flights Pin</h3>
+        <p>$10</p>
+        <a class="button" href="product.html?id=013">View Details</a>
+      </div>
+
+      <div class="product-card">
+        <img src="static/Merchandise/sign_No_smoking.png" alt="Metals Course Sign">
+        <h3>Metals Course Sign</h3>
+        <p>$20</p>
+        <a class="button" href="product.html?id=008">View Details</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- No scripts on this page -->
+</body>
+</html>
