@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Characters | Northern Flights Disc Golf</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="canonical" href="https://northernflightsdiscgolf.ca/" />
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-2YSRP05HJK"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-2YSRP05HJK');
+  </script>
+
+  <style>
+    @media (max-width: 560px) {
+      header { flex-wrap: wrap; }
+      header h1 { flex-basis: 100%; order: 2; text-align: center; }
+      header img { order: 1; margin: auto; }
+    }
+    @media (min-width: 1600px) {
+      header h1 { display: none; }
+    }
+
+    .char-toolbar {
+      display: flex; gap: 10px; align-items: center; justify-content: space-between;
+      margin: 12px 0 6px;
+    }
+    .char-toolbar input[type="search"]{
+      width: 100%; max-width: 420px; padding: 10px 12px; border: 1px solid #ccc;
+      border-radius: 10px; font-size: 1rem;
+    }
+    .char-grid{
+      display:grid; gap:16px;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    }
+    .char-card{
+      background:#fff; border:1px solid #e5e5e5; border-radius:12px;
+      box-shadow:0 2px 8px rgba(0,0,0,.06);
+      overflow:hidden; display:flex; flex-direction:column; transition: transform .12s ease, box-shadow .12s ease;
+    }
+    .char-card:hover{ transform: translateY(-2px); box-shadow:0 6px 16px rgba(0,0,0,.12); }
+    .char-thumb{
+      width:100%; aspect-ratio:1/1; object-fit:cover; display:block;
+    }
+    .char-body{ padding:12px; display:flex; flex-direction:column; gap:8px; }
+    .char-name{ margin:0; font-size:1.1rem; }
+    .char-blurb{ margin:0; color:#555; font-size:.95rem; line-height:1.4; min-height:2.7em; }
+    .char-actions{ margin-top:auto; display:flex; justify-content:space-between; align-items:center; gap:8px; }
+    .char-actions a{
+      display:inline-block; padding:8px 12px; border:1px solid #222; border-radius:8px; text-decoration:none; font-weight:600;
+    }
+    .char-actions a:hover{ background:#111; color:#fff; }
+    .tag-pill{
+      font-size:.8rem; padding:4px 8px; border-radius:999px; background:#eef7ee; color:#2e7d32; border:1px solid #cfe9cf;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header style="display:flex; align-items:center; justify-content:center; gap:12px; flex-wrap:nowrap; padding:10px; background:#64b74d;">
+    <img src="static/Photos/Logos/offical NFDG logo.png"
+         alt="Northern Flights Logo"
+         style="max-height:80px; width:auto; flex:0 0 auto; display:block;" />
+    <h1 style="margin:0; font-size:clamp(1.25rem, 2.5vw, 2rem); line-height:1.2; color:#fff; flex:1 1 auto; text-align:center;">
+      Northern Flights Characters
+    </h1>
+  </header>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="hamburger" id="hamburger">&#9776;</div>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li class="dropdown">
+        <a href="governance.html">Corporate▾</a>
+        <ul class="dropdown-content">
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="governance.html">Governance</a></li>          
+          <li><a href="donation.html">Donate</a></li>
+          <li><a href="volunteer.html">Volunteer</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </li>
+      <li class="dropdown">
+        <a href="events.html">Events ▾</a>
+        <ul class="dropdown-content">
+          <li><a href="bagtag.html">Bag Tags</a></li>
+          <li><a href="popup.html">Pop Up Course</a></li>
+          <li><a href="league.html">League</a></li>          
+        </ul>
+      </li>
+      <li class="dropdown">
+        <a href="store_front.html">Store ▾</a>
+        <ul class="dropdown-content">
+          <li><a href="store_front.html">Merchandise</a></li>
+          <li><a href="custom_merch.html">Custom Items</a></li>          
+          <li><a href="disc_exchange.html">Disc Exchange</a></li>
+        </ul>
+      </li>
+      <li class="dropdown">
+        <a href="flightschool.html">Flight School▾</a>
+        <ul class="dropdown-content">
+          <li><a href="training.html">Training</a></li>
+          <li><a href="nutrition.html">Nutrition</a></li>
+          <li><a href="disc_golf_basics.html">Learn how to play</a></li>    
+          <li><a href="submit_a_tip.html">Submit a Tip</a></li>
+        </ul>
+      </li>
+      <li class="dropdown">
+        <a href="resources.html">Resources ▾</a>
+        <ul class="dropdown-content">
+          <li><a href="entertainment.html">Entertainment</a></li>
+          <li><a href="cards.html">Trading Card</a></li>
+          <li><a href="joke_store.html">Joke Store</a></li>
+          <li><a href="lotto.html">Lotto</a></li>
+          <li><a href="running.html">Disc Game</a></li>
+          <li><a href="logos1.html">Logo Collection</a></li>
+          <li><a href="map.html">Map</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="submit-photo.html">Send us Photos</a></li>
+          <li><a href="archived.html">Archived Website</a></li>
+        </ul>
+      </li>
+      <li><a href="contact.html">Contact Us</a></li>
+    </ul>
+  </nav>
+
+  <script src="script.js"></script>
+
+  <!-- Main Content -->
+  <main class="content-container">
+    <section>
+      <h2>Meet the Northern Flights Universe</h2>
+      <div class="char-toolbar">
+        <p class="tag-pill" id="char-count">0 characters</p>
+        <input type="search" id="char-search" placeholder="Search characters…" aria-label="Search characters" />
+      </div>
+      <div class="char-grid" id="char-grid" aria-live="polite"></div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 All rights reserved. Northern Flights Disc Golf Inc.</p>
+  </footer>
+
+  <!-- Characters -->
+  <script>
+    const CHARACTERS = [
+      {
+        name: "Barlo the Sasquatch",
+        thumb: "static/Photos/Characters/barlo_main.jpg",
+        page: "barlo.html",
+        blurb: "Guardian of the North. Big heart, bigger hyzers."
+      },
+      {
+        name: "Willie the Monster",
+        thumb: "static/Photos/Characters/willie_main.jpg",
+        page: "willie.html",
+        blurb: "Wild energy on the fairway. Mischievous, fearless, and oddly lovable."
+      },
+      {
+        name: "The Robot",
+        thumb: "static/Photos/Characters/robot_main.jpg",
+        page: "robot.html",
+        blurb: "Precision-engineered for perfect drives. Emotion subroutines still in beta."
+      },
+      {
+        name: "Bogey Man",
+        thumb: "static/Photos/Characters/bogey_main.jpg",
+        page: "bogey.html",
+        blurb: "He whispers 'Nice' mid-flight… and trees appear."
+      }
+    ];
+
+    const grid = document.getElementById("char-grid");
+    const searchInput = document.getElementById("char-search");
+    const countPill = document.getElementById("char-count");
+
+    function render(list){
+      grid.innerHTML = "";
+      list.forEach(ch => {
+        const card = document.createElement("article");
+        card.className = "char-card";
+        card.innerHTML = `
+          <img class="char-thumb" src="${ch.thumb}" alt="${ch.name}" loading="lazy" />
+          <div class="char-body">
+            <h3 class="char-name">${ch.name}</h3>
+            <p class="char-blurb">${ch.blurb || ""}</p>
+            <div class="char-actions">
+              <a href="${ch.page}">View Profile</a>
+              <span class="tag-pill">Character</span>
+            </div>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+      countPill.textContent = \`\${list.length} character\${list.length===1?"":"s"}\`;
+    }
+
+    render(CHARACTERS);
+
+    searchInput.addEventListener("input", () => {
+      const q = searchInput.value.trim().toLowerCase();
+      if (!q) return render(CHARACTERS);
+      const filtered = CHARACTERS.filter(ch =>
+        ch.name.toLowerCase().includes(q) ||
+        (ch.blurb||"").toLowerCase().includes(q)
+      );
+      render(filtered);
+    });
+  </script>
+
+</body>
+</html>

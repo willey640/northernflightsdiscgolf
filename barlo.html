@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title><!-- Character Name --> | Northern Flights Disc Golf</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="canonical" href="https://northernflightsdiscgolf.ca/" />
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Google Analytics (same as index.html) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-2YSRP05HJK"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-2YSRP05HJK');
+  </script>
+
+  <!-- Inline responsive header style (same rules as index.html) -->
+  <style>
+    @media (max-width: 560px) {
+      header { flex-wrap: wrap; }
+      header h1 { flex-basis: 100%; order: 2; text-align: center; }
+      header img { order: 1; margin: auto; }
+    }
+    @media (min-width: 1600px) {
+      header h1 { display: none; }
+    }
+    /* Character-specific bits (kept minimal to use your global styles) */
+    .char-hero {
+      display:block; margin:24px auto; width:100%; max-width:900px;
+      border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,.15); object-fit:cover;
+    }
+    .bio-card {
+      background:#fff; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,.08);
+      padding:18px; margin: 14px 0;
+    }
+    .bio-card h2 { margin-top:0; }
+    .char-gallery {
+      display:grid; gap:14px; grid-template-columns:repeat(auto-fill,minmax(160px,1fr));
+    }
+    .char-gallery img {
+      width:100%; aspect-ratio:1/1; object-fit:cover; border-radius:10px; cursor:zoom-in;
+      box-shadow:0 2px 8px rgba(0,0,0,.12); transition:transform .15s ease;
+    }
+    .char-gallery img:hover { transform: scale(1.03); }
+
+    /* Lightbox (simple & lightweight) */
+    .lightbox {
+      position: fixed; inset: 0; background: rgba(0,0,0,.85);
+      display:none; align-items:center; justify-content:center; z-index:1000; padding:20px;
+    }
+    .lightbox.open { display:flex; }
+    .lightbox img { max-width:95vw; max-height:90vh; border-radius:12px; }
+    .lightbox .close {
+      position:absolute; top:16px; right:16px; background:#fff; border:0; border-radius:999px;
+      padding:8px 12px; font-weight:700; cursor:pointer;
+      box-shadow:0 2px 8px rgba(0,0,0,.25);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header bar (matches index.html) -->
+  <header style="display:flex; align-items:center; justify-content:center; gap:12px; flex-wrap:nowrap; padding:10px; background:#64b74d;">
+    <img src="static/Photos/Logos/offical NFDG logo.png"
+         alt="Northern Flights Logo"
+         style="max-height:80px; width:auto; flex:0 0 auto; display:block;" />
+    <h1 style="margin:0; font-size:clamp(1.25rem, 2.5vw, 2rem); line-height:1.2; color:#fff; flex:1 1 auto; text-align:center;">
+      <!-- Character Name --> — Northern Flights Character
+    </h1>
+  </header>
+
+  <!-- Navigation Bar (exact structure from your site) -->
+  <nav class="navbar">
+    <div class="hamburger" id="hamburger">&#9776;</div>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li class="dropdown">
+        <a href="governance.html">Corporate▾</a>
+        <ul class="dropdown-content">
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="governance.html">Governance</a></li>          
+          <li><a href="donation.html">Donate</a></li>
+          <li><a href="volunteer.html">Volunteer</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </li>
+      <li class="dropdown">
+        <a href="events.html">Events ▾</a>
+        <ul class="dropdown-content">
+          <li><a href="bagtag.html">Bag Tags</a></li>
+          <li><a href="popup.html">Pop Up Course</a></li>
+          <li><a href="league.html">League</a></li>          
+        </ul>
+      </li>
+      <li class="dropdown">
+        <a href="store_front.html">Store ▾</a>
+        <ul class="dropdown-content">
+          <li><a href="store_front.html">Merchandise</a></li>
+          <li><a href="custom_merch.html">Custom Items</a></li>          
+          <li><a href="disc_exchange.html">Disc Exchange</a></li>
+        </ul>
+      </li>
+      <li class="dropdown">
+        <a href="flightschool.html">Flight School▾</a>
+        <ul class="dropdown-content">
+          <li><a href="training.html">Training</a></li>
+          <li><a href="nutrition.html">Nutrition</a></li>
+          <li><a href="disc_golf_basics.html">Learn how to play</a></li>    
+          <li><a href="submit_a_tip.html">Submit a Tip</a></li>
+        </ul>
+      </li>
+      <li class="dropdown">
+        <a href="resources.html">Resources ▾</a>
+        <ul class="dropdown-content">
+          <li><a href="entertainment.html">Entertainment</a></li>
+          <li><a href="cards.html">Trading Card</a></li>
+          <li><a href="joke_store.html">Joke Store</a></li>
+          <li><a href="lotto.html">Lotto</a></li>
+          <li><a href="running.html">Disc Game</a></li>
+          <li><a href="logos1.html">Logo Collection</a></li>
+          <li><a href="running.html">Games</a></li>  
+          <li><a href="map.html">Map</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="submit-photo.html">Send us Photos</a></li>
+          <li><a href="archived.html">Archived Website</a></li>
+        </ul>
+      </li>
+      <li><a href="contact.html">Contact Us</a></li>
+    </ul>
+  </nav>
+
+  <script src="script.js"></script>
+
+  <!-- Main Content -->
+  <main class="content-container">
+    <!-- Big Character Name (page title) -->
+    <section>
+      <h2><!-- Character Name --></h2>
+      <!-- Large hero image (replace the src) -->
+      <img src="static/Photos/Characters/CHAR_KEY_main.jpg"
+           alt="<!-- Character Name --> main image"
+           class="char-hero" />
+    </section>
+
+    <!-- Bio / Backstory -->
+    <section class="bio-card">
+      <h2>Bio</h2>
+      <p>
+        <!-- Write a short, engaging bio for the character. Who are they?
+             What’s their vibe/personality? How do they connect to Northern Flights? -->
+      </p>
+      <h2>Backstory</h2>
+      <p>
+        <!-- Tell the origin story and fun lore. Where did they come from,
+             memorable moments, rivalries, signature disc/shot, etc. -->
+      </p>
+    </section>
+
+    <!-- Gallery -->
+    <section>
+      <h2><!-- Character Name --> — Gallery</h2>
+      <div class="char-gallery" id="char-gallery">
+        <!-- Replace these with your images -->
+        <img src="static/Photos/Characters/CHAR_KEY_01.jpg" alt="<!-- Character Name --> image 1" loading="lazy" />
+        <img src="static/Photos/Characters/CHAR_KEY_02.jpg" alt="<!-- Character Name --> image 2" loading="lazy" />
+        <img src="static/Photos/Characters/CHAR_KEY_03.jpg" alt="<!-- Character Name --> image 3" loading="lazy" />
+        <img src="static/Photos/Characters/CHAR_KEY_04.jpg" alt="<!-- Character Name --> image 4" loading="lazy" />
+      </div>
+    </section>
+  </main>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <button class="close" id="lb-close" aria-label="Close">✕</button>
+    <img id="lb-img" alt="" />
+  </div>
+
+  <!-- Footer (matches site) -->
+  <footer>
+    <p>&copy; 2025 All rights reserved. Northern Flights Disc Golf Inc.</p>
+  </footer>
+
+  <!-- Minimal JS for gallery lightbox -->
+  <script>
+    const gallery = document.getElementById('char-gallery');
+    const lb = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lb-img');
+    const lbClose = document.getElementById('lb-close');
+
+    gallery.addEventListener('click', (e) => {
+      const img = e.target.closest('img');
+      if (!img) return;
+      lbImg.src = img.src;
+      lb.classList.add('open');
+      lb.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    });
+
+    function closeLB(){
+      lb.classList.remove('open');
+      lb.setAttribute('aria-hidden', 'true');
+      lbImg.src = '';
+      document.body.style.overflow = '';
+    }
+    lb.addEventListener('click', (e) => { if (e.target === lb) closeLB(); });
+    lbClose.addEventListener('click', closeLB);
+    window.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLB(); });
+  </script>
+
+  <!-- Optional: ElevenLabs widget (copy if you want it on character pages too)
+  <elevenlabs-convai agent-id="agent_01jyhzm9jqfd9v1t1tdp76rhre"></elevenlabs-convai>
+  <script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async></script>
+  -->
+</body>
+</html>
