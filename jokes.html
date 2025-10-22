@@ -1,23 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>My Video Page</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Logos | Northern Flights Disc Golf</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
   <style>
-    /* make your video responsive */
-    video {
-      max-width: 100%;
-      height: auto;
+    /* --- Logo grid --- */
+    .logo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+      gap: 14px;
+      margin-top: 20px;
+    }
+    .logo-item {
+      aspect-ratio: 1 / 1;         /* keep perfect squares */
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 10px;               /* breathing room so images aren't clipped */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,.06);
+      transition: transform .12s ease, box-shadow .12s ease;
+      cursor: zoom-in;
+    }
+    .logo-item:focus-within,
+    .logo-item:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(0,0,0,.12);
+    }
+    .logo-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;         /* keeps 1:1 logos from stretching */
       display: block;
-      margin: 0 auto;
+    }
+
+    /* --- Lightbox (modal) --- */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.8);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      z-index: 1000;
+    }
+    .lightbox.open { display: flex; }
+
+    .lightbox-inner {
+      position: relative;
+      max-width: min(92vw, 1000px);
+      max-height: 88vh;
+      background: #111;
+      border-radius: 12px;
+      padding: 12px;
+    }
+    .lightbox img {
+      max-width: 100%;
+      max-height: 82vh;
+      display: block;
+      object-fit: contain;
+      border-radius: 8px;
+    }
+    .lightbox button {
+      position: absolute;
+      top: 8px;
+      background: rgba(255,255,255,.9);
+      border: none;
+      border-radius: 999px;
+      padding: 8px 12px;
+      cursor: pointer;
+      font-weight: 700;
+    }
+    .lb-close { right: 8px; }
+    .lb-prev  { left: 8px;  }
+    .lb-next  { right: 56px; }
+
+    /* Helper: subtle caption (optional) */
+    .lb-caption {
+      color: #fff;
+      text-align: center;
+      font-size: .95rem;
+      margin-top: 8px;
+      opacity: .9;
     }
   </style>
 </head>
+<body>
 
-<!-- Navigation Bar -->
-<nav class="navbar">
-    <!-- <div class="logo"></div> -->
+  <header>
+    <h1>Logo Gallery</h1>
+    <h3>100+ designs, all in a tidy grid</h3>
+  </header>
+
+  <!-- Navigation Bar (same structure as your other pages) -->
+  <nav class="navbar">
     <div class="hamburger" id="hamburger">&#9776;</div>
     <ul class="nav-links" id="nav-links">
       <li><a href="index.html">Home</a></li>
@@ -25,7 +107,7 @@
         <a href="governance.html">Corporate▾</a>
         <ul class="dropdown-content">
           <li><a href="about.html">About Us</a></li>
-          <li><a href="governance.html">Governance</a></li>          
+          <li><a href="governance.html">Governance</a></li>
           <li><a href="donation.html">Donate</a></li>
           <li><a href="volunteer.html">Volunteer</a></li>
           <li><a href="contact.html">Contact Us</a></li>
@@ -36,14 +118,14 @@
         <ul class="dropdown-content">
           <li><a href="bagtag.html">Bag Tags</a></li>
           <li><a href="popup.html">Pop Up Course</a></li>
-          <li><a href="league.html">League</a></li>          
+          <li><a href="league.html">League</a></li>
         </ul>
       </li>
       <li class="dropdown">
         <a href="store_front.html">Store ▾</a>
         <ul class="dropdown-content">
           <li><a href="store_front.html">Merchandise</a></li>
-          <li><a href="custom_merch.html">Custom Items</a></li>          
+          <li><a href="custom_merch.html">Custom Items</a></li>
           <li><a href="disc_exchange.html">Disc Exchange</a></li>
         </ul>
       </li>
@@ -52,12 +134,10 @@
         <ul class="dropdown-content">
           <li><a href="training.html">Training</a></li>
           <li><a href="nutrition.html">Nutrition</a></li>
-          <li><a href="disc_golf_basics.html">Learn how to play</a></li>    
+          <li><a href="disc_golf_basics.html">Learn how to play</a></li>
           <li><a href="submit_a_tip.html">Submit a Tip</a></li>
         </ul>
       </li>
-      
-
       <li class="dropdown">
         <a href="resources.html">Resources ▾</a>
         <ul class="dropdown-content">
@@ -67,7 +147,7 @@
           <li><a href="lotto.html">Lotto</a></li>
           <li><a href="running.html">Disc Game</a></li>
           <li><a href="jokes.html">Jokes</a></li>
-          <li><a href="running.html">Games</a></li>  
+          <li><a href="running.html">Games</a></li>
           <li><a href="map.html">Map</a></li>
           <li><a href="gallery.html">Gallery</a></li>
           <li><a href="submit-photo.html">Send us Photos</a></li>
@@ -79,33 +159,128 @@
   </nav>
 
   <script src="script.js"></script>
-<body>
 
-  <h1>Welcome to My Site</h1>
+  <main class="content-container">
+    <section>
+      <h2>All Logos</h2>
+      <p>Click any logo to view it larger. All images are stored in <code>static/Photos/Logos/</code>.</p>
 
-  <!-- Video player -->
-  <video
-    id="hero-video"
-    controls         <!-- show play/pause bar -->
-    poster="thumb.jpg" <!-- optional: shows before playback -->
-    preload="metadata" <!-- load only metadata until play -->
-  >
-    <source src="static/Videos/bigfootvid.mp4" type="video/mp4">
-    <!-- You can add WebM/Fallbacks here:
-    <source src="videos/my-video.webm" type="video/webm">
-    -->
-    Sorry, your browser doesn’t support the video element.
-  </video>
+      <!-- OPTIONAL: If you want to hard-code some items, you can place them here:
+      <div class="logo-grid" id="logo-grid">
+        <a class="logo-item" href="static/Photos/Logos/offical NFDG logo.png" data-caption="Official NFDG">
+          <img src="static/Photos/Logos/offical NFDG logo.png" alt="Official NFDG" loading="lazy" />
+        </a>
+      </div>
+      -->
+
+      <!-- JS will populate this -->
+      <div class="logo-grid" id="logo-grid"></div>
+    </section>
+  </main>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <div class="lightbox-inner">
+      <button class="lb-prev" aria-label="Previous (←)">←</button>
+      <button class="lb-next" aria-label="Next (→)">→</button>
+      <button class="lb-close" aria-label="Close (Esc)">✕</button>
+      <img id="lb-image" alt="" />
+      <div class="lb-caption" id="lb-caption"></div>
+    </div>
+  </div>
 
   <script>
-    // optional JS API: play when page loads (muted is required for autoplay)
-    window.addEventListener('load', () => {
-      const vid = document.getElementById('hero-video');
-      // vid.muted = true;
-      // vid.play();
+    // --------- 1) Paste your filenames here (no need for thumbnails) ----------
+    // Example entries; replace with your 100+ logo filenames found in static/Photos/Logos/
+    const LOGO_PATH = "static/Photos/Logos/";
+    const logos = [
+      "offical NFDG logo.png",
+      "SaskEnergy_Logo_Transparent.png",
+      "dominos.png",
+      "hudbay-logo.png",
+      "Arctic+Beverages.png",
+      "WPU_logo.png",
+      "stock_logo.png",
+      "under_construction_logo.png",
+      "026 Clouds 2.png"
+      // ...add the rest of your logo files here
+    ];
+
+    // --------- 2) Build grid ----------
+    const grid = document.getElementById("logo-grid");
+    const items = logos.map((file, idx) => {
+      const a = document.createElement("a");
+      a.href = LOGO_PATH + file;
+      a.className = "logo-item";
+      a.dataset.index = idx;
+      a.dataset.caption = file.replace(/[_-]+/g, " ").replace(/\.(png|jpg|jpeg|svg|webp)$/i, "");
+      const img = document.createElement("img");
+      img.loading = "lazy";
+      img.alt = a.dataset.caption;
+      img.src = LOGO_PATH + file;
+      a.appendChild(img);
+      return a;
+    });
+    grid.append(...items);
+
+    // --------- 3) Simple lightbox with keyboard & arrows ----------
+    const lb = document.getElementById("lightbox");
+    const lbImg = document.getElementById("lb-image");
+    const lbCap = document.getElementById("lb-caption");
+    const btnClose = lb.querySelector(".lb-close");
+    const btnPrev = lb.querySelector(".lb-prev");
+    const btnNext = lb.querySelector(".lb-next");
+
+    let current = 0;
+
+    function openLightbox(i) {
+      current = i;
+      const a = items[current];
+      lbImg.src = a.href;
+      lbImg.alt = a.dataset.caption || "";
+      lbCap.textContent = a.dataset.caption || "";
+      lb.classList.add("open");
+      lb.setAttribute("aria-hidden", "false");
+      // prevent page behind from scrolling
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeLightbox() {
+      lb.classList.remove("open");
+      lb.setAttribute("aria-hidden", "true");
+      lbImg.src = "";
+      document.body.style.overflow = "";
+    }
+
+    function prev() { openLightbox((current - 1 + items.length) % items.length); }
+    function next() { openLightbox((current + 1) % items.length); }
+
+    grid.addEventListener("click", (e) => {
+      const a = e.target.closest("a.logo-item");
+      if (!a) return;
+      e.preventDefault();
+      openLightbox(Number(a.dataset.index));
+    });
+
+    btnClose.addEventListener("click", closeLightbox);
+    btnPrev.addEventListener("click", prev);
+    btnNext.addEventListener("click", next);
+
+    lb.addEventListener("click", (e) => {
+      // click outside the image closes
+      if (e.target === lb) closeLightbox();
+    });
+
+    window.addEventListener("keydown", (e) => {
+      if (!lb.classList.contains("open")) return;
+      if (e.key === "Escape") closeLightbox();
+      if (e.key === "ArrowLeft") prev();
+      if (e.key === "ArrowRight") next();
     });
   </script>
-  <p>Not sure if AI understands disc golf.Request: Bigfoot playing disc golf wearing a jersey</p>
 
+  <footer>
+    <p>&copy; 2025 Northern Flights Disc Golf Inc.</p>
+  </footer>
 </body>
 </html>
