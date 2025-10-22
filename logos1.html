@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Logo Gallery – Page 1 | Northern Flights Disc Golf</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <style>
+    /* Grid */
+    .logo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(90px,1fr));gap:14px;margin-top:20px}
+    .logo-item{aspect-ratio:1/1;background:#fff;border:1px solid #ddd;border-radius:10px;padding:10px;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 6px rgba(0,0,0,.06);transition:transform .12s,box-shadow .12s;cursor:zoom-in}
+    .logo-item:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,0,0,.12)}
+    .logo-item img{width:100%;height:100%;object-fit:contain;display:block}
+
+    /* Lightbox */
+    .lightbox{position:fixed;inset:0;background:rgba(0,0,0,.8);display:none;align-items:center;justify-content:center;padding:24px;z-index:1000}
+    .lightbox.open{display:flex}
+    .lightbox-inner{position:relative;max-width:min(92vw,1000px);max-height:88vh;background:#111;border-radius:12px;padding:12px}
+    .lightbox img{max-width:100%;max-height:82vh;display:block;object-fit:contain;border-radius:8px}
+    .lightbox button{position:absolute;top:8px;background:rgba(255,255,255,.9);border:0;border-radius:999px;padding:8px 12px;cursor:pointer;font-weight:700}
+    .lb-close{right:8px}.lb-prev{left:8px}.lb-next{right:56px}
+    .lb-caption{color:#fff;text-align:center;font-size:.95rem;margin-top:8px;opacity:.9}
+
+    /* Pagination */
+    .pagination{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:22px 0}
+    .pagination a,.pagination span{display:inline-block;padding:8px 12px;border:1px solid #ddd;border-radius:8px;text-decoration:none}
+    .pagination a:hover{background:#f5f5f5}
+    .pagination .active{background:#111;color:#fff;border-color:#111}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Logo Gallery – Page 1 of 9</h1>
+    <h3>Logos 001 to 100 • Click any logo to enlarge</h3>
+  </header>
+
+  <!-- Navigation bar (matches your other pages) -->
+  <nav class="navbar">
+    <div class="hamburger" id="hamburger">&#9776;</div>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li class="dropdown">
+        <a href="governance.html">Corporate▾</a>
+        <ul class="dropdown-content">
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="governance.html">Governance</a></li>
+          <li><a href="donation.html">Donate</a></li>
+          <li><a href="volunteer.html">Volunteer</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </li>
+      <li class="dropdown">
+        <a href="events.html">Events ▾</a>
+        <ul class="dropdown-content">
+          <li><a href="bagtag.html">Bag Tags</a></li>
+          <li><a href="popup.html">Pop Up Course</a></li>
+          <li><a href="league.html">League</a></li>
+        </ul>
+      </li>
+      <li class="dropdown">
+        <a href="store_front.html">Store ▾</a>
+        <ul class="dropdown-content">
+          <li><a href="store_front.html">Merchandise</a></li>
+          <li><a href="custom_merch.html">Custom Items</a></li>
+          <li><a href="disc_exchange.html">Disc Exchange</a></li>
+        </ul>
+      </li>
+      <li class="dropdown">
+        <a href="flightschool.html">Flight School▾</a>
+        <ul class="dropdown-content">
+          <li><a href="training.html">Training</a></li>
+          <li><a href="nutrition.html">Nutrition</a></li>
+          <li><a href="disc_golf_basics.html">Learn how to play</a></li>
+          <li><a href="submit_a_tip.html">Submit a Tip</a></li>
+        </ul>
+      </li>
+      <li class="dropdown">
+        <a href="resources.html">Resources ▾</a>
+        <ul class="dropdown-content">
+          <li><a href="entertainment.html">Entertainment</a></li>
+          <li><a href="cards.html">Trading Card</a></li>
+          <li><a href="mario.html">Mario Golf 64</a></li>
+          <li><a href="lotto.html">Lotto</a></li>
+          <li><a href="running.html">Disc Game</a></li>
+          <li><a href="jokes.html">Jokes</a></li>
+          <li><a href="map.html">Map</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="submit-photo.html">Send us Photos</a></li>
+          <li><a href="archived_players_site.html">Archived Website</a></li>
+        </ul>
+      </li>
+      <li><a href="contact.html">Contact Us</a></li>
+    </ul>
+  </nav>
+
+  <script src="script.js"></script>
+
+  <main class="content-container">
+    <nav class="pagination" id="pagination-top"></nav>
+
+    <section>
+      <div class="logo-grid" id="logo-grid"></div>
+    </section>
+
+    <nav class="pagination" id="pagination-bottom"></nav>
+  </main>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <div class="lightbox-inner">
+      <button class="lb-prev" aria-label="Previous (←)">←</button>
+      <button class="lb-next" aria-label="Next (→)">→</button>
+      <button class="lb-close" aria-label="Close (Esc)">✕</button>
+      <img id="lb-image" alt="" />
+      <div class="lb-caption" id="lb-caption"></div>
+    </div>
+  </div>
+
+  <script>
+    const PAGE_NUM=1, TOTAL_PAGES=9, START_INDEX=1, END_INDEX=100;
+    const LOGO_PATH="static/Photos/Logos/", EXT=".png";
+    const grid=document.getElementById("logo-grid");
+
+    const items=[];
+    for(let i=START_INDEX;i<=END_INDEX;i++){
+      const num=String(i).padStart(3,"0");
+      const a=document.createElement("a");
+      a.href=LOGO_PATH+num+EXT;
+      a.className="logo-item";
+      a.dataset.index=i-START_INDEX;
+      const img=document.createElement("img");
+      img.loading="lazy";
+      img.alt=`Logo ${num}`;
+      img.src=LOGO_PATH+num+EXT;
+      a.appendChild(img);
+      items.push(a);
+    }
+    grid.append(...items);
+
+    // Lightbox
+    const lb=document.getElementById("lightbox"),
+          lbImg=document.getElementById("lb-image"),
+          lbCap=document.getElementById("lb-caption");
+    let current=0;
+    function openLB(i){current=i;const a=items[i];lbImg.src=a.href;lbCap.textContent=a.querySelector("img").alt;lb.classList.add("open");document.body.style.overflow="hidden";}
+    function closeLB(){lb.classList.remove("open");lbImg.src="";document.body.style.overflow="";}
+    function prev(){openLB((current-1+items.length)%items.length);}
+    function next(){openLB((current+1)%items.length);}
+    grid.addEventListener("click",e=>{const a=e.target.closest("a.logo-item");if(!a)return;e.preventDefault();openLB(Number(a.dataset.index));});
+    lb.querySelector(".lb-close").onclick=closeLB;
+    lb.querySelector(".lb-prev").onclick=prev;
+    lb.querySelector(".lb-next").onclick=next;
+    lb.addEventListener("click",e=>{if(e.target===lb)closeLB();});
+    window.addEventListener("keydown",e=>{if(!lb.classList.contains("open"))return;if(e.key==="Escape")closeLB();if(e.key==="ArrowLeft")prev();if(e.key==="ArrowRight")next();});
+
+    // Pagination
+    function buildPag(containerId){
+      const wrap=document.getElementById(containerId);
+      if(PAGE_NUM>1){const prev=document.createElement("a");prev.href=`logos${PAGE_NUM-1}.html`;prev.textContent="« Prev";wrap.appendChild(prev);}
+      for(let p=1;p<=TOTAL_PAGES;p++){
+        if(p===PAGE_NUM){const s=document.createElement("span");s.textContent=p;s.className="active";wrap.appendChild(s);}
+        else{const a=document.createElement("a");a.href=`logos${p}.html`;a.textContent=p;wrap.appendChild(a);}
+      }
+      if(PAGE_NUM<TOTAL_PAGES){const next=document.createElement("a");next.href=`logos${PAGE_NUM+1}.html`;next.textContent="Next »";wrap.appendChild(next);}
+    }
+    buildPag("pagination-top");
+    buildPag("pagination-bottom");
+  </script>
+
+  <footer>
+    <p>&copy; 2025 Northern Flights Disc Golf Inc.</p>
+  </footer>
+</body>
+</html>
