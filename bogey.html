@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title><!-- Character Name --> | Northern Flights Disc Golf</title>
+  <title>Bogey Man | Northern Flights Disc Golf</title>
   <link rel="icon" href="favicon.ico" type="image/x-icon">
   <link rel="canonical" href="https://northernflightsdiscgolf.ca/" />
   <link rel="stylesheet" href="style.css" />
 
-  <!-- Google Analytics (same as index.html) -->
+  <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-2YSRP05HJK"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -17,7 +17,6 @@
     gtag('config', 'G-2YSRP05HJK');
   </script>
 
-  <!-- Inline responsive header style (same rules as index.html) -->
   <style>
     @media (max-width: 560px) {
       header { flex-wrap: wrap; }
@@ -27,7 +26,6 @@
     @media (min-width: 1600px) {
       header h1 { display: none; }
     }
-    /* Character-specific bits (kept minimal to use your global styles) */
     .char-hero {
       display:block; margin:24px auto; width:100%; max-width:900px;
       border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,.15); object-fit:cover;
@@ -46,7 +44,6 @@
     }
     .char-gallery img:hover { transform: scale(1.03); }
 
-    /* Lightbox (simple & lightweight) */
     .lightbox {
       position: fixed; inset: 0; background: rgba(0,0,0,.85);
       display:none; align-items:center; justify-content:center; z-index:1000; padding:20px;
@@ -62,17 +59,15 @@
 </head>
 <body>
 
-  <!-- Header bar (matches index.html) -->
   <header style="display:flex; align-items:center; justify-content:center; gap:12px; flex-wrap:nowrap; padding:10px; background:#64b74d;">
     <img src="static/Photos/Logos/offical NFDG logo.png"
          alt="Northern Flights Logo"
          style="max-height:80px; width:auto; flex:0 0 auto; display:block;" />
     <h1 style="margin:0; font-size:clamp(1.25rem, 2.5vw, 2rem); line-height:1.2; color:#fff; flex:1 1 auto; text-align:center;">
-      <!-- Character Name --> Bogey Man
+      Bogey Man
     </h1>
   </header>
 
-  <!-- Navigation Bar (exact structure from your site) -->
   <nav class="navbar">
     <div class="hamburger" id="hamburger">&#9776;</div>
     <ul class="nav-links" id="nav-links">
@@ -121,7 +116,6 @@
           <li><a href="lotto.html">Lotto</a></li>
           <li><a href="running.html">Disc Game</a></li>
           <li><a href="logos1.html">Logo Collection</a></li>
-          <li><a href="running.html">Games</a></li>  
           <li><a href="map.html">Map</a></li>
           <li><a href="gallery.html">Gallery</a></li>
           <li><a href="submit-photo.html">Send us Photos</a></li>
@@ -134,18 +128,14 @@
 
   <script src="script.js"></script>
 
-  <!-- Main Content -->
   <main class="content-container">
-    <!-- Big Character Name (page title) -->
     <section>
-      <h2><!-- Character Name --></h2>
-      <!-- Large hero image (replace the src) -->
+      <h2>Bogey Man</h2>
       <img src="static/Photos/characters/bogey_man/021.png"
-           alt="<!-- Character Name --> main image"
+           alt="Bogey Man main image"
            class="char-hero" />
     </section>
 
-    <!-- Bio / Backstory -->
     <section class="bio-card">
       <h2>Bio</h2>
       <p>
@@ -158,43 +148,44 @@
       <p>
         The Bogey Man wasn’t always a legend of the fairways. He started as a lonely scarecrow standing in a quiet Saskatchewan field. Bored and forgotten, he eventually made friends with the very crows he was built to chase away. They teased him, joked with him, and turned long days into laughter.
 
-Everything changed when a disc golf course was installed in his field. At first, he thought he was being replaced. But as he watched players throw discs through the air, something sparked inside him — he wanted to be part of it.
+        Everything changed when a disc golf course was installed in his field. At first, he thought he was being replaced. But as he watched players throw discs through the air, something sparked inside him — he wanted to be part of it.
 
-One day, he overheard a golfer say, “What’d you get on that last hole, dude?”
-“Bogey, man,” came the reply.
+        One day, he overheard a golfer say, “What’d you get on that last hole, dude?”
+        “Bogey, man,” came the reply.
 
-From that moment, the scarecrow had a name — The Bogey Man.
+        From that moment, the scarecrow had a name — The Bogey Man.
 
-Now he wanders course to course with his crow friends, trying to fit in with the players he admires. He might bring a little bad luck now and then, but deep down he just wants to belong and share in the fun of the game.
+        Now he wanders course to course with his crow friends, trying to fit in with the players he admires. He might bring a little bad luck now and then, but deep down he just wants to belong and share in the fun of the game.
       </p>
     </section>
 
-    <!-- Gallery -->
     <section>
-      <h2><!-- Character Name --> — Gallery</h2>
+      <h2>Bogey Man — Gallery</h2>
       <div class="char-gallery" id="char-gallery">
-        <!-- Replace these with your images -->
-        <img src="static/Photos/Characters/CHAR_KEY_01.jpg" alt="<!-- Character Name --> image 1" loading="lazy" />
-        <img src="static/Photos/Characters/CHAR_KEY_02.jpg" alt="<!-- Character Name --> image 2" loading="lazy" />
-        <img src="static/Photos/Characters/CHAR_KEY_03.jpg" alt="<!-- Character Name --> image 3" loading="lazy" />
-        <img src="static/Photos/Characters/CHAR_KEY_04.jpg" alt="<!-- Character Name --> image 4" loading="lazy" />
+        <!-- Gallery 001–042 -->
+        <!-- Auto-generated image list -->
+        <!-- prettier-ignore -->
+        ${Array.from({length:42},(_,i)=>`<img src="static/Photos/characters/bogey_man/${String(i+1).padStart(3,'0')}.png" alt="Bogey Man image ${i+1}" loading="lazy" />`).join('\n')}
       </div>
     </section>
   </main>
 
-  <!-- Lightbox -->
   <div class="lightbox" id="lightbox" aria-hidden="true">
     <button class="close" id="lb-close" aria-label="Close">✕</button>
     <img id="lb-img" alt="" />
   </div>
 
-  <!-- Footer (matches site) -->
   <footer>
     <p>&copy; 2025 All rights reserved. Northern Flights Disc Golf Inc.</p>
   </footer>
 
-  <!-- Minimal JS for gallery lightbox -->
   <script>
+    // Inject gallery images dynamically
+    const galleryContainer = document.getElementById('char-gallery');
+    galleryContainer.innerHTML = Array.from({length:42},(_,i)=>
+      `<img src="static/Photos/characters/bogey_man/${String(i+1).padStart(3,'0')}.png" alt="Bogey Man image ${i+1}" loading="lazy" />`
+    ).join('');
+
     const gallery = document.getElementById('char-gallery');
     const lb = document.getElementById('lightbox');
     const lbImg = document.getElementById('lb-img');
@@ -220,9 +211,6 @@ Now he wanders course to course with his crow friends, trying to fit in with the
     window.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLB(); });
   </script>
 
-  <!-- Optional: ElevenLabs widget (copy if you want it on character pages too)
-  <elevenlabs-convai agent-id="agent_01jyhzm9jqfd9v1t1tdp76rhre"></elevenlabs-convai>
-  <script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async></script>
-  -->
 </body>
 </html>
+
