@@ -182,7 +182,7 @@
   <script>
     // Inject gallery images dynamically
     const galleryContainer = document.getElementById('char-gallery');
-    galleryContainer.innerHTML = Array.from({length:42},(_,i)=>
+    galleryContainer.innerHTML = Array.from({length:41},(_,i)=>
       `<img src="static/Photos/characters/bogey_man/${String(i+1).padStart(3,'0')}.png" alt="Bogey Man image ${i+1}" loading="lazy" />`
     ).join('');
 
