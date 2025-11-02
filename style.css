@@ -288,41 +288,7 @@ section p {
   display: block;
 }
 
-@media (max-width: 768px) {
-  .hamburger {
-    display: block;
-  }
-
-  .nav-links {
-    display: none;
-    flex-direction: column;
-    width: 100%;
-    background-color: #214328;
-    position: absolute;
-    top: 60px;
-    left: 0;
-  }
-
-  .nav-links.active {
-    display: flex;
-  }
-
-  .nav-links li {
-    width: 100%;
-  }
-
-  .dropdown-content {
-    position: static;
-  }
-
-  .dropdown:hover .dropdown-content {
-    display: none;
-  }
-
-  .dropdown.open .dropdown-content {
-    display: block;
-  }
- /* ===== Albums & Playlist ===== */
+/* ===== Albums & Playlist ===== */
 #albums {
   background: #e0f4e5;                 /* matches your section theme */
   border: 2px solid #214328;
@@ -384,5 +350,41 @@ section p {
 .album-links .button {
   display: inline-block;
 }
+
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background-color: #214328;
+    position: absolute;
+    top: 60px;
+    left: 0;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .nav-links li {
+    width: 100%;
+  }
+
+  .dropdown-content {
+    position: static;
+  }
+
+  .dropdown:hover .dropdown-content {
+    display: none;
+  }
+
+  .dropdown.open .dropdown-content {
+    display: block;
+  }
+
 
 }
