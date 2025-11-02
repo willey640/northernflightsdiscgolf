@@ -322,5 +322,67 @@ section p {
   .dropdown.open .dropdown-content {
     display: block;
   }
- 
+ /* ===== Albums & Playlist ===== */
+#albums {
+  background: #e0f4e5;                 /* matches your section theme */
+  border: 2px solid #214328;
+  border-radius: 10px;
+}
+
+#albums .albums-embed {
+  margin: .5rem 0 1rem 0;
+}
+
+.album-row {
+  display: flex;
+  gap: clamp(12px, 2vw, 24px);
+  align-items: stretch;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: clamp(8px, 1.6vw, 18px);
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,.06);
+  margin: 14px 0;
+}
+
+.album-art-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;      /* two images side-by-side */
+  gap: clamp(8px, 1.4vw, 14px);
+  flex: 1 1 280px;                      /* grows but keeps min width */
+  max-width: 520px;
+}
+
+.album-art-grid img {
+  width: 100%;
+  aspect-ratio: 1 / 1;                  /* perfect square */
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.08);
+  background: #ddd;                      /* helpful placeholder color */
+}
+
+.album-copy {
+  flex: 1 1 260px;
+  min-width: 260px;
+  background: #e9f7ec;
+  border: 1px solid #cfe9d6;
+  border-radius: 12px;
+  padding: clamp(12px, 2vw, 18px);
+}
+
+.album-copy h3 {
+  margin-top: 0;
+  color: #142139;
+}
+
+.album-copy p {
+  margin: .5rem 0 1rem 0;
+}
+
+.album-links .button {
+  display: inline-block;
+}
+
 }
