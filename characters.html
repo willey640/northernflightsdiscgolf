@@ -155,29 +155,24 @@
   <script>
     const CHARACTERS = [
       {
-        name: "Barlo the Sasquatch",
-        thumb: "static/Photos/Characters/barlo_main.jpg",
+        name: "Barlo",
+        thumb: "static/Photos/characters/barlo/003.png",
         page: "barlo.html",
-        blurb: "Guardian of the North. Big heart, bigger hyzers."
-      },
-      {
-        name: "Willie the Monster",
-        thumb: "static/Photos/Characters/willie_main.jpg",
-        page: "willie.html",
-        blurb: "Wild energy on the fairway. Mischievous, fearless, and oddly lovable."
-      },
-      {
-        name: "The Robot",
-        thumb: "static/Photos/Characters/robot_main.jpg",
-        page: "robot.html",
-        blurb: "Precision-engineered for perfect drives. Emotion subroutines still in beta."
+        blurb: "Guardian of the North. Calm voice, crushing drives."
       },
       {
         name: "Bogey Man",
         thumb: "static/Photos/characters/bogey_man/021.png",
-        page: "bogey.html",
-        blurb: "He whispers 'Nice' mid-flight… and trees appear."
+        page: "bogey-man.html",
+        blurb: "He whispers “Nice”… and trees appear."
+      },
+      {
+        name: "Willie the Monster",
+        thumb: "static/Photos/characters/willie/thumb.png",
+        page: "willie.html",
+        blurb: "Wild energy on the fairway. Chaos with a smile."
       }
+      // Add more characters here
     ];
 
     const grid = document.getElementById("char-grid");
@@ -212,11 +207,12 @@
       if (!q) return render(CHARACTERS);
       const filtered = CHARACTERS.filter(ch =>
         ch.name.toLowerCase().includes(q) ||
-        (ch.blurb||"").toLowerCase().includes(q)
+        (ch.blurb || "").toLowerCase().includes(q)
       );
       render(filtered);
     });
   </script>
 
-</body>
+
+  </body>
 </html>

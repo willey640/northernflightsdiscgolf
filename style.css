@@ -351,6 +351,30 @@ section p {
   display: inline-block;
 }
 
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 18px;
+}
+
+.video-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,.12);
+}
+
+.video-card h3 {
+  margin: 0 0 8px 0;
+}
+
+.video-card video {
+  width: 100%;
+  border-radius: 10px;
+  background: #000;
+}
+
+
 /* ===== Youtube ===== */
   .video-container {
     position: relative;
@@ -405,7 +429,6 @@ section p {
     display: block;
   }
 
-  
 
 
 
