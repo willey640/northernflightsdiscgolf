@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Games - Northern Flights Disc Golf</title>
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+  <style>
+    .games-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 25px;
+      margin-top: 25px;
+    }
+
+    .game-card {
+      background: #ffffff;
+      border: 2px solid #214328;
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+    }
+
+    .game-card img {
+      width: 100%;
+      max-width: 300px;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+
+    .game-card h2 {
+      margin-top: 5px;
+    }
+
+    .game-card p {
+      min-height: 75px;
+    }
+
+    .play-button {
+      display: inline-block;
+      padding: 12px 24px;
+      margin-top: 10px;
+
+      background: #299aa5;
+      color: white;
+
+      border-radius: 8px;
+
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.05rem;
+    }
+
+    .play-button:hover {
+      background: #214328;
+      text-decoration: none;
+    }
+  </style>
+</head>
+
+
+<body>
+
+<header class="site-header">
+
+  <a href="/" class="logo-wrap">
+    <img
+      src="static/Photos/Logos/offical NFDG logo.png"
+      alt="Northern Flights Disc Golf"
+      class="header-logo left-logo">
+  </a>
+
+  <h1>Northern Flights Disc Golf Inc.</h1>
+
+  <a href="/" class="logo-wrap">
+    <img
+      src="static/Photos/Logos/offical NFDG logo.png"
+      alt=""
+      class="header-logo right-logo">
+  </a>
+
+</header>
+
+
+<!-- Navigation -->
+<nav class="navbar">
+
+  <div class="hamburger" id="hamburger">&#9776;</div>
+
+  <ul class="nav-links" id="nav-links">
+
+    <li>
+      <a href="index.html">Home</a>
+    </li>
+
+
+    <li class="dropdown">
+
+      <a href="governance.html">Corporate ▾</a>
+
+      <ul class="dropdown-content">
+
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="governance.html">Governance</a></li>
+        <li><a href="donation.html">Donate</a></li>
+        <li><a href="volunteer.html">Volunteer</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+
+      </ul>
+
+    </li>
+
+
+    <li class="dropdown">
+
+      <a href="events.html">Events ▾</a>
+
+      <ul class="dropdown-content">
+
+        <li><a href="bagtag.html">Bag Tags</a></li>
+        <li><a href="popup.html">Pop Up Course</a></li>
+        <li><a href="league.html">League</a></li>
+
+      </ul>
+
+    </li>
+
+
+    <li class="dropdown">
+
+      <a href="store_front.html">Store ▾</a>
+
+      <ul class="dropdown-content">
+
+        <li><a href="store_front.html">Merchandise</a></li>
+        <li><a href="custom_merch.html">Custom Items</a></li>
+        <li><a href="disc_exchange.html">Disc Exchange</a></li>
+
+      </ul>
+
+    </li>
+
+
+    <li class="dropdown">
+
+      <a href="flightschool.html">Flight School ▾</a>
+
+      <ul class="dropdown-content">
+
+        <li><a href="training.html">Training</a></li>
+        <li><a href="nutrition.html">Nutrition</a></li>
+        <li><a href="disc_golf_basics.html">Learn how to play</a></li>
+        <li><a href="submit_a_tip.html">Submit a Tip</a></li>
+
+      </ul>
+
+    </li>
+
+
+    <li class="dropdown">
+
+      <a href="resources.html">Resources ▾</a>
+
+      <ul class="dropdown-content">
+
+        <li><a href="entertainment.html">Entertainment</a></li>
+        <li><a href="cards.html">Trading Card</a></li>
+        <li><a href="mario.html">Mario Golf 64</a></li>
+        <li><a href="lotto.html">Lotto</a></li>
+        <li><a href="jokes.html">Jokes</a></li>
+
+        <!-- NEW -->
+        <li><a href="games.html">Games</a></li>
+
+        <li><a href="map.html">Map</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+
+      </ul>
+
+    </li>
+
+
+    <li>
+      <a href="contact.html">Contact Us</a>
+    </li>
+
+  </ul>
+
+</nav>
+
+
+<script src="script.js"></script>
+
+
+<main class="content-container">
+
+
+  <section>
+
+    <h1>Northern Flights Games</h1>
+
+    <p>
+      Play games created by Northern Flights Disc Golf.
+      Choose a game below to get started.
+    </p>
+
+
+    <div class="games-grid">
+
+
+      <!-- CHAINS OF CHAOS -->
+
+      <div class="game-card">
+
+        <img
+          src="static/Photos/VideoGame/chains_of_chaos.png"
+          alt="Chains of Chaos">
+
+        <h2>Chains of Chaos</h2>
+
+        <p>
+          Our original disc golf adventure.
+          Throw discs, battle enemies, explore levels
+          and uncover the story behind Chains of Chaos.
+        </p>
+
+        <a
+          href="YOUR-CHAINS-OF-CHAOS-LINK"
+          class="play-button">
+          PLAY
+        </a>
+
+      </div>
+
+
+
+      <!-- CRIBBAGE OF CHAOS -->
+
+      <div class="game-card">
+
+        <img
+          src="static/Photos/VideoGame/cribbage_of_chaos.png"
+          alt="Cribbage of Chaos">
+
+        <h2>Cribbage of Chaos</h2>
+
+        <p>
+          Classic cribbage with a Northern Flights twist.
+          Play against the computer and test your cribbage skills.
+        </p>
+
+        <a
+          href="YOUR-CRIBBAGE-LINK"
+          class="play-button">
+          PLAY
+        </a>
+
+      </div>
+
+
+
+      <!-- DISC MON -->
+
+      <div class="game-card">
+
+        <img
+          src="static/Photos/VideoGame/discmon.png"
+          alt="DiscMon">
+
+        <h2>DISC Mon</h2>
+
+        <p>
+          A retro arcade maze game.
+          Collect pellets, grab power-ups and take down
+          the ghosts while chasing a high score.
+        </p>
+
+        <a
+          href="games\discmon\index.html"
+          class="play-button">
+          PLAY
+        </a>
+
+      </div>
+
+
+    </div>
+
+  </section>
+
+
+</main>
+
+
+<footer>
+
+  <p>
+    &copy; 2026 Northern Flights Disc Golf Inc.
+    All rights reserved.
+  </p>
+
+</footer>
+
+
+</body>
+</html>
