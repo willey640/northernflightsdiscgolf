@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; connect-src https://*.supabase.co http://127.0.0.1:55321; base-uri 'none'; form-action 'none'">
+  <title>DiscMon Moderation</title>
+  <link rel="stylesheet" href="./style.css">
+  <script type="module" src="./app.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="shell header-inner">
+      <h1>DISCMON <span>— MODERATION</span></h1>
+      <button id="sign-out" type="button" hidden>Sign out</button>
+    </div>
+  </header>
+  <main class="shell">
+    <p id="message" role="status" hidden></p>
+    <section id="sign-in" class="panel sign-in" aria-labelledby="sign-in-title" hidden>
+      <h2 id="sign-in-title">Administrator sign-in</h2>
+      <form id="login">
+        <label for="email">Email</label>
+        <input id="email" type="email" autocomplete="username" required>
+        <label for="password">Password</label>
+        <input id="password" type="password" autocomplete="current-password" required>
+        <button class="primary" type="submit" disabled>Sign in</button>
+        <button id="forgot-password" type="button" disabled>Request a password reset</button>
+      </form>
+    </section>
+
+    <section id="recovery" class="panel sign-in" aria-labelledby="recovery-title" hidden>
+      <h2 id="recovery-title">Request a password reset</h2>
+      <form id="recover">
+        <label for="recovery-email">DiscMon Auth email</label>
+        <input id="recovery-email" type="email" autocomplete="username" required>
+        <button class="primary" type="submit">Send reset link</button>
+        <button id="back-to-login" type="button">Back to sign-in</button>
+      </form>
+    </section>
+
+    <section id="password-setup" class="panel sign-in" aria-labelledby="password-setup-title" hidden>
+      <h2 id="password-setup-title">Set your password</h2>
+      <form id="set-password">
+        <label for="new-password">New password (at least 12 characters)</label>
+        <input id="new-password" type="password" autocomplete="new-password" minlength="12" required>
+        <label for="confirm-password">Confirm new password</label>
+        <input id="confirm-password" type="password" autocomplete="new-password" minlength="12" required>
+        <button class="primary" type="submit">Save password</button>
+      </form>
+    </section>
+
+    <section id="dashboard" hidden aria-label="Moderation dashboard">
+      <dl id="counts" class="metrics">
+        <div><dt>Pending</dt><dd id="count-pending">—</dd></div>
+        <div><dt>Resolved</dt><dd id="count-resolved">—</dd></div>
+        <div><dt>Dismissed</dt><dd id="count-dismissed">—</dd></div>
+        <div><dt>Total</dt><dd id="count-total">—</dd></div>
+      </dl>
+      <section class="panel queue" aria-labelledby="queue-title">
+        <div class="section-heading">
+          <h2 id="queue-title">Reports</h2>
+          <div class="toolbar">
+            <label class="sr-only" for="filter">Report status</label>
+            <select id="filter">
+              <option value="pending">Pending</option>
+              <option value="resolved">Resolved</option>
+              <option value="dismissed">Dismissed</option>
+              <option value="all">All Reports</option>
+            </select>
+            <button id="refresh" type="button">Refresh</button>
+          </div>
+        </div>
+        <div id="reports"></div>
+        <nav id="pages" class="toolbar pagination" aria-label="Report pages" hidden>
+          <button id="previous" type="button">Previous</button>
+          <span id="page"></span>
+          <button id="next" type="button">Next</button>
+        </nav>
+      </section>
+      <details id="audit" class="panel audit">
+        <summary>Moderation history</summary>
+        <div id="audit-entries"></div>
+        <button id="audit-more" type="button" hidden>Load older actions</button>
+      </details>
+    </section>
+  </main>
+  <dialog id="confirm" aria-labelledby="confirm-title" aria-describedby="confirm-copy">
+    <form method="dialog">
+      <h2 id="confirm-title">Remove score?</h2>
+      <p id="confirm-copy"></p>
+      <label for="note">Administrator note (optional)</label>
+      <textarea id="note" maxlength="500" rows="3"></textarea>
+      <div class="toolbar">
+        <button value="cancel" autofocus>Cancel</button>
+        <button value="remove" class="danger">Remove Score</button>
+      </div>
+    </form>
+  </dialog>
+</body>
+</html>
